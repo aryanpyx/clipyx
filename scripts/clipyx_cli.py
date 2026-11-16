@@ -9,7 +9,6 @@ import sys
 import json
 import argparse
 import webbrowser
-import http.server
 import socketserver
 import subprocess
 from pathlib import Path
@@ -35,19 +34,11 @@ def get_library_data():
 # -------------------------------------------------------------
 # Planizo Web Server
 # -------------------------------------------------------------
-class PlanizoHandler(http.server.SimpleHTTPRequestHandler):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=str(APP_DIR), **kwargs)
-
-    def end_headers(self):
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Cache-Control', 'no-cache')
-        super().end_headers()
-
 def cmd_serve(args):
+    from scripts.serve_planizo import PlanizoHandler
     port = args.port
     print(f"==================================================")
-    print(f"  Starting Planizo Local Web App on port {port}")
+    print(f"  Starting Clipyx Planizo Web App on port {port}")
     print(f"  Directory: {APP_DIR}")
     print(f"  URL: http://localhost:{port}/")
     print(f"==================================================")
@@ -241,7 +232,7 @@ def main():
 
     # serve
     p_serve = subparsers.add_parser("serve", help="Run the local Planizo Web App")
-    p_serve.add_argument("--port", type=int, default=5173, help="Port to run server on (default: 5173)")
+    p_serve.add_argument("--port", type=int, default=8765, help="Port to run server on (default: 8765)")
     p_serve.add_argument("--open", action="store_true", help="Automatically open browser")
     p_serve.set_defaults(func=cmd_serve)
 
