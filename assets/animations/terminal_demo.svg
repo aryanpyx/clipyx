@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" width="100%" height="460">
+  <defs>
+    <linearGradient id="termBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#14141d"/>
+      <stop offset="100%" stop-color="#0c0c14"/>
+    </linearGradient>
+    <filter id="termShadow">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cursor { animation: cursorBlink 1s infinite; fill: #9eff00; }
+    .t-dim { fill: #65657a; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; }
+    .t-white { fill: #f0f0f8; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; }
+    .t-lime { fill: #9eff00; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; font-weight: 700; }
+    .t-cyan { fill: #00e5ff; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; }
+    .t-pink { fill: #ff0077; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; }
+    .t-yellow { fill: #ffe600; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; }
+  </style>
+
+  <!-- Window Container -->
+  <rect width="1000" height="460" rx="12" fill="url(#termBg)" stroke="#272738" stroke-width="1.5" filter="url(#termShadow)"/>
+
+  <!-- Titlebar -->
+  <path d="M 0 12 Q 0 0 12 0 L 988 0 Q 1000 0 1000 12 L 1000 42 L 0 42 Z" fill="#1b1b26"/>
+  <circle cx="24" cy="21" r="6" fill="#ff5f56"/>
+  <circle cx="44" cy="21" r="6" fill="#ffbd2e"/>
+  <circle cx="64" cy="21" r="6" fill="#27c93f"/>
+  <text x="500" y="26" font-family="-apple-system, sans-serif" font-size="12" fill="#888899" text-anchor="middle">clipyx — powershell (Clipyx Studio)</text>
+
+  <!-- Terminal Content -->
+  <g transform="translate(30, 75)">
+    <!-- Line 1: Command 1 -->
+    <text x="0" y="0" class="t-lime">PS C:\Clipyx&gt;</text>
+    <text x="145" y="0" class="t-white">python clipyx.py library search "vhs"</text>
+
+    <!-- Output 1 -->
+    <text x="0" y="28" class="t-cyan">Found 1 matching library item:</text>
+    <text x="0" y="54" class="t-pink">• [TREE] VHS tape (slug: vhs-tape)</text>
+    <text x="16" y="76" class="t-dim">Category: Looks | Tool: Fusion | Paste Into: Node Editor</text>
+    <text x="16" y="98" class="t-dim">Summary: A worn VHS look with washed-out colour, scanlines and tape noise.</text>
+
+    <!-- Line 2: Command 2 -->
+    <text x="0" y="145" class="t-lime">PS C:\Clipyx&gt;</text>
+    <text x="145" y="145" class="t-white">python clipyx.py preset check "tools	extizo\presets\Textizo - Apple Reveal.setting"</text>
+
+    <!-- Output 2 -->
+    <text x="0" y="175" class="t-yellow">Textizo preset check: Textizo - Apple Reveal.setting</text>
+    <text x="16" y="197" class="t-dim">node: Textizo1, 477 inputs | font: Arial Bold | size: 2.4</text>
+    <text x="16" y="219" class="t-dim">In:  opacity (0-22, in_out_sine) | blur (0-26, out_cubic) | size (0-25, out_quart)</text>
+    <text x="16" y="241" class="t-dim">Out: opacity (100-112) | blur (100-112) | size (100-112)</text>
+    <text x="0" y="267" class="t-lime">Result: OK (0 errors, 0 warnings) — Ready for DaVinci Resolve Settings folder</text>
+
+    <!-- Line 3: Active Prompt with Blinking Cursor -->
+    <text x="0" y="315" class="t-lime">PS C:\Clipyx&gt;</text>
+    <text x="145" y="315" class="t-white">python clipyx.py serve --open</text>
+    <rect x="390" y="303" width="9" height="17" class="cursor"/>
+    <text x="16" y="340" class="t-dim">Planizo local server initialized at http://localhost:8765/ (offline)</text>
+  </g>
+</svg>

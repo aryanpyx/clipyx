@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="100%" height="640">
+  <defs>
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#14141c"/>
+      <stop offset="100%" stop-color="#0c0c12"/>
+    </linearGradient>
+    <linearGradient id="neonLime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9eff00"/>
+      <stop offset="100%" stop-color="#64a500"/>
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="100%" stop-color="#0088aa"/>
+    </linearGradient>
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d946ef"/>
+      <stop offset="100%" stop-color="#86198f"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes pulsePacket {
+      0% { stroke-dashoffset: 240; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes nodeBlink {
+      0%, 100% { opacity: 0.9; }
+      50% { opacity: 0.4; }
+    }
+    .data-flow-lime {
+      stroke: #9eff00;
+      stroke-width: 2.5;
+      stroke-dasharray: 8 12;
+      animation: pulsePacket 4s linear infinite;
+    }
+    .data-flow-cyan {
+      stroke: #00e5ff;
+      stroke-width: 2.5;
+      stroke-dasharray: 8 12;
+      animation: pulsePacket 4s linear infinite;
+    }
+    .data-flow-purple {
+      stroke: #d946ef;
+      stroke-width: 2.5;
+      stroke-dasharray: 8 12;
+      animation: pulsePacket 4s linear infinite;
+    }
+    .status-light { animation: nodeBlink 2s ease-in-out infinite; }
+    .box-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; font-weight: 700; fill: #ffffff; }
+    .box-sub { font-family: monospace; font-size: 11px; fill: #88889a; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="640" rx="14" fill="#09090e" stroke="#1f1f2a" stroke-width="1.5"/>
+
+  <!-- Top System Header -->
+  <g transform="translate(60, 40)">
+    <text x="0" y="0" font-family="sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Clipyx Senior-Level Engineering Topology</text>
+    <text x="0" y="24" font-family="monospace" font-size="12" fill="#737388">DATAFLOW &amp; SUBSYSTEM INTEGRATION ARCHITECTURE</text>
+    
+    <g transform="translate(860, -10)">
+      <rect width="220" height="30" rx="6" fill="#12121a" stroke="#252536"/>
+      <circle cx="16" cy="15" r="4" fill="#9eff00" class="status-light"/>
+      <text x="28" y="19" font-family="monospace" font-size="11" fill="#9eff00">STATE: FULLY ISOLATED</text>
+    </g>
+  </g>
+
+  <!-- Animated Connection Bus Lines -->
+  <!-- Layer 1 to Layer 2 -->
+  <path d="M 220 180 L 220 250 L 500 250 L 500 310" fill="none" class="data-flow-lime"/>
+  <path d="M 600 180 L 600 310" fill="none" class="data-flow-cyan"/>
+  <path d="M 980 180 L 980 250 L 700 250 L 700 310" fill="none" class="data-flow-purple"/>
+
+  <!-- Layer 2 to Layer 3 (DaVinci Resolve) -->
+  <path d="M 240 450 L 240 520 L 480 520 L 480 550" fill="none" class="data-flow-lime"/>
+  <path d="M 500 450 L 500 550" fill="none" class="data-flow-cyan"/>
+  <path d="M 760 450 L 760 520 L 720 520 L 720 550" fill="none" class="data-flow-purple"/>
+  <path d="M 1010 450 L 1010 520 L 760 520 L 760 550" fill="none" class="data-flow-lime"/>
+
+  <!-- ==================== LAYER 1: CLIENT & INGESTION ==================== -->
+  <!-- Node 1: AI Agent / Antigravity -->
+  <g transform="translate(80, 90)" filter="url(#shadow)">
+    <rect width="280" height="90" rx="10" fill="url(#panelGrad)" stroke="#303042" stroke-width="1.5"/>
+    <rect x="0" y="0" width="6" height="90" rx="3" fill="url(#neonLime)"/>
+    <text x="24" y="32" class="box-title">Antigravity AI Agent</text>
+    <text x="24" y="52" class="box-sub">Skills Engine &amp; Automation</text>
+    <text x="24" y="70" font-family="monospace" font-size="11" fill="#9eff00">~/.gemini/config/skills/clipyx</text>
+  </g>
+
+  <!-- Node 2: Unified CLI -->
+  <g transform="translate(460, 90)" filter="url(#shadow)">
+    <rect width="280" height="90" rx="10" fill="url(#panelGrad)" stroke="#303042" stroke-width="1.5"/>
+    <rect x="0" y="0" width="6" height="90" rx="3" fill="url(#neonCyan)"/>
+    <text x="24" y="32" class="box-title">Clipyx Unified CLI &amp; API</text>
+    <text x="24" y="52" class="box-sub">python clipyx.py / clipyx.bat</text>
+    <text x="24" y="70" font-family="monospace" font-size="11" fill="#00e5ff">Local REST / IPC Bridge</text>
+  </g>
+
+  <!-- Node 3: Content Creator -->
+  <g transform="translate(840, 90)" filter="url(#shadow)">
+    <rect width="280" height="90" rx="10" fill="url(#panelGrad)" stroke="#303042" stroke-width="1.5"/>
+    <rect x="0" y="0" width="6" height="90" rx="3" fill="url(#neonPurple)"/>
+    <text x="24" y="32" class="box-title">Video Creator &amp; Editor</text>
+    <text x="24" y="52" class="box-sub">Browser UI / DaVinci Resolve</text>
+    <text x="24" y="70" font-family="monospace" font-size="11" fill="#d946ef">Human-in-the-Loop Workflow</text>
+  </g>
+
+  <!-- ==================== LAYER 2: SUBSYSTEMS CORE ==================== -->
+  <!-- Subsystem 1: Planizo Web App -->
+  <g transform="translate(80, 310)" filter="url(#shadow)">
+    <rect width="250" height="140" rx="10" fill="url(#panelGrad)" stroke="#272738" stroke-width="1.5"/>
+    <rect x="16" y="16" width="32" height="32" rx="6" fill="#181826"/>
+    <text x="58" y="38" class="box-title">Planizo Web App</text>
+    <text x="16" y="72" class="box-sub">• Schedule &amp; Timeblocking</text>
+    <text x="16" y="90" class="box-sub">• Whiteboards &amp; Script B-Roll</text>
+    <text x="16" y="108" class="box-sub">• Content Pipeline Tracker</text>
+    <text x="16" y="130" font-family="monospace" font-size="11" fill="#9eff00">app/planizo (Offline SPA)</text>
+  </g>
+
+  <!-- Subsystem 2: Library Database -->
+  <g transform="translate(360, 310)" filter="url(#shadow)">
+    <rect width="250" height="140" rx="10" fill="url(#panelGrad)" stroke="#272738" stroke-width="1.5"/>
+    <rect x="16" y="16" width="32" height="32" rx="6" fill="#181826"/>
+    <text x="58" y="38" class="box-title">Clipyx Library</text>
+    <text x="16" y="72" class="box-sub">• 76 Fusion Expressions</text>
+    <text x="16" y="90" class="box-sub">• 197 Motion Graphics</text>
+    <text x="16" y="108" class="box-sub">• 34 Node Trees &amp; 9 Lua</text>
+    <text x="16" y="130" font-family="monospace" font-size="11" fill="#00e5ff">data/clipyx_library.json</text>
+  </g>
+
+  <!-- Subsystem 3: Textizo Generator -->
+  <g transform="translate(640, 310)" filter="url(#shadow)">
+    <rect width="250" height="140" rx="10" fill="url(#panelGrad)" stroke="#272738" stroke-width="1.5"/>
+    <rect x="16" y="16" width="32" height="32" rx="6" fill="#181826"/>
+    <text x="58" y="38" class="box-title">Textizo AI Engine</text>
+    <text x="16" y="72" class="box-sub">• 14-Row Kinetic Easing</text>
+    <text x="16" y="90" class="box-sub">• Stagger Timing Formula</text>
+    <text x="16" y="108" class="box-sub">• Shading Proxy Dual-Sync</text>
+    <text x="16" y="130" font-family="monospace" font-size="11" fill="#d946ef">tools/textizo_preset.py</text>
+  </g>
+
+  <!-- Subsystem 4: Transcribe ASR -->
+  <g transform="translate(920, 310)" filter="url(#shadow)">
+    <rect width="200" height="140" rx="10" fill="url(#panelGrad)" stroke="#272738" stroke-width="1.5"/>
+    <rect x="16" y="16" width="32" height="32" rx="6" fill="#181826"/>
+    <text x="58" y="38" class="box-title">Transcribe</text>
+    <text x="16" y="72" class="box-sub">• Qwen3-ASR Offline</text>
+    <text x="16" y="90" class="box-sub">• Word Timing Alignment</text>
+    <text x="16" y="108" class="box-sub">• Output: .srt / .vtt</text>
+    <text x="16" y="130" font-family="monospace" font-size="11" fill="#ffe600">tools/transcribe</text>
+  </g>
+
+  <!-- ==================== LAYER 3: TARGET APPLICATION ==================== -->
+  <g transform="translate(360, 545)" filter="url(#shadow)">
+    <rect width="480" height="65" rx="10" fill="#151522" stroke="#9eff00" stroke-width="1.5"/>
+    <circle cx="28" cy="32" r="8" fill="#9eff00"/>
+    <text x="48" y="28" class="box-title">Blackmagic DaVinci Resolve Studio &amp; Fusion</text>
+    <text x="48" y="48" class="box-sub">Direct Paste into Node Editor • Settings Folder Sync • Subtitle Track 1</text>
+  </g>
+</svg>
