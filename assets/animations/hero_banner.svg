@@ -9,50 +9,27 @@
       <stop offset="0%" stop-color="#9eff00"/>
       <stop offset="100%" stop-color="#00e5ff"/>
     </linearGradient>
-    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#9eff00" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.2"/>
-    </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-    </filter>
     <filter id="cardGlow">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#9eff00" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#9eff00" flood-opacity="0.12"/>
     </filter>
   </defs>
 
   <style>
     @keyframes pulseGlow {
-      0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 15px rgba(158,255,0,0.4)); }
-      50% { opacity: 1; filter: drop-shadow(0 0 30px rgba(0,229,255,0.7)); }
-    }
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
     }
     @keyframes sweepGrid {
-      0% { opacity: 0.15; }
+      0%, 100% { opacity: 0.15; }
       50% { opacity: 0.35; }
-      100% { opacity: 0.15; }
     }
     @keyframes streamDot {
       0% { stroke-dashoffset: 400; }
       100% { stroke-dashoffset: 0; }
     }
-    @keyframes eqBar {
-      0%, 100% { height: 12px; }
-      50% { height: 38px; }
-    }
-    .brand-glow { animation: pulseGlow 4s ease-in-out infinite; }
-    .floating { animation: floatCard 6s ease-in-out infinite; }
     .grid-bg { animation: sweepGrid 5s ease-in-out infinite; }
     .wire { stroke-dasharray: 8 8; animation: streamDot 15s linear infinite; }
-    .eq-1 { animation: eqBar 1.2s ease-in-out infinite; }
-    .eq-2 { animation: eqBar 0.9s ease-in-out infinite 0.2s; }
-    .eq-3 { animation: eqBar 1.5s ease-in-out infinite 0.4s; }
-    .eq-4 { animation: eqBar 1.1s ease-in-out infinite 0.1s; }
-    .eq-5 { animation: eqBar 1.3s ease-in-out infinite 0.3s; }
+    .status-pulse { animation: pulseGlow 2s ease-in-out infinite; }
   </style>
 
   <!-- Background -->
@@ -79,79 +56,106 @@
   <path d="M 60 80 L 300 80 L 340 120 L 760 120 L 800 80 L 1140 80" fill="none" stroke="#9eff00" stroke-width="1.5" stroke-opacity="0.3" class="wire"/>
   <path d="M 120 300 L 480 300 L 520 260 L 980 260 L 1020 300 L 1140 300" fill="none" stroke="#00e5ff" stroke-width="1.5" stroke-opacity="0.3" class="wire"/>
 
-  <!-- Main Branding -->
-  <g transform="translate(80, 110)">
+  <!-- Left: Main Branding Content -->
+  <g transform="translate(70, 95)">
     <!-- Pill Badge -->
-    <rect x="0" y="-45" width="230" height="28" rx="14" fill="#151520" stroke="#2d2d40" stroke-width="1"/>
-    <circle cx="16" cy="-31" r="5" fill="#9eff00"/>
-    <text x="30" y="-26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#9eff00" letter-spacing="1.5">CREATOR OPERATING SYSTEM</text>
+    <rect x="0" y="-35" width="225" height="26" rx="13" fill="#14141e" stroke="#2a2a3c" stroke-width="1"/>
+    <circle cx="14" cy="-22" r="4.5" fill="#9eff00" class="status-pulse"/>
+    <text x="28" y="-17.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#9eff00" letter-spacing="1.2">CREATOR OPERATING SYSTEM</text>
 
     <!-- Main Title -->
-    <text x="0" y="45" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="64" font-weight="900" fill="#ffffff" letter-spacing="-1">
+    <text x="0" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="62" font-weight="900" fill="#ffffff" letter-spacing="-1">
       Clipyx<tspan fill="#9eff00">.</tspan>
     </text>
     
     <!-- Subtitle -->
-    <text x="0" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="400" fill="#9898aa">
+    <text x="0" y="86" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="400" fill="#9898aa">
       The Complete AI Suite for Video Planning, DaVinci Resolve &amp; Procedural Motion
     </text>
 
     <!-- Feature Pillars Badges -->
-    <g transform="translate(0, 125)">
+    <g transform="translate(0, 126)">
       <!-- Badge 1 -->
-      <rect x="0" y="0" width="165" height="36" rx="8" fill="#14141c" stroke="#282836" stroke-width="1"/>
-      <circle cx="18" cy="18" r="4" fill="#9eff00"/>
-      <text x="32" y="23" font-family="sans-serif" font-size="13" font-weight="600" fill="#e0e0ea">Planizo Web App</text>
+      <rect x="0" y="0" width="160" height="34" rx="8" fill="#13131c" stroke="#252535" stroke-width="1"/>
+      <circle cx="16" cy="17" r="4" fill="#9eff00"/>
+      <text x="28" y="22" font-family="sans-serif" font-size="12" font-weight="600" fill="#e0e0ea">Planizo Web App</text>
 
       <!-- Badge 2 -->
-      <rect x="180" y="0" width="175" height="36" rx="8" fill="#14141c" stroke="#282836" stroke-width="1"/>
-      <circle cx="198" cy="18" r="4" fill="#00e5ff"/>
-      <text x="212" y="23" font-family="sans-serif" font-size="13" font-weight="600" fill="#e0e0ea">319+ Resolve Assets</text>
+      <rect x="172" y="0" width="170" height="34" rx="8" fill="#13131c" stroke="#252535" stroke-width="1"/>
+      <circle cx="188" cy="17" r="4" fill="#00e5ff"/>
+      <text x="200" y="22" font-family="sans-serif" font-size="12" font-weight="600" fill="#e0e0ea">319+ Resolve Assets</text>
 
       <!-- Badge 3 -->
-      <rect x="370" y="0" width="165" height="36" rx="8" fill="#14141c" stroke="#282836" stroke-width="1"/>
-      <circle cx="388" cy="18" r="4" fill="#ff0077"/>
-      <text x="402" y="23" font-family="sans-serif" font-size="13" font-weight="600" fill="#e0e0ea">Textizo AI Presets</text>
+      <rect x="354" y="0" width="160" height="34" rx="8" fill="#13131c" stroke="#252535" stroke-width="1"/>
+      <circle cx="370" cy="17" r="4" fill="#ff0077"/>
+      <text x="382" y="22" font-family="sans-serif" font-size="12" font-weight="600" fill="#e0e0ea">Textizo AI Presets</text>
 
       <!-- Badge 4 -->
-      <rect x="550" y="0" width="170" height="36" rx="8" fill="#14141c" stroke="#282836" stroke-width="1"/>
-      <circle cx="568" cy="18" r="4" fill="#ffe600"/>
-      <text x="582" y="23" font-family="sans-serif" font-size="13" font-weight="600" fill="#e0e0ea">Qwen3-ASR Engine</text>
+      <rect x="526" y="0" width="165" height="34" rx="8" fill="#13131c" stroke="#252535" stroke-width="1"/>
+      <circle cx="542" cy="17" r="4" fill="#ffe600"/>
+      <text x="554" y="22" font-family="sans-serif" font-size="12" font-weight="600" fill="#e0e0ea">Qwen3-ASR Engine</text>
     </g>
   </g>
 
-  <!-- Interactive Graphic / Equalizer / HUD on the Right -->
-  <g transform="translate(860, 80)" class="floating">
-    <rect width="260" height="210" rx="14" fill="#101018" stroke="#28283a" stroke-width="1.5" filter="url(#cardGlow)"/>
+  <!-- Right: Floating HUD Card with Native SVG Translation Animation -->
+  <g id="hudCard" filter="url(#cardGlow)">
+    <animateTransform attributeName="transform" type="translate" values="840,75; 840,68; 840,75" dur="4.5s" repeatCount="indefinite" ease="easeInOut"/>
+    
+    <rect width="280" height="225" rx="14" fill="#101018" stroke="#272738" stroke-width="1.5"/>
     
     <!-- Header of HUD -->
-    <rect x="16" y="16" width="36" height="36" rx="8" fill="#181824"/>
-    <path d="M 28 26 L 40 34 L 28 42 Z" fill="#9eff00"/>
-    <text x="62" y="32" font-family="sans-serif" font-size="14" font-weight="700" fill="#ffffff">Clipyx Engine</text>
-    <text x="62" y="47" font-family="monospace" font-size="11" fill="#75758a">v2.4.0 • Localhost:8765</text>
+    <rect x="18" y="18" width="36" height="36" rx="8" fill="#181824"/>
+    <path d="M 30 28 L 42 36 L 30 44 Z" fill="#9eff00"/>
+    <text x="66" y="34" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Clipyx Engine</text>
+    <text x="66" y="49" font-family="monospace" font-size="11" fill="#78788f">v2.4.0 • Localhost:8765</text>
 
-    <!-- Equalizer Animation -->
-    <g transform="translate(20, 80)">
-      <rect x="0" y="0" width="220" height="50" rx="6" fill="#09090d"/>
-      <text x="12" y="30" font-family="monospace" font-size="11" fill="#5c5c70">AUDIO SYNC</text>
-      <!-- Equalizer Bars -->
-      <rect x="130" y="38" width="6" height="12" rx="3" fill="#9eff00" class="eq-1" transform="rotate(180 133 38)"/>
-      <rect x="144" y="38" width="6" height="18" rx="3" fill="#9eff00" class="eq-2" transform="rotate(180 147 38)"/>
-      <rect x="158" y="38" width="6" height="28" rx="3" fill="#00e5ff" class="eq-3" transform="rotate(180 161 38)"/>
-      <rect x="172" y="38" width="6" height="22" rx="3" fill="#00e5ff" class="eq-4" transform="rotate(180 175 38)"/>
-      <rect x="186" y="38" width="6" height="34" rx="3" fill="#9eff00" class="eq-5" transform="rotate(180 189 38)"/>
-      <rect x="200" y="38" width="6" height="15" rx="3" fill="#9eff00" class="eq-2" transform="rotate(180 203 38)"/>
+    <!-- Equalizer Section -->
+    <g transform="translate(18, 75)">
+      <rect x="0" y="0" width="244" height="54" rx="8" fill="#09090e" stroke="#1d1d29"/>
+      <text x="14" y="32" font-family="monospace" font-size="11" font-weight="600" fill="#626278" letter-spacing="0.5">AUDIO SYNC</text>
+      
+      <!-- Animated Equalizer Bars using native SVG animate -->
+      <!-- Bar 1 -->
+      <rect x="142" y="34" width="7" height="12" rx="3.5" fill="#9eff00">
+        <animate attributeName="height" values="10;28;14;34;10" dur="1.3s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="36;18;32;12;36" dur="1.3s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Bar 2 -->
+      <rect x="156" y="30" width="7" height="18" rx="3.5" fill="#9eff00">
+        <animate attributeName="height" values="16;36;12;24;16" dur="1.1s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="30;10;34;22;30" dur="1.1s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Bar 3 -->
+      <rect x="170" y="24" width="7" height="26" rx="3.5" fill="#00e5ff">
+        <animate attributeName="height" values="24;14;38;20;24" dur="0.9s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="22;32;8;26;22" dur="0.9s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Bar 4 -->
+      <rect x="184" y="32" width="7" height="16" rx="3.5" fill="#00e5ff">
+        <animate attributeName="height" values="14;32;20;38;14" dur="1.4s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="32;14;26;8;32" dur="1.4s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Bar 5 -->
+      <rect x="198" y="28" width="7" height="20" rx="3.5" fill="#9eff00">
+        <animate attributeName="height" values="20;36;12;28;20" dur="1.2s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="26;10;34;18;26" dur="1.2s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Bar 6 -->
+      <rect x="212" y="35" width="7" height="10" rx="3.5" fill="#9eff00">
+        <animate attributeName="height" values="10;26;16;32;10" dur="1.0s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="36;20;30;14;36" dur="1.0s" repeatCount="indefinite"/>
+      </rect>
     </g>
 
-    <!-- Status metric -->
-    <g transform="translate(20, 150)">
-      <rect x="0" y="0" width="105" height="42" rx="6" fill="#14141c" stroke="#222230"/>
-      <text x="10" y="16" font-family="sans-serif" font-size="10" fill="#7a7a90">LIBRARY</text>
-      <text x="10" y="34" font-family="monospace" font-size="16" font-weight="700" fill="#9eff00">319 ITEMS</text>
+    <!-- Metrics Row -->
+    <g transform="translate(18, 146)">
+      <rect x="0" y="0" width="116" height="52" rx="8" fill="#13131d" stroke="#20202e"/>
+      <text x="12" y="19" font-family="sans-serif" font-size="10" font-weight="600" fill="#75758c">LIBRARY</text>
+      <text x="12" y="39" font-family="monospace" font-size="15" font-weight="700" fill="#9eff00">319 ITEMS</text>
 
-      <rect x="115" y="0" width="105" height="42" rx="6" fill="#14141c" stroke="#222230"/>
-      <text x="125" y="16" font-family="sans-serif" font-size="10" fill="#7a7a90">FUSION PRESETS</text>
-      <text x="125" y="34" font-family="monospace" font-size="16" font-weight="700" fill="#00e5ff">22 BUILTIN</text>
+      <rect x="128" y="0" width="116" height="52" rx="8" fill="#13131d" stroke="#20202e"/>
+      <text x="140" y="19" font-family="sans-serif" font-size="10" font-weight="600" fill="#75758c">FUSION PRESETS</text>
+      <text x="140" y="39" font-family="monospace" font-size="15" font-weight="700" fill="#00e5ff">22 BUILTIN</text>
     </g>
   </g>
 </svg>
