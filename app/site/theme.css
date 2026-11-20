@@ -173,7 +173,7 @@
     --node-face-hover: #353741;
     --node-edge: var(--color-deep);
     --node-highlight: rgb(255 255 255 / 0.12);
-    --node-pin-green: #aaff00;
+    --node-pin-green: #00e5ff;
     --node-pin-yellow: #ffe200;
     --node-pin-blue: #20b8ff;
     --node-pin-gray: #cfd6d3;

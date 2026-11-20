@@ -1,38 +1,52 @@
 ---
 name: clipyx
-description: Complete toolkit for Clipyx (https://clipyx.com/) and Planizo: manage video planning, content calendars, daily routines, whiteboards and script B-roll breakdowns in the local Planizo web app; query and inspect 319+ DaVinci Resolve Fusion expressions, motion graphics, node trees, and Lua scripts from the Clipyx Library; build, validate, and install Textizo animated text presets (.setting); and run local Qwen3-ASR speech-to-text and subtitle generation with Transcribe.
+description: Complete toolkit for Clipyx (https://clipyx.com/) and Planizo: manage video planning, content calendars, daily routines, whiteboards and script B-roll breakdowns in the local Planizo web app; query and inspect 319+ DaVinci Resolve Fusion expressions, motion graphics, node trees, and Lua scripts from the Clipyx Library with 425 continuous 60fps MP4 motion loops; build, validate, and install Graphizo animated chart Fuses (17 data-driven charts); build, validate, and install Textizo animated text presets (.setting); and run local Qwen3-ASR speech-to-text and subtitle generation with Transcribe.
 ---
 
-# Clipyx & Planizo Skill Guide
+# Clipyx Creator AI Operating System & Toolkit Guide
 
-This skill provides complete integration with the **Clipyx** platform and **Planizo** video creator ecosystem, allowing AI agents and users to plan video productions, search DaVinci Resolve code/presets, generate procedural animated typography adhering to the official **Textizo AI Guide**, and transcribe audio/video locally.
+This skill provides complete integration with the **Clipyx** ecosystem, allowing AI agents and creators to plan video productions, query DaVinci Resolve expressions and node trees with live 60fps video loop previews, compile procedural kinetic typography with **Textizo**, build animated data-driven motion graphics with **Graphizo**, and transcribe audio/video locally with **Transcribe**.
 
 ## Workspace & Installation Roots
 - **Primary Suite Root:** `c:\Users\aryan\Downloads\Clipyx`
+- **Clipyx Web Platform:** `c:\Users\aryan\Downloads\Clipyx\app\site`
 - **Planizo Web App (Offline SPA):** `c:\Users\aryan\Downloads\Clipyx\app\planizo`
-- **Library Database (319 items):** `c:\Users\aryan\Downloads\Clipyx\data\clipyx_library.json`
+- **Library Database (319 items & 425 MP4 loops):** `c:\Users\aryan\Downloads\Clipyx\data\clipyx_library.json`
+- **Graphizo Chart Toolkit (17 Fuses & AST Guide):** `c:\Users\aryan\Downloads\Clipyx\tools\graphizo`
 - **Textizo AI Kit (Presets & Validator):** `c:\Users\aryan\Downloads\Clipyx\tools\textizo`
 - **Official Textizo AI Guide:** `c:\Users\aryan\Downloads\Clipyx\Textizo AI Guide.md`
-- **Transcribe Toolkit:** `c:\Users\aryan\Downloads\Clipyx\tools\transcribe`
+- **Transcribe Toolkit (Qwen3-ASR):** `c:\Users\aryan\Downloads\Clipyx\tools\transcribe`
+- **Production Dist Bundle:** `c:\Users\aryan\Downloads\Clipyx\dist`
 - **Unified CLI Launcher:** `c:\Users\aryan\Downloads\Clipyx\clipyx.bat` or `python clipyx.py`
 
 ---
 
-## 1. Planizo: Video Creator Productivity & Planning App
+## 1. Clipyx Web Platform & 60fps Streaming Video Engine
 
-Planizo is a local, client-side productivity app designed specifically for video editors, YouTubers, and content creators. It stores all data in browser `localStorage`.
+The Clipyx web platform is an electric blue (`#00a2ff`) cyber interface featuring an interactive node signal grid, animated news ticker, store, studio, and library.
 
-### Launching Planizo Locally
-Run the built-in HTTP server:
+### Serving the Platform Locally
 ```powershell
-# From the Clipyx workspace
-python clipyx.py serve --port 5173 --open
-# Or via batch file:
-.\clipyx.bat serve --port 5173 --open
+# Serves the full suite on port 8765 with HTTP 206 Partial Content byte-range streaming:
+python scripts/serve_planizo.py 8765
+# Or via CLI launcher:
+python clipyx.py serve --port 8765 --open
 ```
-This serves `app/planizo` locally with relative asset resolution (CSS, JS chunks, SVG sprite, Inter fonts, and tags).
 
-### Planizo Core Modules:
+### Key Endpoints:
+- `http://localhost:8765/` — Clipyx Homepage (Active particle grid, animated news ticker, springy typography)
+- `http://localhost:8765/library/` — Clipyx Library (319 items, 425 continuous 60fps MP4 motion video loops)
+- `http://localhost:8765/store/` — Creator Template & Asset Store
+- `http://localhost:8765/studio/` — Interactive Studio Web Tools (Graphizo, Flowizo, Textizo, Animizo, Dashizo)
+- `http://localhost:8765/planizo/` — Planizo Offline Creator Planning SPA
+
+---
+
+## 2. Planizo: Video Creator Productivity & Planning App
+
+Planizo is an offline-first productivity app for video creators and editors, storing all state in browser `localStorage`.
+
+### Core Modules:
 1. **Daily Schedule (`/#/schedule`):** Hour-by-hour timeblocking, priority tasks, and creator routines.
 2. **Calendar (`/#/calendar`):** Multi-platform video release calendar (YouTube, Shorts, TikTok, Instagram).
 3. **Routine (`/#/routine`):** Daily creator habits, pre-production prep, and editing sessions.
@@ -45,7 +59,7 @@ This serves `app/planizo` locally with relative asset resolution (CSS, JS chunks
 5. **Content Tracker (`/#/content`):** Video production pipeline tracking stages:
    - *Idea* -> *Script* -> *Record* -> *Edit* -> *Thumbnail* -> *Publish*
 
-### Script & B-Roll Analysis Tool
+### Script & B-Roll Analysis CLI
 Extract B-roll tags, visual cues, and on-screen text graphics directly from a script:
 ```powershell
 python clipyx.py plan script "path\to\script.md"
@@ -54,9 +68,9 @@ Supports inline tags like `[B-roll: close-up of keyboard typing]`, `[Visual: zoo
 
 ---
 
-## 2. Clipyx DaVinci Resolve Library (319 Ready-Made Items)
+## 3. Clipyx DaVinci Resolve Library (319 Items + 425 MP4 Loops)
 
-The Clipyx Library contains 319 curated code snippets, expressions, node trees, and Lua scripts for DaVinci Resolve and Fusion.
+The Clipyx Library contains 319 curated code snippets, expressions, node trees, and Lua scripts for DaVinci Resolve and Fusion, each accompanied by an inline 60fps MP4 motion loop.
 
 ### Searching the Library
 ```powershell
@@ -79,18 +93,24 @@ python clipyx.py library get "vhs-tape"
 
 ---
 
-## 3. Textizo AI Preset Authoring Rules (Official Guide Specification)
+## 4. Graphizo: Animated Data Charts Engine (17 Chart Fuses)
 
-When an AI agent is asked to generate a Textizo preset for DaVinci Resolve, it **MUST** follow the protocol defined in `Textizo AI Guide.md`:
+Located in `tools/graphizo/`, Graphizo provides 17 native DaVinci Resolve Fusion Fuses for automated, animated data visualization:
 
-### Output Format (Strict 3-Part Reply)
-1. **Description:** 1-2 sentences describing the animation, timing, and style. First line must state the name: `Textizo-` + 2-digit number + capital letter (e.g. `Textizo-01A`, `Textizo-02A`).
-2. **Preset Block:** Exactly **one** code block marked `lua` containing the complete `.setting` format node, with no comments inside.
-3. **Usage Steps:** Short 3-4 line instructions:
-   - Copy the code block.
-   - In Fusion Nodes area, press Ctrl+V (Mac: Cmd+V).
-   - Connect Textizo to MediaOut1 or foreground of a Merge node.
-   - Type your text in the Inspector.
+### Included Fuses:
+- `BarChartRace.fuse`, `AreaChart.fuse`, `LinePlot.fuse`, `DonutChart.fuse`
+- `WaterfallChart.fuse`, `RadialProgress.fuse`, `LiveCounter.fuse`, `MatrixGrid.fuse`
+- `CandlestickChart.fuse`, `PieChart.fuse`, `RadarChart.fuse`, `Histogram.fuse`, etc.
+
+### Authoring Rules:
+- Refer to `tools/graphizo/Graphizo AI Guide.md` for complete input schemas and animation keyframes.
+- All chart Fuses support CSV/JSON data ingestion and customizable easing curves.
+
+---
+
+## 5. Textizo: Kinetic Typography Preset Engine
+
+Located in `tools/textizo/`, Textizo generates procedural animated title presets (`.setting` files) for DaVinci Resolve Fusion adhering strictly to `Textizo AI Guide.md`.
 
 ### Strict Checklist for Generated Presets:
 - [ ] **One Node Only:** Single node `Textizo1 = Fuse.Textizo { Inputs = { ... } }` inside `{ Tools = ordered() { ... } }`.
@@ -129,12 +149,12 @@ python clipyx.py preset next-name
 python clipyx.py preset where
 
 # Install preset to Resolve's Fusion Settings directory
-python clipyx.py preset install resolve "my-presets\Textizo-01A.setting"
+python clipyx.py preset install resolve "tools\textizo\presets\Textizo-01A.setting"
 ```
 
 ---
 
-## 4. Transcribe: Local Speech Recognition & Subtitle Kit
+## 6. Transcribe: Local Speech Recognition & Subtitle Kit
 
 Transcribe runs the open-source **Qwen3-ASR** model locally to generate video transcripts and synchronized subtitle files (`.srt`, `.vtt`).
 

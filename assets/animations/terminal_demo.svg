@@ -14,10 +14,10 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
-    .cursor { animation: cursorBlink 1s infinite; fill: #9eff00; }
+    .cursor { animation: cursorBlink 1s infinite; fill: #00a2ff; }
     .t-dim { fill: #65657a; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; }
     .t-white { fill: #f0f0f8; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; }
-    .t-lime { fill: #9eff00; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; font-weight: 700; }
+    .t-lime { fill: #00a2ff; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; font-weight: 700; }
     .t-cyan { fill: #00e5ff; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; }
     .t-pink { fill: #ff0077; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; }
     .t-yellow { fill: #ffe600; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; font-size: 13px; }

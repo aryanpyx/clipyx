@@ -98,7 +98,7 @@ function initHeroCanvas() {
         for (const d of dots) {
             const pulse = Math.sin(time * d.speed + d.phase);
             const alpha = d.base + pulse * 0.03;
-            ctx.fillStyle = `rgba(158, 255, 0, ${Math.max(0, alpha)})`;
+            ctx.fillStyle = `rgba(0, 162, 255, ${Math.max(0, alpha)})`;
             ctx.beginPath();
             ctx.arc(d.x, d.y, 1.2, 0, Math.PI * 2);
             ctx.fill();
@@ -110,9 +110,9 @@ function initHeroCanvas() {
             const progress = ((time * 0.15 + i * 0.33) % 1);
             const y = progress * h;
             const gradient = ctx.createLinearGradient(0, y, w, y);
-            gradient.addColorStop(0, 'rgba(158,255,0,0)');
-            gradient.addColorStop(0.3 + Math.sin(time + i) * 0.2, `rgba(158,255,0,${0.04 + Math.sin(time * 2 + i) * 0.02})`);
-            gradient.addColorStop(1, 'rgba(158,255,0,0)');
+            gradient.addColorStop(0, 'rgba(0,162,255,0)');
+            gradient.addColorStop(0.3 + Math.sin(time + i) * 0.2, `rgba(0,162,255,${0.04 + Math.sin(time * 2 + i) * 0.02})`);
+            gradient.addColorStop(1, 'rgba(0,162,255,0)');
             ctx.strokeStyle = gradient;
             ctx.lineWidth = 1;
             ctx.beginPath();
