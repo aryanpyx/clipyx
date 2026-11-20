@@ -53,7 +53,7 @@ TODOS_DATA = [
 
 RANGE_DATA = {
     "events": [
-        {"id": "e1", "title": "Script & B-Roll Planning Session", "startAt": "2026-11-20T09:00:00.000Z", "endAt": "2026-11-20T11:00:00.000Z", "color": "#9eff00"},
+        {"id": "e1", "title": "Script & B-Roll Planning Session", "startAt": "2026-11-20T09:00:00.000Z", "endAt": "2026-11-20T11:00:00.000Z", "color": "#00a2ff"},
         {"id": "e2", "title": "DaVinci Resolve Editing & Color Grade", "startAt": "2026-11-20T14:00:00.000Z", "endAt": "2026-11-20T16:30:00.000Z", "color": "#00e5ff"}
     ],
     "tasks": [{"id": "tk1", "title": "Record YouTube A-Roll & Tutorial", "dateKey": "2026-11-20", "completed": False, "order": 0}],

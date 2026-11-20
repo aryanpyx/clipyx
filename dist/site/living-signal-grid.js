@@ -110,3 +110,121 @@
     reducedMotion.addEventListener('change', syncMotion);
     syncMotion();
 })();
+
+
+(function() {
+    // Clipyx Dynamic Animated Signal Grid & Node Network
+    function initActiveSignalCanvas() {
+        const hero = document.querySelector('[data-signal-hero]') || document.querySelector('.hero');
+        if (!hero) return;
+        
+        let canvas = hero.querySelector('.clipyx-signal-canvas');
+        if (!canvas) {
+            canvas = document.createElement('canvas');
+            canvas.className = 'clipyx-signal-canvas';
+            canvas.style.cssText = 'position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; opacity:0.85;';
+            hero.style.position = 'relative';
+            hero.prepend(canvas);
+        }
+        
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        const numParticles = 45;
+        const maxDist = 140;
+        
+        let mouseX = -1000, mouseY = -1000;
+        window.addEventListener('mousemove', e => {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+        
+        function resize() {
+            width = canvas.width = hero.offsetWidth;
+            height = canvas.height = hero.offsetHeight;
+            initParticles();
+        }
+        
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.7,
+                    vy: (Math.random() - 0.5) * 0.7,
+                    radius: 1.5 + Math.random() * 2,
+                    pulse: Math.random() * Math.PI,
+                    speed: 0.02 + Math.random() * 0.03
+                });
+            }
+        }
+        
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw connecting lines between particles
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < maxDist) {
+                        const alpha = (1 - dist / maxDist) * 0.22;
+                        ctx.strokeStyle = `rgba(0, 162, 255, ${alpha})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            // Draw particles and mouse connections
+            for (let p of particles) {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.pulse += p.speed;
+                
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
+                
+                // Connect to mouse if near
+                const mdx = p.x - mouseX;
+                const mdy = p.y - mouseY;
+                const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mdist < 160) {
+                    const mAlpha = (1 - mdist / 160) * 0.45;
+                    ctx.strokeStyle = `rgba(0, 162, 255, ${mAlpha})`;
+                    ctx.lineWidth = 1.2;
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(mouseX, mouseY);
+                    ctx.stroke();
+                }
+                
+                const curRadius = p.radius + Math.sin(p.pulse) * 0.8;
+                ctx.fillStyle = `rgba(0, 162, 255, 0.85)`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, Math.max(0.5, curRadius), 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            requestAnimationFrame(draw);
+        }
+        
+        resize();
+        window.addEventListener('resize', resize);
+        requestAnimationFrame(draw);
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initActiveSignalCanvas);
+    } else {
+        initActiveSignalCanvas();
+    }
+})();

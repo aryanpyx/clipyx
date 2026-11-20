@@ -12,7 +12,7 @@
    and with reduced motion nothing turns, grows, drifts or fades. */
 .hero-news { display: none; }
 
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
     .hero-news {
         --news-turn: 7s; /* hero-news.js turns the slide when the current bar's fill ends */
         display: flex;
@@ -197,7 +197,7 @@
 
 }
 
-@media (min-width: 1200px) and (prefers-reduced-motion: reduce) {
+@media (min-width: 768px) and (prefers-reduced-motion: reduce) {
     .hero-news, .hero-news__slide, .hero-news__media, .hero-news__slide.is-active :is(.hero-news__kicker, .hero-news__title, .hero-news__text, .hero-news__cta, .art-speed, .art-tool) { animation: none; transition: none; }
     .hero-news__media { transform: none; }
     .hero-news__seg.is-current i::after { animation: none; transform: scaleX(1); }

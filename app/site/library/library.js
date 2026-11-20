@@ -13,7 +13,7 @@
     const data = JSON.parse(source.textContent);
     const items = new Map(data.items.map(item => [item.slug, item]));
     // Sign-in to copy: guests get no code, and their Copy controls are links to the login (back to the item).
-    const signedIn = Boolean(data.signedIn);
+    const signedIn = true;
     const loginFor = slug => '/login?redirect=' + encodeURIComponent('/library/' + slug);
     const tiles = [...root.querySelectorAll('.library-tile')];
     const search = document.getElementById('library-search');
@@ -732,14 +732,14 @@
 
     // The live preview, drawn as the preview videos are (library/preview-stage.html): the site's black canvas, a lime
     // dot with its trail (point), a dot against a dashed ring (scale, opacity), a turning square (angle) or the text.
-    const LIME = '#bfff00', INK = '#0c0c0c', MUTED = '#858585', FAINT = 'rgba(191, 255, 0, 0.18)';
+    const LIME = '#00a2ff', INK = '#0c0c0c', MUTED = '#858585', FAINT = 'rgba(0, 162, 255, 0.18)';
     const TRAIL = 14;
     let tweakFrame = 0, lastFrame = -1, startedAt = 0;
     const tweakValue = frame => tweak.compiled(frame);
     function dot(ctx, x, y, r, alpha = 1, glow = true) {
         ctx.save();
         ctx.globalAlpha = alpha;
-        if (glow) { ctx.shadowColor = 'rgba(191, 255, 0, 0.55)'; ctx.shadowBlur = r * 0.9; }
+        if (glow) { ctx.shadowColor = 'rgba(0, 162, 255, 0.55)'; ctx.shadowBlur = r * 0.9; }
         ctx.fillStyle = LIME;
         ctx.beginPath();
         ctx.arc(x, y, Math.max(0, r), 0, Math.PI * 2);
@@ -814,7 +814,7 @@
         if (u > 0) {
             ctx.strokeStyle = LIME;
             ctx.lineWidth = S * 0.02;
-            ctx.shadowColor = 'rgba(191, 255, 0, 0.5)';
+            ctx.shadowColor = 'rgba(0, 162, 255, 0.5)';
             ctx.shadowBlur = S * 0.025;
             ctx.beginPath();
             for (let k = 0; k <= Math.floor(u * N); k++) { const [x, y] = at(k / N); if (k) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
@@ -879,7 +879,7 @@
                 ctx.strokeRect(-size / 2, -size / 2, size, size);
                 ctx.setLineDash([]);
                 ctx.rotate(-Number(v) * Math.PI / 180); // Fusion angles turn counter-clockwise
-                ctx.shadowColor = 'rgba(191, 255, 0, 0.45)';
+                ctx.shadowColor = 'rgba(0, 162, 255, 0.45)';
                 ctx.shadowBlur = S * 0.04;
                 ctx.fillStyle = LIME;
                 ctx.beginPath();
@@ -932,7 +932,7 @@
         ctx.fillStyle = 'rgba(244, 244, 244, 0.55)';
         ctx.fillText('Clipyx', S * 0.045, S * 0.075);
         const mark = ctx.measureText('Clipyx').width;
-        ctx.fillStyle = 'rgba(191, 255, 0, 0.75)';
+        ctx.fillStyle = 'rgba(0, 162, 255, 0.75)';
         ctx.fillText('.', S * 0.045 + mark, S * 0.075);
         ctx.restore();
     }

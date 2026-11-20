@@ -17,7 +17,7 @@
     const region = root.querySelector('[data-news-slides]');
     const toggle = root.querySelector('[data-news-toggle]');
     if (slides.length < 2 || bars.length !== slides.length || !region || !toggle) return;
-    const wide = window.matchMedia('(min-width: 1200px)');
+    const wide = window.matchMedia('(min-width: 600px)');
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     let index = 0, stopped = false, hovered = false, focused = false, onScreen = true;
 

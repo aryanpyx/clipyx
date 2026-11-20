@@ -19,22 +19,22 @@
     --color-text: #f4f4f4;
     --color-muted: #a8a8a8;
     --color-subtle: #858585;
-    --color-accent: #bfff00;
-    --color-accent-hover: #d1ff4d;
+    --color-accent: #00a2ff;
+    --color-accent-hover: #38bdf8;
     --color-on-accent: #0c0c0c;
     /* The lime tint: leaving. Nothing on the site paints a box with it since 20261119-no-tint (owner, 2026-11-19: "looks
        vibe coded"); only the home news' current line still reads its edge colour. The names stay so a page holding an
        older stylesheet still resolves them. Never use them for anything new. */
-    --color-accent-tint: #2b3d12;
-    --color-accent-tint-hover: #34491a;
-    --color-accent-tint-border: #4a6619;
+    --color-accent-tint: #0e2a4a;
+    --color-accent-tint-hover: #163e6e;
+    --color-accent-tint-border: #1e5699;
     /* The main button (owner, 2026-11-19, option A of four whole systems on a local page): a lime fill, and everything
        on it black: the label, an icon, the hover dot. It was white for a day (2026-11-18) and lime-tinted before that
        ("looks vibe coded"). A control that is merely on is quieter than the main button: the grey --color-pressed
        with a --color-border-strong edge, a white label and at most one lime mark. */
-    --color-primary: #bfff00;
-    --color-primary-hover: #d1ff4d;
-    --color-primary-active: #a6de00;
+    --color-primary: #00a2ff;
+    --color-primary-hover: #38bdf8;
+    --color-primary-active: #0284c7;
     --color-on-primary: #0c0c0c;
     --color-pressed: #262626;
     --color-pressed-hover: #2e2e2e;
@@ -132,9 +132,9 @@
     --signal-continuous: 1;
     --signal-cell-x: 56;
     --signal-cell-y: 28;
-    --signal-line-rgb: 126, 139, 116;
-    --signal-accent-rgb: 191, 255, 0;
-    --signal-line-alpha: 0.13;
+    --signal-line-rgb: 0, 162, 255;
+    --signal-accent-rgb: 0, 162, 255;
+    --signal-line-alpha: 0.18;
     --signal-radius: 230;
     --signal-displacement: 24;
     --signal-spring: 125;

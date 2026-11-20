@@ -2,7 +2,7 @@
     "use strict";
 
     // Tablet landscape widths (including 1366px) use ordinary navigation buttons.
-    const desktopControls = window.matchMedia("(min-width: 1400px) and (hover: hover) and (pointer: fine)");
+    const desktopControls = window.matchMedia("(min-width: 600px) and (hover: hover) and (pointer: fine)");
     const canUsePointerEffects = desktopControls.matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const nodeSelector = ".hero-button-group .btn:not(.btn-disabled):not([aria-disabled='true'])";
