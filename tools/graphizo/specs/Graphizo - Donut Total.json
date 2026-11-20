@@ -1,0 +1,29 @@
+{
+  "name": "Graphizo - Donut Total",
+  "notes": "A donut that sweeps in with a big total in the middle (like the Traffic Breakdown starter).",
+  "chart": "donut",
+  "look": "neon",
+  "canvas": "youtube",
+  "data": "Source,Views\nBrowse,540000\nSuggested,320000\nSearch,180000\nExternal,95000\nOther,65000",
+  "title": "WHERE THE VIEWS COME FROM",
+  "subtitle": "Traffic sources | illustrative channel analytics",
+  "legend": "legend",
+  "values": true,
+  "number_style": "compact",
+  "radial": {
+    "inner_radius": 0.68,
+    "slice_gap": 2,
+    "center_total": true,
+    "center_caption": "TOTAL VIEWS"
+  },
+  "depth": {
+    "glow": 0.35
+  },
+  "animation": {
+    "playback": "entrance",
+    "build": "sweep",
+    "duration": 50,
+    "ease": "ease_out",
+    "count_up": true
+  }
+}

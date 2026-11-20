@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0c0c0c">
+    <meta name="description" content="Free DaVinci Resolve and Fusion plugins, Fuses, and AI tools for faster video editing and motion graphics.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Clipyx">
+    <meta property="og:title" content="Free DaVinci Resolve &amp; Fusion Plugins | Clipyx Store">
+    <meta property="og:description" content="Free DaVinci Resolve and Fusion plugins, Fuses, and AI tools for faster video editing and motion graphics.">
+    <meta property="og:url" content="/store/">
+    <meta property="og:image" content="/media/og-clipyx-4.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Clipyx's home page: Master The Node. Elevate Your Edits., the Latest news and the Fusion node buttons">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free DaVinci Resolve &amp; Fusion Plugins | Clipyx Store">
+    <meta name="twitter:description" content="Free DaVinci Resolve and Fusion plugins, Fuses, and AI tools for faster video editing and motion graphics.">
+    <meta name="twitter:image" content="/media/og-clipyx-4.jpg">
+    <link rel="canonical" href="/store/">
+    <title>Free DaVinci Resolve &amp; Fusion Plugins | Clipyx Store</title>
+        <link rel="preconnect" href="">
+    <link rel="icon" href="/media/icon-48.png?v=2" type="image/png" sizes="48x48">
+    <link rel="icon" href="/media/clipyx-icon.svg?v=1" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/media/apple-touch-icon.png?v=4" sizes="180x180">
+    
+    <link rel="preload" href="/fonts/InterVariable-latin.woff2?v=4.1" as="font" type="font/woff2" crossorigin>
+    
+    <link rel="stylesheet" href="/style.css?v=229">
+    <style nonce="nGjC4XNTdAbEt8tc20Zgcg">
+        #products .product-grid { padding-top: 10px; }
+        .store-page-header { text-align: center; padding: 60px 20px 30px; }
+        .store-page-header h1 { font-family: var(--font-body); font-size: clamp(1.9rem, 3.6vw, 3.3rem); font-weight: 800; line-height: 1.08; letter-spacing: -1.5px; max-width: 880px; margin: 0 auto 16px; text-wrap: balance; }
+        .store-page-header p { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+        .studio-subnav { display: none; }
+        /* The Most Popular Tools title's letters spring up past the section's top edge (hero-letters.js): the section clips
+           sideways only, and keeps its own formatting context as overflow: hidden gave it. */
+        @supports (overflow-x: clip) { #products.products-section { display: flow-root; overflow-x: clip; overflow-y: visible; } }
+    </style>
+    <link rel="stylesheet" href="/theme.css?v=20261119-no-tint">
+    <script nonce="nGjC4XNTdAbEt8tc20Zgcg" src="/living-signal-grid.js?v=20261026-no-reveal" defer></script>
+    <script nonce="nGjC4XNTdAbEt8tc20Zgcg" src="/hero-letters.js?v=20261026-springy-titles" defer></script>
+    </head>
+<body>
+
+
+
+
+<nav class="navbar">
+        <a href="" class="logo-link">
+            <img src="/media/site%20logo.png?v=3" alt="Clipyx Logo" class="logo-img" width="107" height="40">
+        </a>
+        <details class="nav-menu">
+            <summary aria-label="Menu"><svg class="iconizo nav-menu__open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-menu"></use></svg><svg class="iconizo nav-menu__close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-x"></use></svg></summary>
+        </details>
+        <div class="nav-links" style="column-gap: clamp(var(--space-3), calc(var(--space-3) + (100vw - 769px) * 0.0232), var(--space-5));">
+            <a href="" data-nav="home">Home</a>
+            <a href="/store/" data-nav="store" aria-current="page">Store</a>
+            <a href="/library/" data-nav="library">Library</a>
+            <a href="/studio/" data-nav="studio">Studio</a>
+            <a href="/community" data-nav="community">Community</a>
+            <a href="/pricing" data-nav="pricing">Pricing</a>
+            <a href="#contact" data-nav="contact">Contact</a>
+            <div class="nav-auth">
+                <a href="/login" class="nav-login-link" data-nav="login">Login</a>
+            </div>
+        </div>
+    </nav>
+    <script nonce="nGjC4XNTdAbEt8tc20Zgcg" src="/site-nav.js?v=1" defer></script>
+
+    <main class="store-main">
+                <div class="store-page-header">
+            <h1>Free plugins &amp; Fuses for DaVinci Resolve</h1>
+            <p>Free tools for Fusion, Resolve and AI workflows, tested in real Clipyx production.</p>
+        </div>
+        
+                <div class="store-filter" data-store-filter>
+                        <span class="store-filter-group" hidden style="display: none;">
+                <label class="store-filter-label" for="store-price-filter">Price</label>
+                <span class="store-filter-select-wrap">
+                    <select id="store-price-filter" class="store-filter-select store-filter-select--price" data-store-price-filter-select aria-label="Choose price type">
+                        <option value="all" selected>All</option>
+                        <option value="paid">Paid</option>
+                        <option value="free">Free</option>
+                    </select>
+                </span>
+            </span>
+            <span class="store-filter-group">
+                <label class="store-filter-label" for="store-sort">Sort</label>
+                <span class="store-filter-select-wrap">
+                    <select id="store-sort" class="store-filter-select" data-store-sort-select aria-label="Sort products">
+                        <option value="default">Default</option>
+                        <option value="newest">Newest</option>
+                        <option value="downloads">Most downloaded</option>
+                        <option value="name">Name A-Z</option>
+                    </select>
+                </span>
+            </span>
+        </div>
+        
+        <section id="products" class="products-section products-section--no-separator" style="padding-top: 0;">
+            <div class="product-grid-wrapper">
+                                <h2 class="visually-hidden">All free plugins</h2>
+                                <div class="product-grid">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                                        
+                    
+                                                                                                                                                                                                                                                                    <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Taperizo" data-downloads="8003">
+                        <a href="/tapered-lines-fuse?from=store" class="product-card-link-overlay" aria-label="View Taperizo details"></a>
+                        <div class="product-image">
+                            <img src="/media/Tapered-line-compressed.jpg" srcset="/thumbnails/cards/taperizo-400.webp 400w, /thumbnails/cards/taperizo-800.webp 800w, /media/Tapered-line-compressed.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Taperizo free tapered stroke Fuse for DaVinci Resolve Fusion" width="1280" height="720" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 4.9 out of 5"><span class="review-stars-fill" style="width: 98%"></span></span><span>4.9 <span class="product-rating-count">(16<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Taperizo</h3>
+                            <div class="product-copy-block">
+                                <p>Instantly draw clean, perfectly tapered strokes in Fusion without native workarounds or complex masking.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">8,003 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/tapered-lines-fuse" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Taperizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Clipyx Typewriter" data-downloads="2624">
+                        <a href="/typewriter-pro?from=store" class="product-card-link-overlay" aria-label="View Clipyx Typewriter details"></a>
+                        <div class="product-image">
+                            <img src="/media/typewriter1.jpg" srcset="/thumbnails/cards/typewriter-400.webp 400w, /thumbnails/cards/typewriter-800.webp 800w, /media/typewriter1.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Clipyx Typewriter free typewriter text effect for DaVinci Resolve" width="1280" height="720" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Macro</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 4.8 out of 5"><span class="review-stars-fill" style="width: 96%"></span></span><span>4.8 <span class="product-rating-count">(5<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Clipyx Typewriter</h3>
+                            <div class="product-copy-block">
+                                <p>A free animated typewriter text effect for DaVinci Resolve. Double-click the .drfx while Resolve is open to install, then drag it from Effects onto your timeline.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">2,624 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/typewriter-pro" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Clipyx Typewriter</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Animizo Modifier" data-downloads="8082">
+                        <a href="/animizo?from=store" class="product-card-link-overlay" aria-label="View Animizo Modifier details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Animizo.jpg" srcset="/thumbnails/cards/animizo-400.webp 400w, /thumbnails/cards/animizo-800.webp 800w, /thumbnails/Animizo.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Animizo Modifier, free procedural easing for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Modifier</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 5 out of 5"><span class="review-stars-fill" style="width: 100%"></span></span><span>5.0 <span class="product-rating-count">(12<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Animizo Modifier</h3>
+                            <div class="product-copy-block">
+                                <p>Create animations inside Fusion without using a single keyframe. 37 easing presets plus custom curves for any numeric or point parameter.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">8,082 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/animizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Animizo Modifier</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Dashizo" data-downloads="4596">
+                        <a href="/dashizo?from=store" class="product-card-link-overlay" aria-label="View Dashizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Dashizo-card.jpg" srcset="/thumbnails/cards/dashizo-400.webp 400w, /thumbnails/cards/dashizo-800.webp 800w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Dashizo free dashed shape generator Fuse for DaVinci Resolve Fusion" width="800" height="450" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 4.3 out of 5"><span class="review-stars-fill" style="width: 86%"></span></span><span>4.3 <span class="product-rating-count">(3<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Dashizo</h3>
+                            <div class="product-copy-block">
+                                <p>Generate dashed lines and shapes along custom paths with multiple dash styles and equalized gaps.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">4,596 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/dashizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Dashizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="AnimizoFX" data-added="2026-10-21" data-downloads="7380">
+                        <a href="/animizofx?from=store" class="product-card-link-overlay" aria-label="View AnimizoFX details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/AnimizoFX-card.jpg" srcset="/thumbnails/cards/animizofx-400.webp 400w, /thumbnails/cards/animizofx-800.webp 800w, /thumbnails/AnimizoFX-card.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="AnimizoFX, a free animation OpenFX plugin for DaVinci Resolve" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">OpenFX</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 4.4 out of 5"><span class="review-stars-fill" style="width: 88%"></span></span><span>4.4 <span class="product-rating-count">(27<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>AnimizoFX</h3>
+                            <div class="product-copy-block">
+                                <p>Animate position, size, rotation and opacity on any clip with 37 easing presets or a custom curve, right on the Edit, Color and Fusion pages.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">7,380 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/animizofx" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: AnimizoFX</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Matchizo" data-downloads="2753">
+                        <a href="/matchizo?from=store" class="product-card-link-overlay" aria-label="View Matchizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Matchizo.jpg" srcset="/thumbnails/cards/matchizo-400.webp 400w, /thumbnails/cards/matchizo-800.webp 800w, /thumbnails/Matchizo.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Matchizo free match cut Fuse for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span></div>
+                            <h3>Matchizo</h3>
+                            <div class="product-copy-block">
+                                <p>Build match cuts from up to 30 connected images, or generate word match cut newspaper frames with hold timing, camera moves and highlights.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">2,753 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/matchizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Matchizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="CRTizo" data-downloads="2261">
+                        <a href="/crtizo?from=store" class="product-card-link-overlay" aria-label="View CRTizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/CRTizo-card.jpg" srcset="/thumbnails/cards/crtizo-400.webp 400w, /thumbnails/cards/crtizo-800.webp 800w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="CRTizo free CRT monitor effect Fuse for DaVinci Resolve Fusion" width="800" height="450" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span></div>
+                            <h3>CRTizo</h3>
+                            <div class="product-copy-block">
+                                <p>Turn any clip into an authentic CRT screen with scanlines, RGB dots, aperture grille, grid, slot mask, and crosshair presets.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">2,261 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/crtizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: CRTizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Depthizo" data-added="2026-09-18" data-downloads="3791">
+                        <a href="/depthizo?from=store" class="product-card-link-overlay" aria-label="View Depthizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/depthizo.jpg" srcset="/thumbnails/cards/depthizo-400.webp 400w, /thumbnails/cards/depthizo-800.webp 800w, /thumbnails/depthizo.jpg 1671w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Depthizo free AI depth map plugin for DaVinci Resolve" width="1600" height="900" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">OpenFX</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 3.7 out of 5"><span class="review-stars-fill" style="width: 74%"></span></span><span>3.7 <span class="product-rating-count">(3<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Depthizo</h3>
+                            <div class="product-copy-block">
+                                <p>Generate AI depth maps directly in DaVinci Resolve with offline processing and flexible depth controls. Free for Windows and macOS Apple Silicon.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">3,791 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/depthizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Depthizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Tracerizo" data-added="2026-09-19" data-downloads="5658">
+                        <a href="/tracerizo?from=store" class="product-card-link-overlay" aria-label="View Tracerizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Tracerizo.jpg" srcset="/thumbnails/cards/tracerizo-400.webp 400w, /thumbnails/cards/tracerizo-800.webp 800w, /thumbnails/Tracerizo.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Tracerizo free blob tracker Fuse for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 5 out of 5"><span class="review-stars-fill" style="width: 100%"></span></span><span>5.0 <span class="product-rating-count">(3<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Tracerizo</h3>
+                            <div class="product-copy-block">
+                                <p>Track bright or dark blobs in your footage and annotate them with coordinate labels, connecting lines, and rectangles, circles, or corner brackets.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">5,658 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/tracerizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Tracerizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Textizo" data-added="2026-10-29" data-downloads="3593">
+                        <a href="/textizo?from=store" class="product-card-link-overlay" aria-label="View Textizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Textizo.jpg" srcset="/thumbnails/cards/textizo-400.webp 400w, /thumbnails/cards/textizo-800.webp 800w, /thumbnails/Textizo.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Textizo free text animator Fuse for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 4.4 out of 5"><span class="review-stars-fill" style="width: 88%"></span></span><span>4.4 <span class="product-rating-count">(11<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Textizo</h3>
+                            <div class="product-copy-block">
+                                <p>Letters, words or lines fade, blur, slide, scale, spin or burst in and out, with layered looks, all in one node.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">3,593 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/textizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Textizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Offsetizo" data-added="2026-11-03" data-downloads="1303">
+                        <a href="/offsetizo?from=store" class="product-card-link-overlay" aria-label="View Offsetizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Offsetizo-card.jpg" srcset="/thumbnails/cards/offsetizo-card-400.webp 400w, /thumbnails/cards/offsetizo-card-800.webp 800w, /thumbnails/Offsetizo-card.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Offsetizo free grid and offset animation Fuse for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 5 out of 5"><span class="review-stars-fill" style="width: 100%"></span></span><span>5.0 <span class="product-rating-count">(2<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Offsetizo</h3>
+                            <div class="product-copy-block">
+                                <p>Up to 32 images in a grid in one node. Animate the first, and the rest follow a few frames apart.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">1,303 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/offsetizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Offsetizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Clipyx Ballpoint" data-added="2026-11-11" data-downloads="528">
+                        <a href="/ballpoint?from=store" class="product-card-link-overlay" aria-label="View Clipyx Ballpoint details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Clipyx-Ballpoint-card.jpg" srcset="/thumbnails/cards/ballpoint-card-400.webp 400w, /thumbnails/cards/ballpoint-card-800.webp 800w, /thumbnails/Clipyx-Ballpoint-card.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Clipyx Ballpoint free ink strands Fuse for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 4 out of 5"><span class="review-stars-fill" style="width: 80%"></span></span><span>4.0 <span class="product-rating-count">(2<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Clipyx Ballpoint</h3>
+                            <div class="product-copy-block">
+                                <p>Strands of pixels grow out of the bright or dark parts of your footage and follow its shapes, like ink from a pen.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">528 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/ballpoint" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Clipyx Ballpoint</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Rasterizo" data-added="2026-11-11" data-downloads="472">
+                        <a href="/rasterizo?from=store" class="product-card-link-overlay" aria-label="View Rasterizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Rasterizo-card.jpg" srcset="/thumbnails/cards/rasterizo-card-400.webp 400w, /thumbnails/cards/rasterizo-card-800.webp 800w, /thumbnails/Rasterizo-card.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Rasterizo free ASCII art and halftone Fuse for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 5 out of 5"><span class="review-stars-fill" style="width: 100%"></span></span><span>5.0 <span class="product-rating-count">(1<span class="visually-hidden"> review</span>)</span></span></span></div>
+                            <h3>Rasterizo</h3>
+                            <div class="product-copy-block">
+                                <p>Turns footage, titles and logos into ASCII art, halftone dots or image tiles, and reveals or explodes them mark by mark.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">472 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/rasterizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Rasterizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Warpizo" data-added="2026-11-11" data-downloads="219">
+                        <a href="/warpizo?from=store" class="product-card-link-overlay" aria-label="View Warpizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Warpizo-card.jpg" srcset="/thumbnails/cards/warpizo-card-400.webp 400w, /thumbnails/cards/warpizo-card-800.webp 800w, /thumbnails/Warpizo-card.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Warpizo free warp Fuse for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 4 out of 5"><span class="review-stars-fill" style="width: 80%"></span></span><span>4.0 <span class="product-rating-count">(1<span class="visually-hidden"> review</span>)</span></span></span></div>
+                            <h3>Warpizo</h3>
+                            <div class="product-copy-block">
+                                <p>Bulge, pinch, wave, ripple and fisheye warps for footage and titles, with animated waves and color fringes.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">219 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/warpizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Warpizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Waterizo" data-added="2026-11-11" data-downloads="205">
+                        <a href="/waterizo?from=store" class="product-card-link-overlay" aria-label="View Waterizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Waterizo-card.jpg" srcset="/thumbnails/cards/waterizo-card-400.webp 400w, /thumbnails/cards/waterizo-card-800.webp 800w, /thumbnails/Waterizo-card.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Waterizo free flowing water Fuse for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 5 out of 5"><span class="review-stars-fill" style="width: 100%"></span></span><span>5.0 <span class="product-rating-count">(2<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Waterizo</h3>
+                            <div class="product-copy-block">
+                                <p>Turns footage into flowing water: pixels stream along currents that wrap around the shapes in the frame.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">205 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/waterizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Waterizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Glitchizo" data-added="2026-11-11" data-downloads="329">
+                        <a href="/glitchizo?from=store" class="product-card-link-overlay" aria-label="View Glitchizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Glitchizo-card.jpg" srcset="/thumbnails/cards/glitchizo-card-400.webp 400w, /thumbnails/cards/glitchizo-card-800.webp 800w, /thumbnails/Glitchizo-card.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Glitchizo free glitch Fuse for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 4 out of 5"><span class="review-stars-fill" style="width: 80%"></span></span><span>4.0 <span class="product-rating-count">(1<span class="visually-hidden"> review</span>)</span></span></span></div>
+                            <h3>Glitchizo</h3>
+                            <div class="product-copy-block">
+                                <p>Digital glitches in one node: slice tears, RGB split, pixel sorting, scanlines and dropouts, from seven presets.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">329 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/glitchizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Glitchizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Toolizo" data-added="2026-11-13" data-downloads="1628">
+                        <a href="/toolizo?from=store" class="product-card-link-overlay" aria-label="View Toolizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Toolizo-library-card.jpg" srcset="/thumbnails/cards/toolizo-library-card-400.webp 400w, /thumbnails/cards/toolizo-library-card-800.webp 800w, /thumbnails/Toolizo-library-card.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Toolizo free media library plugin for DaVinci Resolve" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">OpenFX</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 5 out of 5"><span class="review-stars-fill" style="width: 100%"></span></span><span>5.0 <span class="product-rating-count">(7<span class="visually-hidden"> reviews</span>)</span></span></span></div>
+                            <h3>Toolizo</h3>
+                            <div class="product-copy-block">
+                                <p>A media library inside Resolve: effects, images, videos and sounds in folders, dragged onto the timeline or the Fusion page.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">1,628 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/toolizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Toolizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Flowizo" data-added="2026-11-16" data-downloads="652">
+                        <a href="/flowizo?from=store" class="product-card-link-overlay" aria-label="View Flowizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Flowizo-card.jpg" srcset="/thumbnails/cards/flowizo-card-400.webp 400w, /thumbnails/cards/flowizo-card-800.webp 800w, /thumbnails/Flowizo-card.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Flowizo free easing curves plugin for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">OpenFX</span></div>
+                            <h3>Flowizo</h3>
+                            <div class="product-copy-block">
+                                <p>Easing curves for Fusion keyframes: pick a preset or draw your own, and apply it to the keyframes you selected.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">652 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/flowizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Flowizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="product-card product-card--clickable" data-software="davinci-resolve" data-price="free" data-price-value="0" data-name="Graphizo" data-added="2026-11-18" data-downloads="303">
+                        <a href="/graphizo?from=store" class="product-card-link-overlay" aria-label="View Graphizo details"></a>
+                        <div class="product-image">
+                            <img src="/thumbnails/Graphizo-card.jpg" srcset="/thumbnails/cards/graphizo-card-400.webp 400w, /thumbnails/cards/graphizo-card-800.webp 800w, /thumbnails/Graphizo-card.jpg 1280w" sizes="(max-width: 768px) calc(36vw - 20px), (max-width: 1055px) calc(50vw - 32px), 380px" alt="Graphizo free animated charts Fuse for DaVinci Resolve Fusion" width="1280" height="720" loading="lazy" decoding="async">
+                        </div>
+                        <div class="product-info">
+                            <div class="tags"><span class="tag">Fuse</span><span class="product-rating" data-product-rating><span class="review-stars review-stars--small" role="img" aria-label="Rated 5 out of 5"><span class="review-stars-fill" style="width: 100%"></span></span><span>5.0 <span class="product-rating-count">(1<span class="visually-hidden"> review</span>)</span></span></span></div>
+                            <h3>Graphizo</h3>
+                            <div class="product-copy-block">
+                                <p>Animated charts from your numbers: 17 chart types, bar chart races and values that spring when they change.</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price-stack"><span class="price" style="color: var(--accent);">Free</span><span class="price-downloads">303 downloads</span></span>                                <div class="product-actions">
+                                    <a href="/get/graphizo" target="_blank" rel="nofollow" class="btn">
+                                        <span style="pointer-events: none;">Download<span class="visually-hidden">: Graphizo</span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                                <div class="store-empty-state" data-store-empty style="display: none;">
+                    <p>No tools available for this category yet. Check back soon.</p>
+                </div>
+            </div>
+        </section>
+
+                        <section id="library" class="library-showcase" aria-labelledby="library-showcase-title">
+            <div class="library-showcase-inner">
+                <div class="section-header library-showcase-head">
+                    <h2 id="library-showcase-title">Explore the Library</h2>
+                    <p>Ready-made Fusion expressions for DaVinci Resolve, each with a live preview. Copy, paste, animate.</p>
+                </div>
+                <ul class="library-showcase-grid" data-library-showcase>
+                                        <li class="library-tile">
+                        <a class="library-tile-link" href="/library/orbit">
+                            <img src="/library/media/expressions/orbit-480.webp?v=9" alt="" width="480" height="480" decoding="async" loading="lazy">
+                            <video data-src="/library/media/expressions/orbit-480.mp4?v=9" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+                            <span class="library-tile-meta">
+                                <span class="library-tile-title">Orbit</span>
+                                <span class="library-tile-target">Transform › Center</span>
+                            </span>
+                        </a>
+                    </li>
+                                        <li class="library-tile">
+                        <a class="library-tile-link" href="/library/figure-eight">
+                            <img src="/library/media/expressions/figure-eight-480.webp?v=9" alt="" width="480" height="480" decoding="async" loading="lazy">
+                            <video data-src="/library/media/expressions/figure-eight-480.mp4?v=9" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+                            <span class="library-tile-meta">
+                                <span class="library-tile-title">Figure eight</span>
+                                <span class="library-tile-target">Transform › Center</span>
+                            </span>
+                        </a>
+                    </li>
+                                        <li class="library-tile">
+                        <a class="library-tile-link" href="/library/spiral-out">
+                            <img src="/library/media/expressions/spiral-out-480.webp?v=9" alt="" width="480" height="480" decoding="async" loading="lazy">
+                            <video data-src="/library/media/expressions/spiral-out-480.mp4?v=9" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+                            <span class="library-tile-meta">
+                                <span class="library-tile-title">Spiral out</span>
+                                <span class="library-tile-target">Transform › Center</span>
+                            </span>
+                        </a>
+                    </li>
+                                        <li class="library-tile">
+                        <a class="library-tile-link" href="/library/pendulum-arc">
+                            <img src="/library/media/expressions/pendulum-arc-480.webp?v=9" alt="" width="480" height="480" decoding="async" loading="lazy">
+                            <video data-src="/library/media/expressions/pendulum-arc-480.mp4?v=9" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+                            <span class="library-tile-meta">
+                                <span class="library-tile-title">Pendulum arc</span>
+                                <span class="library-tile-target">Transform › Center</span>
+                            </span>
+                        </a>
+                    </li>
+                                        <li class="library-tile">
+                        <a class="library-tile-link" href="/library/heartbeat">
+                            <img src="/library/media/expressions/heartbeat-480.webp?v=9" alt="" width="480" height="480" decoding="async" loading="lazy">
+                            <video data-src="/library/media/expressions/heartbeat-480.mp4?v=9" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+                            <span class="library-tile-meta">
+                                <span class="library-tile-title">Heartbeat</span>
+                                <span class="library-tile-target">Transform › Size</span>
+                            </span>
+                        </a>
+                    </li>
+                                        <li class="library-tile">
+                        <a class="library-tile-link" href="/library/decode">
+                            <img src="/library/media/expressions/decode-480.webp?v=9" alt="" width="480" height="480" decoding="async" loading="lazy">
+                            <video data-src="/library/media/expressions/decode-480.mp4?v=9" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+                            <span class="library-tile-meta">
+                                <span class="library-tile-title">Decode</span>
+                                <span class="library-tile-target">Text+ › Styled Text</span>
+                            </span>
+                        </a>
+                    </li>
+                                    </ul>
+                <div class="library-showcase-more">
+                    <a href="/library/" class="btn store-explore-btn library-showcase-link">Open the Library <svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-arrow-right"></use></svg></a>
+                </div>
+            </div>
+        </section>
+        
+        
+        <section id="faq" class="faq-section">
+            <div class="faq-container">
+                <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                <h2>Frequently asked questions</h2>
+                    <p>Common questions about Clipyx tools and installs.</p>
+                </div>
+
+                <details class="faq-item">
+                    <summary>What if I need technical support?</summary>
+                    <div class="faq-content">
+                        <p>If a tool is throwing an error or you need help, jump into our <a href="https://discord.gg/upXM4VSp7n" style="color: var(--accent);">Discord community</a> or use the <a href="#contact" style="color: var(--accent);">contact form</a> below. We will always help you get it working.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>What software do Clipyx tools support?</summary>
+                    <div class="faq-content">
+                        <p>Clipyx tools are built for DaVinci Resolve, Fusion, and AI workflows. Each product page lists exactly which software it supports.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Are Clipyx plugins free?</summary>
+                    <div class="faq-content">
+                        <p>Yes. Every Clipyx plugin, Fuse, macro and OpenFX tool for DaVinci Resolve and Fusion is free to download and to use in your own projects, client work included, and so are its updates. Sharing or reselling the files themselves is not allowed: see the <a href="/terms#license" style="color: var(--accent);">license</a>.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Can I use these tools on multiple computers?</summary>
+                    <div class="faq-content">
+                        <p>Yes. You can install Clipyx tools on any computer you own. Tools that need activation, such as AnimizoFX, use the free license key from your download email, and one key covers up to 3 computers. To move a key to another computer, <a href="#contact" style="color: var(--accent);">contact us</a> and we'll move it for you.</p>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+
+    </main>
+
+        <footer id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact us</h2>
+                <p>Questions about a product, need technical support, or want to collaborate? Send us a message.</p>
+
+                <div class="contact-email">
+                    <span class="email-label">Email</span>
+                    <a href="mailto:contact@clipyx.com" class="email-address">contact@clipyx.com</a>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@clipyxstudio" target="_blank" rel="noopener" class="btn">
+                        <svg style="pointer-events: none;" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.582 6.186a2.685 2.685 0 00-1.884-1.898C18.032 3.84 12 3.84 12 3.84s-6.032 0-7.698.448a2.685 2.685 0 00-1.884 1.898C1.97 7.864 1.97 12 1.97 12s0 4.136.448 5.814a2.685 2.685 0 001.884 1.898C5.968 20.16 12 20.16 12 20.16s6.032 0 7.698-.448a2.685 2.685 0 001.884-1.898c.448-1.678.448-5.814.448-5.814s0-4.136-.448-5.814zM9.985 15.53v-7.06L15.6 12l-5.615 3.53z"/></svg>
+                        <span style="pointer-events: none;">YouTube</span>
+                    </a>
+                    <a href="https://discord.gg/upXM4VSp7n" target="_blank" rel="noopener" class="btn">
+                        <svg style="pointer-events: none;" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3333-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3333-.946 2.4189-2.1568 2.4189z"/></svg>
+                        <span style="pointer-events: none;">Discord</span>
+                    </a>
+                </div>
+            </div>
+
+            <form class="dry-form" action="/contact-submit" method="POST" data-contact-form>
+                <input type="hidden" name="csrf_token" value="12e6a3572692d5d879cd005810a2105d050231c548f974e522ff136d0845252f"><input type="hidden" name="return_to" value="/store/"><input type="text" name="website" value="" autocomplete="off" tabindex="-1" aria-hidden="true" hidden><div class="contact-form-status" data-contact-status aria-live="polite"></div>                                <div class="contact-fields" style="display: contents;">
+                    <div class="form-group">
+                        <label for="contact-email">Your email</label>
+                        <input type="email" id="contact-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+                    </div>
+                </div>
+                <button type="submit" name="submit_contact" class="btn">
+                    <span style="pointer-events: none;">Send message</span>
+                </button>
+            </form>
+        </div>
+        <div class="footer-bottom">
+            <nav class="footer-legal" aria-label="Legal and contact information">
+    <a href="/pricing">Pricing</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/terms#refunds">Refunds</a>
+    <a href="/contact">Contact</a>
+</nav>
+            <p>&copy; 2026 Clipyx. All rights reserved.</p>
+        </div>
+    </footer>
+
+        <script nonce="nGjC4XNTdAbEt8tc20Zgcg" src="/store-controls.js?v=1"></script>
+        <script nonce="nGjC4XNTdAbEt8tc20Zgcg" src="/sale-countdown.js?v=3"></script>
+            <script nonce="nGjC4XNTdAbEt8tc20Zgcg" src="/library/showcase.js?v=1" defer></script>
+        <script nonce="nGjC4XNTdAbEt8tc20Zgcg" src="/node-effects.js?v=69"></script>
+    <script nonce="nGjC4XNTdAbEt8tc20Zgcg" src="/chat-widget.js?v=32"></script>
+</body>
+</html>

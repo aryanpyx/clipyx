@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0c0c0c">
+    <meta name="description" content="Python scripts, Fuses, OFX plugins and macros for DaVinci Resolve, shared by the Clipyx community. The best rated come first.">
+    <title>Community plugins | Clipyx</title>
+    <link rel="canonical" href="/community/plugins">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Clipyx">
+    <meta property="og:title" content="Community plugins | Clipyx">
+    <meta property="og:description" content="Python scripts, Fuses, OFX plugins and macros for DaVinci Resolve, shared by the Clipyx community. The best rated come first.">
+    <meta property="og:url" content="/community/plugins">
+    <meta property="og:image" content="/media/og-clipyx-4.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="/media/og-clipyx-4.jpg">
+    <link rel="icon" href="/media/icon-48.png?v=2" type="image/png" sizes="48x48">
+    <link rel="icon" href="/media/clipyx-icon.svg?v=1" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/media/apple-touch-icon.png?v=4" sizes="180x180">
+    <link rel="preload" href="/fonts/InterVariable-latin.woff2?v=4.1" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css?v=229">
+    <style nonce="X4tbphZ7DVT5NEX9rVTY4g">
+        .community-container {
+            max-width: 1220px;
+            margin: 0 auto;
+            padding: 34px clamp(18px, 4vw, 48px);
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-8);
+        }
+        .dashboard-header h1 {
+            font-size: 32px;
+            font-weight: 900;
+        }
+        .dashboard-header h1 span {
+            color: var(--accent);
+        }
+        .community-controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-bottom: var(--space-3);
+        }
+        /* Without the admins' Presets/Threads tabs, New thread keeps its place on the right. */
+        .community-controls-row > .btn:first-child {
+            margin-left: auto;
+        }
+        .community-controls-row .community-subnav {
+            flex: 0 0 auto;
+        }
+        .community-controls-row .thread-tools {
+            flex: 1 1 auto;
+            min-width: 0;
+            margin-bottom: 0;
+        }
+        .community-controls-row .thread-tools--presets {
+            grid-template-columns: minmax(150px, 220px) minmax(160px, 220px) auto;
+        }
+        .community-controls-row .thread-tools--threads {
+            grid-template-columns: minmax(130px, 1fr) minmax(105px, 145px) minmax(125px, 165px) auto;
+        }
+        .community-controls-row .thread-tools-actions {
+            flex-wrap: nowrap;
+        }
+        .community-controls-row .thread-tool-group label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+        .community-subnav {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--border-soft);
+            margin-bottom: 0;
+        }
+        .community-subnav-link {
+            display: inline-flex;
+            border: none;
+            border-bottom: 2px solid transparent;
+            border-radius: 0;
+            background: transparent;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: var(--text-small);
+            font-weight: var(--weight-semibold);
+            min-height: var(--control-height);
+            align-items: center;
+            padding: var(--space-2) var(--space-4);
+            cursor: pointer;
+            transition: color 0.15s ease;
+        }
+        .community-subnav-link:hover {
+            color: var(--text-main);
+        }
+        .community-subnav-link.is-active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+        .community-subnav-divider {
+            display: none;
+        }
+        .grid-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+        .panel {
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+        }
+        .panel-section {
+            display: none;
+            scroll-margin-top: 28px;
+        }
+        .panel-section.is-active {
+            display: block;
+        }
+        .panel h2 {
+            font-size: var(--text-card);
+            font-weight: 800;
+            margin-bottom: 18px;
+            color: var(--text-main);
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .panel-header h2 {
+            margin-bottom: 0;
+        }
+        .panel-action {
+            flex-shrink: 0;
+        }
+        .panel-action .btn {
+            padding: 10px 16px 8px;
+            font-size: 13px;
+        }
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: var(--space-6);
+            justify-content: start;
+            align-items: stretch;
+        }
+        .preset-card-shell {
+            position: relative;
+            width: 100%;
+            min-width: 0;
+            height: 100%;
+            justify-self: center;
+        }
+        .preset-card-link {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: block;
+            border-radius: var(--radius-panel);
+            color: inherit;
+            text-decoration: none;
+        }
+        .discussion-card-link {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: block;
+            border-radius: 12px;
+            color: inherit;
+            text-decoration: none;
+        }
+        .preset-card {
+            position: relative;
+            background-color: var(--color-surface);
+            border: var(--border-control) solid var(--color-border);
+            border-radius: var(--radius-panel);
+            padding: 0;
+            box-shadow: none;
+            transition: background-color var(--duration-fast), border-color var(--duration-fast);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .preset-card > *:not(.preset-card-link) {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .preset-card-shell:hover .preset-card {
+            background-color: var(--color-surface-hover);
+            border-color: var(--color-border-strong);
+        }
+        .preset-card-shell:focus-within .preset-card { border-color: var(--color-focus); }
+        .preset-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background-color: var(--color-panel);
+            border-radius: calc(var(--radius-panel) - var(--border-control)) calc(var(--radius-panel) - var(--border-control)) 0 0;
+            border-bottom: var(--border-hairline) solid var(--color-border-subtle);
+            overflow: hidden;
+            position: relative;
+        }
+        .preset-card-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: var(--space-6);
+        }
+        .preset-image .preset-logo-fallback {
+            background: var(--color-panel);
+        }
+        .preset-image .preset-logo-fallback img {
+            width: 64px;
+            max-height: 64px;
+            filter: none;
+        }
+        .preset-image .preset-logo-fallback-name {
+            display: none;
+        }
+        .preset-title {
+            font-size: var(--text-small);
+            font-weight: var(--weight-bold);
+            margin-bottom: var(--space-1);
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+        .preset-author {
+            margin-bottom: var(--space-3);
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+        .preset-plugin {
+            display: flex;
+            align-items: center;
+            min-height: var(--control-height);
+            padding-right: calc(var(--control-height) + var(--space-3));
+            margin-top: auto;
+            font-size: var(--text-small);
+            font-weight: var(--weight-medium);
+            color: var(--color-muted);
+        }
+        .profile-user-link {
+            position: relative;
+            z-index: 3;
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            pointer-events: auto;
+        }
+        .profile-user-link:hover {
+            color: var(--text-main);
+        }
+        .preset-download-button {
+            position: absolute;
+            bottom: calc(var(--space-6) + var(--border-control));
+            right: calc(var(--space-6) + var(--border-control));
+            z-index: 3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: var(--control-height);
+            height: var(--control-height);
+            border-radius: var(--radius-control);
+            border: var(--border-control) solid var(--color-border);
+            border-bottom-width: var(--border-depth);
+            background-color: var(--color-panel);
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease, border-bottom-width 0.15s ease;
+        }
+        .preset-download-button:hover {
+            background-color: var(--color-surface-hover);
+            border-color: var(--color-border-strong);
+            color: var(--color-text);
+            transform: none;
+        }
+        .preset-download-button:active {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+        }
+        .tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--bg-panel);
+            color: var(--text-main);
+        }
+        .thread-type {
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            font-weight: 800;
+        }
+        .tag-qna { background: #87c4ff; color: var(--bg-main); }
+        .tag-showcase { background: #ff9d38; color: var(--bg-main); }
+        .tag-request { background: #ff6fb5; color: var(--bg-main); }
+        .thread-tools {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 24px;
+            align-items: end;
+        }
+        .thread-tools--presets {
+            grid-template-columns: minmax(160px, 220px) minmax(170px, 220px) auto;
+            justify-content: start;
+        }
+        .thread-tools--threads {
+            grid-template-columns: minmax(240px, 1fr) minmax(150px, 190px) minmax(150px, 190px) auto;
+        }
+        .thread-tool-group {
+            min-width: 0;
+        }
+        .thread-tool-group.thread-tool-group--compact {
+            min-width: 0;
+        }
+        .thread-search-inline {
+            position: relative;
+        }
+        .thread-search-inline input {
+            padding-right: 42px;
+        }
+        .thread-search-button {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border: 0;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transform: translateY(-50%);
+            transition: color 0.15s ease, background-color 0.15s ease;
+        }
+        .thread-search-button:hover {
+            background: var(--color-surface-hover, #222222);
+            color: var(--color-text, #f4f4f4);
+        }
+        .thread-tool-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-muted);
+        }
+        .thread-tool-group input,
+        .thread-tool-group select {
+            width: 100%;
+            min-height: 32px;
+            padding: 6px 28px 6px 10px;
+            background-color: #0f0f0f;
+            border: 1px solid var(--border-soft);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            outline: none;
+        }
+        .thread-tool-group select:hover,
+        .thread-tool-group input:hover {
+            background-color: #161616;
+            color: var(--accent);
+        }
+        .thread-tool-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            cursor: pointer;
+        }
+        .thread-tools-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+        .threads-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+        
+        .discussion-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .discussion-item {
+            position: relative;
+            width: 100%;
+            padding: 20px 22px;
+            background-color: var(--bg-card);
+            border: 2px solid var(--border-soft);
+            border-radius: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .discussion-item > *:not(.discussion-card-link) {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .discussion-item:hover {
+            transform: translateY(-4px);
+            background-color: var(--bg-card-hover);
+            border-color: var(--border-soft);
+        }
+        .discussion-title {
+            font-weight: 800;
+            font-size: var(--text-lead);
+            line-height: 1.35;
+            margin-bottom: 10px;
+        }
+        .discussion-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .discussion-item > .discussion-meta {
+            display: none;
+        }
+        .discussion-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+        .discussion-card-flags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .pin-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .discussion-date {
+            text-align: right;
+            min-width: 124px;
+            color: var(--text-muted);
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        .discussion-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .discussion-stats {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 800;
+        }
+        .empty-state {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        .community-filters {
+            margin-bottom: var(--space-6);
+        }
+        .community-filters > summary {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            width: fit-content;
+            max-width: 100%;
+            min-height: var(--control-height);
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            cursor: pointer;
+            list-style: none;
+            border-radius: var(--radius-control);
+        }
+        .community-filters > summary::-webkit-details-marker { display: none; }
+        .community-filters > summary:hover,
+        .community-filters[open] > summary { color: var(--color-text); }
+        .community-filters[open] .filter-chevron { transform: rotate(180deg); }
+        .community-filter-state {
+            color: var(--color-accent);
+            overflow-wrap: anywhere;
+        }
+        .community-filters .thread-tools {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-3);
+            margin: var(--space-2) 0 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
+        .community-filters .thread-tool-group {
+            flex: 0 1 200px;
+        }
+        .community-filters .thread-search-inline { flex-basis: 280px; }
+        .community-filters .thread-tool-group label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip-path: inset(50%);
+            white-space: nowrap;
+        }
+        .community-filters .thread-tool-group input,
+        .community-filters .thread-tool-group select {
+            min-height: var(--control-height);
+            padding: var(--space-2) var(--space-10) var(--space-2) var(--space-3);
+            border: var(--border-control) solid var(--color-border);
+            border-radius: var(--radius-control);
+            background: var(--color-panel);
+            color: var(--color-text);
+            font-size: var(--text-small);
+        }
+        .community-filters .thread-search-button {
+            right: 0;
+            width: var(--control-height);
+            height: var(--control-height);
+        }
+        .community-filters .thread-tools-actions { display: contents; }
+        .community-filters .btn > span,
+        .community-controls-row > .btn > span { pointer-events: none; }
+        .community-reset {
+            display: inline-flex;
+            align-items: center;
+            min-height: var(--control-height);
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            text-underline-offset: var(--space-1);
+        }
+        .community-reset:hover { color: var(--color-text); }
+        .community-empty {
+            grid-column: 1 / -1;
+            padding: var(--space-8) 0;
+            color: var(--color-muted);
+        }
+        .community-empty p { margin-bottom: var(--space-2); }
+        @media (prefers-reduced-motion: reduce) {
+            .preset-card, .preset-download-button { transition: none; }
+        }
+        @media (max-width: 1024px) {
+            .thread-tools--threads {
+                grid-template-columns: minmax(220px, 1fr) minmax(150px, 190px) minmax(150px, 190px);
+            }
+            .thread-tools--threads .thread-tools-actions {
+                grid-column: 1 / -1;
+            }
+            .community-controls-row .thread-tools--threads .thread-tools-actions {
+                grid-column: auto;
+            }
+            .threads-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .community-controls-row {
+                gap: var(--space-3);
+            }
+            .community-subnav {
+                gap: 0;
+                margin-bottom: 0;
+            }
+            .community-controls-row .thread-tools--presets,
+            .community-controls-row .thread-tools--threads,
+            .thread-tools--presets,
+            .thread-tools--threads {
+                grid-template-columns: 1fr !important;
+                gap: 8px !important;
+            }
+            .thread-tools { gap: 8px; margin-bottom: 16px; }
+            .thread-tool-group label {
+                font-size: 10px;
+                margin-bottom: 4px;
+            }
+            .thread-tool-group input,
+            .thread-tool-group select {
+                min-height: 30px;
+                padding: 5px 24px 5px 8px;
+                font-size: 11px;
+            }
+            .thread-search-button { width: 28px; height: 28px; }
+            .thread-search-inline input { padding-right: 36px; }
+            .community-controls-row .thread-tools-actions { flex-wrap: wrap; gap: 8px; }
+            .community-controls-row .thread-tool-group label {
+                position: static;
+                width: auto;
+                height: auto;
+                overflow: visible;
+                clip: auto;
+                white-space: normal;
+            }
+            .community-controls-row .thread-tools { margin-bottom: 0; }
+            .discussion-item {
+                padding: 12px 14px;
+                border: 1px solid var(--border-soft);
+                border-radius: 10px;
+            }
+            .discussion-item:hover { transform: none; }
+            .discussion-title { font-size: var(--text-lead); font-weight: 600; margin-bottom: 6px; }
+            .discussion-card-header { gap: 8px; margin-bottom: 6px; }
+            .discussion-card-flags { gap: 6px; }
+            .discussion-footer { gap: 8px; }
+            .discussion-list { gap: 10px; }
+            .panel-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .panel-action {
+                width: 100%;
+            }
+            .panel-action .btn {
+                width: 100%;
+            }
+            .preset-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-5);
+            }
+            .preset-card-link {
+                max-width: none;
+            }
+            .preset-card-shell {
+                max-width: none;
+            }
+            .preset-download-button {
+                bottom: calc(var(--space-5) + var(--border-control));
+                right: calc(var(--space-5) + var(--border-control));
+            }
+            .preset-card-content { padding: var(--space-5); }
+            .thread-tools--presets,
+            .thread-tools--threads {
+                grid-template-columns: 1fr;
+            }
+            .thread-tools--threads .thread-tools-actions {
+                grid-column: auto;
+            }
+            .thread-tools-actions {
+                flex-wrap: wrap;
+            }
+            .discussion-card-header,
+            .discussion-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .discussion-date {
+                text-align: left;
+                min-width: 0;
+            }
+        }
+        @media (max-width: 640px) {
+            .community-subnav-link { padding-inline: var(--space-3); }
+            .community-controls-row > .btn { padding-inline: var(--space-3); }
+            .community-filters .thread-tools { gap: var(--space-3) !important; }
+            .community-filters .thread-tool-group { flex: 1 1 140px; }
+            .community-filters .thread-tool-group--sort { flex-basis: 180px; }
+            .community-filters .thread-search-inline { flex-basis: 100%; }
+            .community-filters .thread-tool-group input,
+            .community-filters .thread-tool-group select { font-size: var(--text-body); }
+        }
+    </style>
+    <link rel="stylesheet" href="/theme.css?v=20261119-no-tint">
+        <link rel="stylesheet" href="/community-plugins.css?v=20261119-lime-button">
+    <script nonce="X4tbphZ7DVT5NEX9rVTY4g" src="/living-signal-grid.js?v=20261026-no-reveal" defer></script>
+    <script nonce="X4tbphZ7DVT5NEX9rVTY4g" src="/hero-letters.js?v=20261026-springy-titles" defer></script>
+</head>
+<body>
+<nav class="navbar">
+        <a href="" class="logo-link">
+            <img src="/media/site%20logo.png?v=3" alt="Clipyx Logo" class="logo-img" width="107" height="40">
+        </a>
+        <details class="nav-menu">
+            <summary aria-label="Menu"><svg class="iconizo nav-menu__open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-menu"></use></svg><svg class="iconizo nav-menu__close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-x"></use></svg></summary>
+        </details>
+        <div class="nav-links" style="column-gap: clamp(var(--space-3), calc(var(--space-3) + (100vw - 769px) * 0.0232), var(--space-5));">
+            <a href="" data-nav="home">Home</a>
+            <a href="/store/" data-nav="store">Store</a>
+            <a href="/library/" data-nav="library">Library</a>
+            <a href="/studio/" data-nav="studio">Studio</a>
+            <a href="/community" data-nav="community" aria-current="page">Community</a>
+            <a href="/pricing" data-nav="pricing">Pricing</a>
+            <a href="#contact" data-nav="contact">Contact</a>
+            <div class="nav-auth">
+                <a href="/login" class="nav-login-link" data-nav="login">Login</a>
+            </div>
+        </div>
+    </nav>
+    <script nonce="X4tbphZ7DVT5NEX9rVTY4g" src="/site-nav.js?v=1" defer></script>
+
+    <main class="community-container">
+        <div class="dashboard-header">
+            <div>
+                <h1>Community</h1>
+                <p style="color: var(--text-muted);">Share plugins and presets, ask questions and read guides.</p>
+            </div>
+        </div>
+                <p class="plugins-notice" role="note"><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-alert-triangle"></use></svg><span><strong>Every plugin here is made by the community.</strong> Clipyx doesn't build or test them and can't guarantee they're safe. Install them at your own risk.</span></p>
+                <div class="community-controls-row">
+            <nav class="community-subnav" aria-label="Community">
+                <a href="/community/plugins" class="community-subnav-link is-active" aria-current="page">Plugins</a>
+                <a href="/community/presets" class="community-subnav-link " >Presets</a>
+                <a href="/community/threads" class="community-subnav-link " >Threads</a>
+            </nav>
+                            <a href="/login?redirect=%2Fcommunity%2Fplugins%2Fupload" class="btn"><span>Share plugin</span></a>
+                    </div>
+        <details class="community-filters" >
+            <summary>
+                <span>Filter &amp; sort</span>
+                                <svg class="iconizo filter-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-chevron-down"></use></svg>
+            </summary>
+                            <form class="thread-tools thread-tools--presets" action="/community/plugins" method="GET">
+                    <div class="thread-tool-group">
+                        <label for="plugin_type">Type</label>
+                        <div class="iconizo-select">
+                        <select id="plugin_type" name="plugin_type" data-autosubmit>
+                            <option value="all" selected>All types</option>
+                                                            <option value="python" >Python script</option>
+                                                            <option value="fuse" >Fuse</option>
+                                                            <option value="ofx" >OFX plugin</option>
+                                                            <option value="macro" >Macro</option>
+                                                    </select>
+                        </div>
+                    </div>
+                    <div class="thread-tool-group thread-tool-group--sort">
+                        <label for="plugin_sort">Sort by</label>
+                        <div class="iconizo-select">
+                        <select id="plugin_sort" name="plugin_sort" data-autosubmit>
+                                                            <option value="rating" selected>Top rated</option>
+                                                            <option value="newest" >Newest</option>
+                                                            <option value="downloads" >Most downloaded</option>
+                                                    </select>
+                        </div>
+                    </div>
+                    <div class="thread-tools-actions">
+                        <noscript><button type="submit" class="btn"><span>Apply</span></button></noscript>
+                                            </div>
+                </form>
+                    </details>
+
+        
+        
+                                                                                                
+        <div class="grid-layout">
+                        <div class="panel panel-section is-active" id="community-plugins">
+                                <div class="plugins-grid">
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/clipyx/2026/10/b3d75227db174255c713e5c855244374.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">OFX</span>
+                                                                                    <span class="plugin-card-size">GitHub</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/5" class="plugin-card-link">Puppet Pin Plugin</a></h2>
+                        <p class="plugin-card-text">After Effects style puppet pins for Resolve. A triangle mesh is built from the image&#039;s alpha, and pins bend it with an as-rigid-as-possible solver, so limbs bend instead of smeari…</p>
+                        <p class="plugin-card-meta">by ilmgg &middot; <span class="plugin-card-meta-item">28 Oct 2026 &middot;</span> <span class="plugin-card-meta-item">194 downloads &middot;</span> <span class="rating-inline"><span class="review-stars review-stars--small" role="img" aria-label="Rated 4.5 out of 5"><span class="review-stars-fill" style="width: 90%"></span></span><span>4.5 <span class="rating-inline-count">(4)</span></span><span class="visually-hidden"> from 4 ratings</span></span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/2026/10/aabab6aa38def8fcb376ba8cfade83eb.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Macro</span>
+                                                                                    <span class="plugin-card-size">7 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/6" class="plugin-card-link">FH-outliner</a></h2>
+                        <p class="plugin-card-text">It creates AE type Light Sweep effect which can be used for Rim light and dynamic glow effects.</p>
+                        <p class="plugin-card-meta">by Fondheat &middot; <span class="plugin-card-meta-item">28 Oct 2026 &middot;</span> <span class="plugin-card-meta-item">82 downloads &middot;</span> <span class="rating-inline"><span class="review-stars review-stars--small" role="img" aria-label="Rated 4.5 out of 5"><span class="review-stars-fill" style="width: 90%"></span></span><span>4.5 <span class="rating-inline-count">(2)</span></span><span class="visually-hidden"> from 2 ratings</span></span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/2026/11/91d1b5ebba769fc6108a2abaead3a9bb.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Fuse</span>
+                                                                                    <span class="plugin-card-size">57 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/24" class="plugin-card-link">AutoSway</a></h2>
+                        <p class="plugin-card-text">Add natural, smooth swaying motion to objects like hair, ropes, clothing, and plants, making them move realistically.</p>
+                        <p class="plugin-card-meta">by moiguy &middot; <span class="plugin-card-meta-item">17 Nov 2026 &middot;</span> <span class="plugin-card-meta-item">5 downloads &middot;</span> <span class="rating-inline"><span class="review-stars review-stars--small" role="img" aria-label="Rated 5 out of 5"><span class="review-stars-fill" style="width: 100%"></span></span><span>5.0 <span class="rating-inline-count">(1)</span></span><span class="visually-hidden"> from 1 rating</span></span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/2026/11/2d9b51894dc84232954f2f501d4c7c22.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Macro</span>
+                                                                                    <span class="plugin-card-size">13 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/15" class="plugin-card-link">Fondheat Shake Pack 1</a></h2>
+                        <p class="plugin-card-text">9 Shake Presets For AMV editors What this pack contains : 1.Twitch Shake 2.Roto Shake 3.Mix Tape Shake 4.Skew Shake 5.Bounce Shake Horizontal 6.Bounce Shake Vertical 7.Astral Shak…</p>
+                        <p class="plugin-card-meta">by Fondheat &middot; <span class="plugin-card-meta-item">8 Nov 2026 &middot;</span> <span class="plugin-card-meta-item">70 downloads &middot;</span> <span class="rating-inline"><span class="review-stars review-stars--small" role="img" aria-label="Rated 5 out of 5"><span class="review-stars-fill" style="width: 100%"></span></span><span>5.0 <span class="rating-inline-count">(1)</span></span><span class="visually-hidden"> from 1 rating</span></span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/2026/11/8a91e366c40176bb516af072203853a7.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Macro</span>
+                                                                                    <span class="plugin-card-size">5 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/11" class="plugin-card-link">Hand Drawn FX</a></h2>
+                        <p class="plugin-card-text">literally a hand-drawn effect.</p>
+                        <p class="plugin-card-meta">by KX_Editor &middot; <span class="plugin-card-meta-item">2 Nov 2026 &middot;</span> <span class="plugin-card-meta-item">46 downloads &middot;</span> <span class="rating-inline"><span class="review-stars review-stars--small" role="img" aria-label="Rated 5 out of 5"><span class="review-stars-fill" style="width: 100%"></span></span><span>5.0 <span class="rating-inline-count">(1)</span></span><span class="visually-hidden"> from 1 rating</span></span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/clipyx/2026/10/ce89a056c657ba272a4dccdecc5d0457.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Fuse</span>
+                                                                                    <span class="plugin-card-size">5 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/8" class="plugin-card-link">ScatterAE</a></h2>
+                        <p class="plugin-card-text">Breaks an image into a fine cloud of speckles by randomly displacing each pixel, like the Scatter effect in After Effects. Works on text, logos, shapes and footage, respects alpha…</p>
+                        <p class="plugin-card-meta">by TohirFozilxonov &middot; <span class="plugin-card-meta-item">28 Oct 2026 &middot;</span> <span class="plugin-card-meta-item">64 downloads &middot;</span> <span class="rating-inline"><span class="review-stars review-stars--small" role="img" aria-label="Rated 4 out of 5"><span class="review-stars-fill" style="width: 80%"></span></span><span>4.0 <span class="rating-inline-count">(1)</span></span><span class="visually-hidden"> from 1 rating</span></span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/clipyx/2026/10/a12be04d9580e73a9357a1840a2e2a13.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">OFX</span>
+                                                                                    <span class="plugin-card-size">GitHub</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/3" class="plugin-card-link">PyramidGlow</a></h2>
+                        <p class="plugin-card-text">A custom OpenFX glow plugin for DaVinci Resolve</p>
+                        <p class="plugin-card-meta">by TohirFozilxonov &middot; <span class="plugin-card-meta-item">27 Oct 2026 &middot;</span> <span class="plugin-card-meta-item">100 downloads &middot;</span> <span class="rating-inline"><span class="review-stars review-stars--small" role="img" aria-label="Rated 3.5 out of 5"><span class="review-stars-fill" style="width: 70%"></span></span><span>3.5 <span class="rating-inline-count">(2)</span></span><span class="visually-hidden"> from 2 ratings</span></span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/2026/11/2d3e3f19c37641152732f0f0e2758f60.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Macro</span>
+                                                                                    <span class="plugin-card-size">4 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/23" class="plugin-card-link">Liquidora</a></h2>
+                        <p class="plugin-card-text">Liquidora is a free Apple Liquid Glass title effect for DaVinci Resolve. Simply drag it onto your timeline and customize everything to your liking — from refraction, blur and glow…</p>
+                        <p class="plugin-card-meta">by Brawliking &middot; <span class="plugin-card-meta-item">17 Nov 2026 &middot;</span> <span class="plugin-card-meta-item">5 downloads &middot;</span> <span class="rating-inline is-empty">No ratings yet</span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/2026/11/fa42310f9d028bcf083e5c8e542c88c4.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Macro</span>
+                                                                                    <span class="plugin-card-size">25 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/22" class="plugin-card-link">Burn Away Transition</a></h2>
+                        <p class="plugin-card-text">Play with the parameters to get more results of this Transition. To get the Fire Burn effect, just make the Burn Saturation- 1.0. Change the Burn Hue to change its color. &quot;HOW TO…</p>
+                        <p class="plugin-card-meta">by editorducky &middot; <span class="plugin-card-meta-item">16 Nov 2026 &middot;</span> <span class="plugin-card-meta-item">7 downloads &middot;</span> <span class="rating-inline is-empty">No ratings yet</span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/2026/11/e2b64b9e65cf81c16adec0fcc7dd6b5f.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Macro</span>
+                                                                                    <span class="plugin-card-size">38 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/20" class="plugin-card-link">Lines Overlay FX</a></h2>
+                        <p class="plugin-card-text">This can be used as a 1 sec transition or overlay effect. Its available on both effects and generator sections on the edit page. I recommend to use it as a generator cuz u can add…</p>
+                        <p class="plugin-card-meta">by editorducky &middot; <span class="plugin-card-meta-item">16 Nov 2026 &middot;</span> <span class="plugin-card-meta-item">4 downloads &middot;</span> <span class="rating-inline is-empty">No ratings yet</span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/2026/11/c3c27d96e3118fcecb6db611ef904fe0.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Macro</span>
+                                                                                    <span class="plugin-card-size">12 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/17" class="plugin-card-link">Shader Shine for Text+ Beta</a></h2>
+                        <p class="plugin-card-text">Aunque este ajuste fue pensado específicamente para potenciar los títulos de Text+, nada te prohíbe aplicarlo sobre otros elementos en DaVinci Resolve —como un clip de video, una…</p>
+                        <p class="plugin-card-meta">by CanuDeus &middot; <span class="plugin-card-meta-item">12 Nov 2026 &middot;</span> <span class="plugin-card-meta-item">52 downloads &middot;</span> <span class="rating-inline is-empty">No ratings yet</span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/2026/11/6e6a0ae5230b66cfdd9e9b0b6e2ba316.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Macro</span>
+                                                                                    <span class="plugin-card-size">16 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/16" class="plugin-card-link">Text Reveal</a></h2>
+                        <p class="plugin-card-text">Reveal a key word on a colored box with a smooth left-to-right wipe. Change the text, font, and colors to match your style.</p>
+                        <p class="plugin-card-meta">by SEKOUBERTHE &middot; <span class="plugin-card-meta-item">10 Nov 2026 &middot;</span> <span class="plugin-card-meta-item">40 downloads &middot;</span> <span class="rating-inline is-empty">No ratings yet</span></p>
+                    </article>
+                                                            <article class="plugin-card">
+                                                <img class="plugin-card-cover" src="/thumbnails/community-plugins/clipyx/2026/11/aa84c3d2a490d64c06b3d857d8531a5c.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                                                <div class="plugin-card-head">
+                            <span class="plugin-tag">Macro</span>
+                                                                                    <span class="plugin-card-size">17 KB</span>
+                        </div>
+                        <h2 class="plugin-card-title" data-signature="off"><a href="/community/plugins/13" class="plugin-card-link">Texturize</a></h2>
+                        <p class="plugin-card-text">Ever wanted a fast and easy way to apply texture to a text or image to make it blend with the background? Now you can! You can change the foreground texture, as well as the border…</p>
+                        <p class="plugin-card-meta">by Diovani &middot; <span class="plugin-card-meta-item">3 Nov 2026 &middot;</span> <span class="plugin-card-meta-item">41 downloads &middot;</span> <span class="rating-inline is-empty">No ratings yet</span></p>
+                    </article>
+                                    </div>
+                            </div>
+                        
+            <div class="panel panel-section " id="community-threads">
+                    <div class="threads-layout">
+                    <div class="discussion-list">
+                                                                                                                    <div class="discussion-item">
+                                    <a href="/thread?id=11&amp;back=%2Fcommunity%3Fview%3Dthreads%26thread_search%3D%26thread_type%3Dall%26thread_sort%3Dnewest" class="discussion-card-link" aria-label="View Why don&#039;t Python apps open in free Resolve 21.1.2?"></a>
+                                        <div class="discussion-card-header">
+                                            <div class="discussion-card-flags">
+                                                <span class="thread-type tag-qna">Q&amp;A</span>
+                                                                                                    <span class="pin-badge">
+                                                        <svg class="iconizo iconizo--small" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-pin"></use></svg>
+                                                        Pinned
+                                                    </span>
+                                                                                            </div>
+                                            <div class="discussion-date">
+                                                <div>28 Oct 2026</div>
+                                                <div>14:35</div>
+                                            </div>
+                                        </div>
+                                        <div class="discussion-title">Why don&#039;t Python apps open in free Resolve 21.1.2?</div>
+                                        <div class="discussion-footer">
+                                            <div class="discussion-meta">by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                            <div class="discussion-stats">1 reply</div>
+                                        </div>
+                                        <div class="discussion-meta">Q&amp;A • by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                </div>
+                                                                                            <div class="discussion-item">
+                                    <a href="/thread?id=10&amp;back=%2Fcommunity%3Fview%3Dthreads%26thread_search%3D%26thread_type%3Dall%26thread_sort%3Dnewest" class="discussion-card-link" aria-label="View What is Watchizo, and what does it fix?"></a>
+                                        <div class="discussion-card-header">
+                                            <div class="discussion-card-flags">
+                                                <span class="thread-type tag-qna">Q&amp;A</span>
+                                                                                            </div>
+                                            <div class="discussion-date">
+                                                <div>25 Oct 2026</div>
+                                                <div>16:17</div>
+                                            </div>
+                                        </div>
+                                        <div class="discussion-title">What is Watchizo, and what does it fix?</div>
+                                        <div class="discussion-footer">
+                                            <div class="discussion-meta">by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                            <div class="discussion-stats">0 replies</div>
+                                        </div>
+                                        <div class="discussion-meta">Q&amp;A • by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                </div>
+                                                                                            <div class="discussion-item">
+                                    <a href="/thread?id=4&amp;back=%2Fcommunity%3Fview%3Dthreads%26thread_search%3D%26thread_type%3Dall%26thread_sort%3Dnewest" class="discussion-card-link" aria-label="View DaVinci Resolve 21.1: what changed for Fusion and scripting?"></a>
+                                        <div class="discussion-card-header">
+                                            <div class="discussion-card-flags">
+                                                <span class="thread-type tag-qna">Q&amp;A</span>
+                                                                                            </div>
+                                            <div class="discussion-date">
+                                                <div>3 Oct 2026</div>
+                                                <div>13:36</div>
+                                            </div>
+                                        </div>
+                                        <div class="discussion-title">DaVinci Resolve 21.1: what changed for Fusion and scripting?</div>
+                                        <div class="discussion-footer">
+                                            <div class="discussion-meta">by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                            <div class="discussion-stats">0 replies</div>
+                                        </div>
+                                        <div class="discussion-meta">Q&amp;A • by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                </div>
+                                                                                            <div class="discussion-item">
+                                    <a href="/thread?id=5&amp;back=%2Fcommunity%3Fview%3Dthreads%26thread_search%3D%26thread_type%3Dall%26thread_sort%3Dnewest" class="discussion-card-link" aria-label="View How do I install Fusion presets, DRFX files and Fuses in DaVinci Resolve?"></a>
+                                        <div class="discussion-card-header">
+                                            <div class="discussion-card-flags">
+                                                <span class="thread-type tag-qna">Q&amp;A</span>
+                                                                                            </div>
+                                            <div class="discussion-date">
+                                                <div>3 Oct 2026</div>
+                                                <div>13:36</div>
+                                            </div>
+                                        </div>
+                                        <div class="discussion-title">How do I install Fusion presets, DRFX files and Fuses in DaVinci Resolve?</div>
+                                        <div class="discussion-footer">
+                                            <div class="discussion-meta">by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                            <div class="discussion-stats">0 replies</div>
+                                        </div>
+                                        <div class="discussion-meta">Q&amp;A • by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                </div>
+                                                                                            <div class="discussion-item">
+                                    <a href="/thread?id=6&amp;back=%2Fcommunity%3Fview%3Dthreads%26thread_search%3D%26thread_type%3Dall%26thread_sort%3Dnewest" class="discussion-card-link" aria-label="View Fusion Merge inputs explained: background, foreground and mask"></a>
+                                        <div class="discussion-card-header">
+                                            <div class="discussion-card-flags">
+                                                <span class="thread-type tag-qna">Q&amp;A</span>
+                                                                                            </div>
+                                            <div class="discussion-date">
+                                                <div>3 Oct 2026</div>
+                                                <div>13:36</div>
+                                            </div>
+                                        </div>
+                                        <div class="discussion-title">Fusion Merge inputs explained: background, foreground and mask</div>
+                                        <div class="discussion-footer">
+                                            <div class="discussion-meta">by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                            <div class="discussion-stats">0 replies</div>
+                                        </div>
+                                        <div class="discussion-meta">Q&amp;A • by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                </div>
+                                                                                            <div class="discussion-item">
+                                    <a href="/thread?id=7&amp;back=%2Fcommunity%3Fview%3Dthreads%26thread_search%3D%26thread_type%3Dall%26thread_sort%3Dnewest" class="discussion-card-link" aria-label="View How to create a typewriter animation with Text+ Write On"></a>
+                                        <div class="discussion-card-header">
+                                            <div class="discussion-card-flags">
+                                                <span class="thread-type tag-qna">Q&amp;A</span>
+                                                                                            </div>
+                                            <div class="discussion-date">
+                                                <div>3 Oct 2026</div>
+                                                <div>13:36</div>
+                                            </div>
+                                        </div>
+                                        <div class="discussion-title">How to create a typewriter animation with Text+ Write On</div>
+                                        <div class="discussion-footer">
+                                            <div class="discussion-meta">by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                            <div class="discussion-stats">0 replies</div>
+                                        </div>
+                                        <div class="discussion-meta">Q&amp;A • by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                </div>
+                                                                                            <div class="discussion-item">
+                                    <a href="/thread?id=8&amp;back=%2Fcommunity%3Fview%3Dthreads%26thread_search%3D%26thread_type%3Dall%26thread_sort%3Dnewest" class="discussion-card-link" aria-label="View How to make a Fusion title slide in, pause and slide out smoothly"></a>
+                                        <div class="discussion-card-header">
+                                            <div class="discussion-card-flags">
+                                                <span class="thread-type tag-qna">Q&amp;A</span>
+                                                                                            </div>
+                                            <div class="discussion-date">
+                                                <div>3 Oct 2026</div>
+                                                <div>13:36</div>
+                                            </div>
+                                        </div>
+                                        <div class="discussion-title">How to make a Fusion title slide in, pause and slide out smoothly</div>
+                                        <div class="discussion-footer">
+                                            <div class="discussion-meta">by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                            <div class="discussion-stats">0 replies</div>
+                                        </div>
+                                        <div class="discussion-meta">Q&amp;A • by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                </div>
+                                                                                            <div class="discussion-item">
+                                    <a href="/thread?id=9&amp;back=%2Fcommunity%3Fview%3Dthreads%26thread_search%3D%26thread_type%3Dall%26thread_sort%3Dnewest" class="discussion-card-link" aria-label="View Do Fusion presets and Clipyx tools need DaVinci Resolve Studio?"></a>
+                                        <div class="discussion-card-header">
+                                            <div class="discussion-card-flags">
+                                                <span class="thread-type tag-qna">Q&amp;A</span>
+                                                                                            </div>
+                                            <div class="discussion-date">
+                                                <div>3 Oct 2026</div>
+                                                <div>13:36</div>
+                                            </div>
+                                        </div>
+                                        <div class="discussion-title">Do Fusion presets and Clipyx tools need DaVinci Resolve Studio?</div>
+                                        <div class="discussion-footer">
+                                            <div class="discussion-meta">by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                            <div class="discussion-stats">0 replies</div>
+                                        </div>
+                                        <div class="discussion-meta">Q&amp;A • by <a href="/profile?id=1" class="profile-user-link">Clipyx</a></div>
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+        <footer id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact us</h2>
+                <p>Questions about a tool, need help, or want to collaborate? Send us a message.</p>
+
+                <div class="contact-email">
+                    <span class="email-label">Email</span>
+                    <a href="mailto:contact@clipyx.com" class="email-address">contact@clipyx.com</a>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@clipyxstudio" target="_blank" rel="noopener" class="btn">
+                        <svg style="pointer-events: none;" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.582 6.186a2.685 2.685 0 00-1.884-1.898C18.032 3.84 12 3.84 12 3.84s-6.032 0-7.698.448a2.685 2.685 0 00-1.884 1.898C1.97 7.864 1.97 12 1.97 12s0 4.136.448 5.814a2.685 2.685 0 001.884 1.898C5.968 20.16 12 20.16 12 20.16s6.032 0 7.698-.448a2.685 2.685 0 001.884-1.898c.448-1.678.448-5.814.448-5.814s0-4.136-.448-5.814zM9.985 15.53v-7.06L15.6 12l-5.615 3.53z"/></svg>
+                        <span style="pointer-events: none;">YouTube</span>
+                    </a>
+                    <a href="https://discord.gg/upXM4VSp7n" target="_blank" rel="noopener" class="btn">
+                        <svg style="pointer-events: none;" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3333-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3333-.946 2.4189-2.1568 2.4189z"/></svg>
+                        <span style="pointer-events: none;">Discord</span>
+                    </a>
+                </div>
+            </div>
+
+            <form class="dry-form" action="/contact-submit" method="POST" data-contact-form>
+                <input type="hidden" name="csrf_token" value="6ec7d508f0da4778ecb1aecd3aa6c4381978782df1adc3cac381eb02a7401aa4"><input type="hidden" name="return_to" value="/community"><input type="text" name="website" value="" autocomplete="off" tabindex="-1" aria-hidden="true" hidden><div class="contact-form-status" data-contact-status aria-live="polite"></div>                                <div class="contact-fields" style="display: contents;">
+                    <div class="form-group">
+                        <label for="contact-email">Your email</label>
+                        <input type="email" id="contact-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+                    </div>
+                </div>
+                <button type="submit" name="submit_contact" class="btn">
+                    <span style="pointer-events: none;">Send message</span>
+                </button>
+            </form>
+        </div>
+        <div class="footer-bottom">
+            <nav class="footer-legal" aria-label="Legal and contact information">
+    <a href="/pricing">Pricing</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/terms#refunds">Refunds</a>
+    <a href="/contact">Contact</a>
+</nav>
+            <p>&copy; 2026 Clipyx. All rights reserved.</p>
+        </div>
+    </footer>
+    <script nonce="X4tbphZ7DVT5NEX9rVTY4g" src="/node-effects.js?v=68"></script>
+</body>
+</html>

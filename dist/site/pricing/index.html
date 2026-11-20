@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0c0c0c">
+    <meta name="description" content="Clipyx plans: Free today, with Clipyx subscriptions coming soon.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Clipyx">
+    <meta property="og:title" content="Pricing | Clipyx">
+    <meta property="og:description" content="Clipyx plans: Free today, with Clipyx subscriptions coming soon.">
+    <meta property="og:url" content="/pricing">
+    <meta property="og:image" content="/media/og-clipyx-4.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Clipyx's home page: Master The Node. Elevate Your Edits., the Latest news and the Fusion node buttons">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pricing | Clipyx">
+    <meta name="twitter:description" content="Clipyx plans: Free today, with Clipyx subscriptions coming soon.">
+    <meta name="twitter:image" content="/media/og-clipyx-4.jpg">
+    <link rel="canonical" href="/pricing">
+    <title>Pricing | Clipyx</title>
+    <link rel="icon" href="/media/icon-48.png?v=2" type="image/png" sizes="48x48">
+    <link rel="icon" href="/media/clipyx-icon.svg?v=1" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/media/apple-touch-icon.png?v=4" sizes="180x180">
+    <link rel="preload" href="/fonts/InterVariable-latin.woff2?v=4.1" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css?v=229">
+    <style nonce="umHks0RECiaDmAYNWEmEPQ">
+        .store-page-header { text-align: center; padding: 60px 20px 30px; }
+        .store-page-header h1 { font-family: var(--font-body); font-size: clamp(1.9rem, 3.6vw, 3.3rem); font-weight: 800; line-height: 1.08; letter-spacing: -1.5px; max-width: 880px; margin: 0 auto 16px; text-wrap: balance; }
+        .store-page-header p { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+        /* Four plan boxes on the product card's look (hairline, panel corners, the surface fill; no lift, no shadow):
+           four across on desktops, two by two on tablets, one column on phones. Each box has a head (the name, and
+           "Coming soon" with a lock on a locked plan), then what the plan offers as a checked list under the line
+           that says what it builds on. A locked plan is the same box, dimmed: the darker fill, muted text, grey checks. */
+        .plans { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-5); width: 90%; max-width: var(--content-wide); margin: 0 auto; padding: var(--space-4) 0 var(--space-10); list-style: none; }
+        .plan-card { display: flex; flex-direction: column; border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-surface); }
+        .plan-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: 68px; padding: 0 var(--space-6); border-bottom: var(--border-hairline) solid var(--color-border-subtle); }
+        .plan-head h2 { margin: 0; color: var(--color-text); font-size: var(--text-card); font-weight: var(--weight-bold); letter-spacing: var(--tracking-heading); }
+        .plan-badge { display: inline-flex; align-items: center; gap: var(--space-1); margin: 0; padding: 2px var(--space-2); border-radius: var(--radius-tag); background: var(--color-panel); color: var(--color-muted); font-size: var(--text-label); font-weight: var(--weight-semibold); white-space: nowrap; }
+        .plan-badge .iconizo { width: 12px; height: 12px; }
+        .plan-body { display: flex; flex: 1 0 auto; flex-direction: column; padding: var(--space-5) var(--space-6) var(--space-6); }
+        .plan-from { margin: 0 0 var(--space-4); color: var(--color-subtle); font-size: var(--text-small); font-weight: var(--weight-semibold); }
+        .plan-includes { display: grid; gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+        .plan-includes li { display: grid; grid-template-columns: 16px minmax(0, 1fr); column-gap: var(--space-3); }
+        .plan-includes .iconizo { width: 16px; height: 16px; margin-top: 2px; color: var(--color-accent); }
+        .plan-includes strong { display: block; color: var(--color-text); font-size: var(--text-small); font-weight: var(--weight-semibold); line-height: 1.45; }
+        .plan-includes span { display: block; margin-top: 2px; color: var(--color-muted); font-size: var(--text-small); line-height: 1.5; }
+        .plan-foot { margin-top: auto; padding-top: var(--space-6); }
+        .plan-foot .btn { width: 100%; justify-content: center; }
+        .plan-state { margin: 0; color: var(--color-muted); font-size: var(--text-small); }
+        .plan-card--locked { background: var(--color-section); }
+        .plan-card--locked h2, .plan-card--locked .plan-includes strong { color: var(--color-muted); }
+        .plan-card--locked .plan-includes span { color: var(--color-subtle); }
+        .plan-card--locked .plan-includes .iconizo { color: var(--color-border-strong); }
+        @media (max-width: 1000px) {
+            .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 600px) {
+            .plans { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); width: auto; padding: var(--space-2) var(--gutter) var(--space-10); }
+            .plan-head { min-height: 56px; padding: 0 var(--space-5); }
+            .plan-body { padding: var(--space-4) var(--space-5) var(--space-5); }
+        }
+    </style>
+    <link rel="stylesheet" href="/theme.css?v=20261119-no-tint">
+    <script nonce="umHks0RECiaDmAYNWEmEPQ" src="/living-signal-grid.js?v=20261026-no-reveal" defer></script>
+    <script nonce="umHks0RECiaDmAYNWEmEPQ" src="/hero-letters.js?v=20261026-springy-titles" defer></script>
+</head>
+<body>
+<nav class="navbar">
+        <a href="" class="logo-link">
+            <img src="/media/site%20logo.png?v=3" alt="Clipyx Logo" class="logo-img" width="107" height="40">
+        </a>
+        <details class="nav-menu">
+            <summary aria-label="Menu"><svg class="iconizo nav-menu__open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-menu"></use></svg><svg class="iconizo nav-menu__close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-x"></use></svg></summary>
+        </details>
+        <div class="nav-links" style="column-gap: clamp(var(--space-3), calc(var(--space-3) + (100vw - 769px) * 0.0232), var(--space-5));">
+            <a href="" data-nav="home">Home</a>
+            <a href="/store/" data-nav="store">Store</a>
+            <a href="/library/" data-nav="library">Library</a>
+            <a href="/studio/" data-nav="studio">Studio</a>
+            <a href="/community" data-nav="community">Community</a>
+            <a href="/pricing" data-nav="pricing" aria-current="page">Pricing</a>
+            <a href="/contact" data-nav="contact">Contact</a>
+            <div class="nav-auth">
+                <a href="/login" class="nav-login-link" data-nav="login">Login</a>
+            </div>
+        </div>
+    </nav>
+    <script nonce="umHks0RECiaDmAYNWEmEPQ" src="/site-nav.js?v=1" defer></script>
+
+    <main class="store-main">
+        <div class="store-page-header">
+            <h1>Pricing</h1>
+            <p>Clipyx subscriptions coming soon.</p>
+        </div>
+
+        <ul class="plans" aria-label="Plans">
+                        <li class="plan-card" data-plan="free">
+                <div class="plan-head">
+                    <h2>Free</h2>
+                                    </div>
+                <div class="plan-body">
+                    <p class="plan-from">Included</p>
+                    <ul class="plan-includes">
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>Plugins and effects</strong><span>For DaVinci Resolve</span></div></li>
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>The Library</strong><span>Expressions, motion graphics, node trees and scripts</span></div></li>
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>Community</strong><span>Members&#039; plugins, presets and threads</span></div></li>
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>Clipyx Studio and Planizo</strong><span>Web tools and a planner for video creators</span></div></li>
+                                            </ul>
+                                        <div class="plan-foot">
+                                                <a class="btn btn--primary" href="/register"><span style="pointer-events: none;">Create a free account</span></a>
+                                            </div>
+                                    </div>
+            </li>
+                        <li class="plan-card plan-card--locked" data-plan="pro">
+                <div class="plan-head">
+                    <h2>Pro</h2>
+                                        <p class="plan-badge"><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-lock"></use></svg>Coming soon</p>
+                                    </div>
+                <div class="plan-body">
+                    <p class="plan-from">Everything in Free, plus</p>
+                    <ul class="plan-includes">
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>Botizo</strong><span>Clipyx&#039;s AI assistant, on botizo.ai and in Planizo</span></div></li>
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>AI credits every month</strong><span>For answers, motion graphics and Resolve timelines</span></div></li>
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>Storage</strong><span>For your chats, files and motion graphics</span></div></li>
+                                            </ul>
+                                    </div>
+            </li>
+                        <li class="plan-card plan-card--locked" data-plan="max">
+                <div class="plan-head">
+                    <h2>Max</h2>
+                                        <p class="plan-badge"><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-lock"></use></svg>Coming soon</p>
+                                    </div>
+                <div class="plan-body">
+                    <p class="plan-from">Everything in Pro, plus</p>
+                    <ul class="plan-includes">
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>More AI credits</strong></div></li>
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>More storage</strong></div></li>
+                                            </ul>
+                                    </div>
+            </li>
+                        <li class="plan-card plan-card--locked" data-plan="ultra">
+                <div class="plan-head">
+                    <h2>Ultra</h2>
+                                        <p class="plan-badge"><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-lock"></use></svg>Coming soon</p>
+                                    </div>
+                <div class="plan-body">
+                    <p class="plan-from">Everything in Max, plus</p>
+                    <ul class="plan-includes">
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>The most AI credits</strong></div></li>
+                                                <li><svg class="iconizo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-check"></use></svg><div><strong>The most storage</strong></div></li>
+                                            </ul>
+                                    </div>
+            </li>
+                    </ul>
+    </main>
+
+    <footer class="site-footer">
+    <div class="footer-bottom">
+        <nav class="footer-legal" aria-label="Legal and contact information">
+    <a href="/pricing">Pricing</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/terms#refunds">Refunds</a>
+    <a href="/contact">Contact</a>
+</nav>
+        <p>&copy; 2026 Clipyx. All rights reserved.</p>
+    </div>
+</footer>
+    <script nonce="umHks0RECiaDmAYNWEmEPQ" src="/chat-widget.js?v=32"></script>
+</body>
+</html>

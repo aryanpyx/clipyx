@@ -1,0 +1,21 @@
+{
+  "name": "Graphizo - Stacked Formats",
+  "notes": "Three formats stacked per quarter.",
+  "chart": "stacked_bar",
+  "look": "studio_lime",
+  "canvas": "youtube",
+  "data": "Quarter,Videos,Shorts,Lives\nQ1,820,340,120\nQ2,910,520,160\nQ3,980,760,150\nQ4,1120,940,210",
+  "title": "WATCH TIME BY FORMAT",
+  "subtitle": "Hours watched per quarter | illustrative data",
+  "legend": "legend",
+  "number_style": "thousands",
+  "bars": {
+    "width": 0.56
+  },
+  "animation": {
+    "playback": "entrance",
+    "duration": 50,
+    "ease": "ease_out",
+    "stagger": 0.45
+  }
+}

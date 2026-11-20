@@ -1,0 +1,25 @@
+{
+  "name": "Graphizo - Price Scatter",
+  "notes": "Each row is a point: the first value column is X, the second is Y.",
+  "chart": "scatter",
+  "look": "midnight",
+  "canvas": "youtube",
+  "data": "Product,Price,Rating\nAlpha,199,4.1\nBravo,349,4.6\nCirrus,129,3.7\nDelta,499,4.8\nEcho,259,4.0\nFlux,89,3.4\nGlow,399,4.3",
+  "title": "PRICE VS RATING",
+  "subtitle": "Price in dollars (across), rating out of 5 (up) | illustrative data",
+  "y_range": [
+    3,
+    5
+  ],
+  "lines": {
+    "marker": "circle",
+    "marker_size": 32
+  },
+  "animation": {
+    "playback": "entrance",
+    "build": "grow",
+    "duration": 40,
+    "ease": "back_out",
+    "stagger": 0.5
+  }
+}

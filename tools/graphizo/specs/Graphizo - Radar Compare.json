@@ -1,0 +1,27 @@
+{
+  "name": "Graphizo - Radar Compare",
+  "notes": "Two products compared on six axes, on a fixed 0-10 scale.",
+  "chart": "radar",
+  "look": "midnight",
+  "canvas": "youtube",
+  "data": "Feature,Phone A,Phone B\nCamera,9,7\nBattery,6,9\nScreen,8,8\nSpeed,9,6\nPrice,5,8\nDesign,8,7",
+  "title": "HEAD TO HEAD",
+  "subtitle": "Review scores out of 10 | illustrative data",
+  "legend": "legend",
+  "y_range": [
+    0,
+    10
+  ],
+  "lines": {
+    "width": 4,
+    "marker": "circle",
+    "marker_size": 10,
+    "area_opacity": 0.22
+  },
+  "animation": {
+    "playback": "entrance",
+    "build": "grow",
+    "duration": 45,
+    "ease": "back_out"
+  }
+}

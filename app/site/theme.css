@@ -1,0 +1,1811 @@
+/* Clipyx design system v1. Canonical values: see ../DESIGN_SYSTEM.md.
+   Load AFTER style.css and page-specific styles. */
+:root {
+    color-scheme: dark;
+
+    /* Palette */
+    --color-canvas: #0c0c0c;
+    --color-deep: #070707;
+    --color-section: #101010;
+    --color-panel: #181818;
+    /* Cards, buttons and fields follow the site admin's look (owner, 2026-10-17: "make the whole website look like the
+       admin buttons and boxes and highlight-wise"): dark boxes with hairline borders, lime highlights. */
+    --color-surface: #121212;
+    --color-surface-hover: #222222;
+    --color-border: #2a2a2a;
+    --color-border-subtle: #2a2a2a; /* the same hairline as --color-border since 20261111-styles-1 */
+    --color-border-hover: #383838;
+    --color-border-strong: #515151;
+    --color-text: #f4f4f4;
+    --color-muted: #a8a8a8;
+    --color-subtle: #858585;
+    --color-accent: #bfff00;
+    --color-accent-hover: #d1ff4d;
+    --color-on-accent: #0c0c0c;
+    /* The lime tint: leaving. Nothing on the site paints a box with it since 20261119-no-tint (owner, 2026-11-19: "looks
+       vibe coded"); only the home news' current line still reads its edge colour. The names stay so a page holding an
+       older stylesheet still resolves them. Never use them for anything new. */
+    --color-accent-tint: #2b3d12;
+    --color-accent-tint-hover: #34491a;
+    --color-accent-tint-border: #4a6619;
+    /* The main button (owner, 2026-11-19, option A of four whole systems on a local page): a lime fill, and everything
+       on it black: the label, an icon, the hover dot. It was white for a day (2026-11-18) and lime-tinted before that
+       ("looks vibe coded"). A control that is merely on is quieter than the main button: the grey --color-pressed
+       with a --color-border-strong edge, a white label and at most one lime mark. */
+    --color-primary: #bfff00;
+    --color-primary-hover: #d1ff4d;
+    --color-primary-active: #a6de00;
+    --color-on-primary: #0c0c0c;
+    --color-pressed: #262626;
+    --color-pressed-hover: #2e2e2e;
+    --color-success: #a6e3a1;
+    --color-warning: #f5cf78;
+    --color-danger: #ff8b83;
+    --color-info: #88c8ff;
+    /* Orange: only "Studio required" on community plugins (owner, 2026-10-28: "Studio required" in orange). */
+    --color-orange: #ffa657;
+    /* Pink: only the word "Required" after a Planizo step's title (owner, 2026-11-19: "shown in pink"). */
+    --color-pink: #ff9ad5;
+    /* Silver: the home hero's hairlines and revealed expressions (owner 2026-10-11: silver, no glow). */
+    --color-silver: #c9cbd1;
+    --silver-rgb: 201, 203, 209;
+    /* Gold: the first supporters' names on the product pages (owner 2026-10-16: "make their names golden"). */
+    --color-gold: #f0c35a;
+    /* The hero's phone smoke (--smoke-rgb); --beam-rgb is unused since the canvas beam. */
+    --smoke-rgb: 92, 160, 52;
+    --beam-rgb: 230, 234, 246;
+    --color-focus: var(--color-accent);
+
+    /* Type: Inter's variable fonts, 400–900 in use, with matching italics and optical sizes; preserve the existing
+       weight scale. */
+    --font-body: 'Inter', Arial, Helvetica, sans-serif;
+    --font-mono: var(--font-body);
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 800;
+    --text-label: 0.75rem;
+    --text-fine: 0.6875rem; /* fine print only, e.g. the one-line reviews note */
+    --text-small: 0.875rem;
+    --text-body: 1rem;
+    --text-lead: 1.125rem;
+    --text-card: 1.25rem;
+    --text-section: clamp(1.875rem, 3.4vw, 3rem);
+    --text-page: clamp(2.25rem, 4.5vw, 4rem);
+    --text-display: clamp(2.5rem, 6vw, 5.125rem); /* 82px at most since 20261111-styles-2: the hero sits on the 1200px width */
+    --leading-tight: 1.05;
+    --leading-heading: 1.15;
+    --leading-body: 1.65;
+    --tracking-heading: 0; /* Inter's display shapes (its optical sizes) need no tightening */
+    --tracking-label: 0; /* labels are sentence case since 20261027-no-caps (owner: "i dont wanna see ALL CAPS titles anywhere"), so no capital tracking */
+    --signature-dot-content: ".";
+    --signature-dot-tracking: 0;
+    --back-icon-size: 20px;
+
+    /* Four-pixel rhythm */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-20: 80px;
+    --space-section: clamp(48px, 7vw, 96px);
+    --content-wide: 1200px;
+    --content-reading: 1000px;
+    --gutter: clamp(20px, 5vw, 72px);
+
+    /* Geometry, stroke weight and depth */
+    --border-hairline: 1px;
+    --border-control: 1px;
+    --border-depth: 1px; /* flat: no tactile bottom edge since the admin look (2026-10-17) */
+    --radius-node: 3px;
+    --radius-tag: 4px;
+    --radius-control: 8px;
+    --radius-panel: 12px;
+    --radius-pill: 999px;
+    --control-height: 44px;
+    --control-padding-x: 18px;
+    --control-padding-y: 12px;
+    --focus-width: 2px;
+    --focus-offset: 2px;
+    --shadow-card: none;
+    --shadow-popover: 0 16px 36px rgb(0 0 0 / 0.35);
+
+    /* Motion */
+    --duration-press: 80ms;
+    --duration-fast: 160ms;
+    --duration-base: 240ms;
+    --duration-settle: 520ms;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --hover-lift: 0px;
+    --press-travel: 0px;
+
+    /* Canvas values are read by living-signal-grid.js; RGB triples are intentional. */
+    --signal-sitewide: 1;
+    --signal-hero-only: 1;
+    --signal-continuous: 1;
+    --signal-cell-x: 56;
+    --signal-cell-y: 28;
+    --signal-line-rgb: 126, 139, 116;
+    --signal-accent-rgb: 191, 255, 0;
+    --signal-line-alpha: 0.13;
+    --signal-radius: 230;
+    --signal-displacement: 24;
+    --signal-spring: 125;
+    --signal-damping: 18;
+    --signal-idle-ms: 1100;
+    --signal-edge-fade: 240;
+    --signal-separator-height: 3;
+
+    /* Compatibility aliases for existing public components. */
+    --bg-main: var(--color-canvas);
+    --bg-deep: var(--color-deep);
+    --bg-section: var(--color-section);
+    --bg-card: var(--color-surface);
+    --bg-card-hover: var(--color-surface-hover);
+    --bg-panel: var(--color-panel);
+    --bg-color: var(--color-canvas);
+    --border-soft: var(--color-border);
+    --surface-shadow: var(--color-deep);
+    --text-main: var(--color-text);
+    --text-muted: var(--color-muted);
+    --accent: var(--color-accent);
+    --accent-yellow: var(--color-accent);
+    --clipyx-surface: var(--color-surface);
+    --clipyx-surface-hover: var(--color-surface-hover);
+    --clipyx-deep: var(--color-deep);
+    --clipyx-deeper: var(--color-panel);
+    --clipyx-border: var(--color-border);
+    --clipyx-border-soft: var(--color-border-subtle);
+    --clipyx-text: var(--color-text);
+    --clipyx-muted: var(--color-muted);
+    --clipyx-accent: var(--color-accent);
+    --fusion-grid-bg: var(--color-canvas);
+    --fusion-grid-line: #151515;
+    --fusion-grid-separator: var(--color-border-subtle);
+    --node-face: #2e3036;
+    --node-face-hover: #353741;
+    --node-edge: var(--color-deep);
+    --node-highlight: rgb(255 255 255 / 0.12);
+    --node-pin-green: #aaff00;
+    --node-pin-yellow: #ffe200;
+    --node-pin-blue: #20b8ff;
+    --node-pin-gray: #cfd6d3;
+    --node-title-line: var(--color-accent);
+    --node-link: #c8c8c8;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--color-text);
+    background-color: var(--color-canvas);
+}
+
+/* Page background: the plain canvas (owner 2026-10-11: no grid, no film grain, no glow). */
+body.signal-page {
+    position: relative;
+    isolation: isolate;
+    /* Suppress the legacy body grid, including when an older script is cached. */
+    background-image: none !important;
+}
+.site-signal-grid {
+    /* One document-sized layer (the class keeps its historical name): the section lines on ::after. */
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+/* No decoration on any page: no smoke since 2026-10-25 (owner: "remove the smoke from the rest of the pages"; the home
+   page went dry on 2026-10-24), and no margin node since 20261025-no-node (owner: "I actually don't like the node ...
+   Remove it. Let's keep it pure black for now"). The smoke drifts' still tile (/media/site-smoke.svg) and living-smoke.js
+   are no longer used; should a cached old script still draw the live drifts or the node, they stay hidden. */
+.site-smoke-live, .site-node-layer { display: none; }
+.site-signal-grid::after {
+    /* Original full-width section lines, measured by node-effects.js. */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--signal-section-lines, none);
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+.signal-hero { isolation: isolate; }
+/* Home hero (living-signal-grid.js):
+   - its animation curve in flat strokes on a 2D canvas (.hero-curve-live, hero-curve.js; desktops with a mouse), with no
+     smoke, glow or light (owner, 2026-10-24: "No smoke, make it dry");
+   - a ghost Fusion interface in faint silver lines, shown only inside a 300px circle on the mouse. Built on the first mouse
+     movement, so phones and page-speed tests never load it. */
+.hero[data-signal-hero] { isolation: isolate; }
+/* The home hero's text runs left to right (owner, 2026-10-12: "left to right instead of centered"), in the centred
+   1200px content width the header and the card grids use (1280px until 20261111-styles-2), with the Fusion node buttons under it on the same
+   edge (owner: "put back the nodes there instead of the button. That gives us a special character"); the headline and its
+   lime dots are unchanged. */
+.hero.hero-split { align-items: stretch; text-align: left; }
+.hero-split .hero-content { width: min(100%, var(--content-wide)); margin-inline: auto; }
+.hero-split p { max-width: 34rem; margin: 0 0 var(--space-10); }
+.hero-split .hero-button-group { justify-content: flex-start; margin-inline: 0; }
+/* Below the desktop nodes (tablets and small windows), the conventional buttons keep their own widths on the text's edge
+   (three equal columns would spread them towards the beam); phones keep their two columns. */
+@media (min-width: 601px) { .hero-split .hero-button-group { grid-template-columns: repeat(3, max-content); } }
+.hero[data-signal-hero]::before, .hero[data-signal-hero]::after {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0 0 -180px;
+    width: auto;
+    height: auto;
+    opacity: 1;
+    filter: none;
+    transform: none;
+    pointer-events: none;
+    background-position: 0 0;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+/* No green haze on phones any more: it tinted the phone's canvas olive, unlike the desktop's plain black (owner,
+   2026-10-18: "the colors seem a little different" on mobile). */
+.hero[data-signal-hero]::before { z-index: -2; background-image: none; }
+.hero[data-signal-hero]::after { display: none; }
+@media (min-width: 769px) {
+    /* No still image from 769px: the hero is the plain canvas until the live curve draws itself in; for reduced motion it
+       stays that way. */
+    .hero[data-signal-hero]::before { background-image: none; }
+    /* The live curve (hero-curve.js): a canvas over the room its marks can reach, placed and sized in hero pixels by the
+       script. It opens by drawing the curve from its first key, so it needs no fade. */
+    .hero-curve-live {
+        position: absolute;
+        z-index: -2;
+        display: block;
+        pointer-events: none;
+    }
+}
+@media (max-width: 768px) {
+    .hero-curve-live { display: none; }
+}
+/* The floor: the hero's bottom line, which the curve's box and the ghost layout measure. */
+.hero-lines { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; animation: hero-fade-in 900ms var(--ease-out) both; }
+/* The floor line stays as the floor's position (the hero canvas and the ghost layout measure it) but is no longer drawn:
+   the separator above the products went (owner, 2026-10-14). */
+.hero-line { position: absolute; background: transparent; }
+.hero-line--h { right: 0; left: 0; height: 1px; }
+@keyframes hero-fade-in { from { opacity: 0; } }
+/* Ghost interface: faint Fusion panels, shown only inside a soft circle on the mouse whose mask
+   living-signal-grid.js draws as it moves; it grows in and out with the mouse. */
+.hero-reveal {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease-out);
+    -webkit-mask-image: radial-gradient(1px at -999px -999px, #000, transparent);
+    mask-image: radial-gradient(1px at -999px -999px, #000, transparent);
+}
+.hero-reveal.is-on { opacity: 1; }
+.hero-reveal svg { display: block; width: 100%; height: 100%; overflow: visible; }
+/* Faint but clear and sharp (owner: "a tiny bit more silvery"; a glow blurred them, so none). */
+.hero-ghost-line, .hero-ghost-strong { fill: none; stroke: rgba(var(--silver-rgb), 0.11); stroke-width: 1; }
+/* Panels and chips are filled with pixels (living-signal-grid.js sets an SVG pattern of the hero's 3px dot grid on each),
+   never a flat tint, so the reveal's soft edge cannot band (owner, 2026-10-15: "show pixels on the areas i reveal"). */
+.hero-ghost-panel { stroke: rgba(var(--silver-rgb), 0.11); stroke-width: 1; }
+/* A panel's header and foot bands: pixels only, no outline (the panel draws its own). */
+.hero-ghost-fill { stroke: none; }
+/* The pixels: one dot per 3px cell over the whole revealed area, brighter in panels and chips, and brightest in the
+   cursor's light, so its glow is made of pixels too. */
+.hero-px { fill: rgba(var(--silver-rgb), 0.14); }
+.hero-px.is-fill { fill: rgba(var(--silver-rgb), 0.22); }
+.hero-px.is-chip { fill: rgba(var(--silver-rgb), 0.3); }
+.hero-px.is-on { fill: rgba(var(--silver-rgb), 0.46); }
+.hero-px.is-lit { fill: rgba(var(--silver-rgb), 0.62); }
+/* Small glassy parts (chips, pills, swatches): a brighter pixel fill (see above). */
+.hero-ghost-chip { stroke: rgba(var(--silver-rgb), 0.11); stroke-width: 1; }
+.hero-ghost-chip.is-on { stroke: rgba(var(--silver-rgb), 0.18); }
+.hero-ghost-strong { stroke: rgba(var(--silver-rgb), 0.18); }
+.hero-ghost-text { fill: rgba(var(--silver-rgb), 0.15); font: var(--weight-regular) 11px var(--font-body); }
+.hero-ghost-text.is-strong { fill: rgba(var(--silver-rgb), 0.2); font-weight: var(--weight-semibold); }
+.hero-ghost-text.is-code { font-size: 10px; }
+.hero-ghost-text.is-mid { text-anchor: middle; }
+.hero-ghost-text.is-end { text-anchor: end; }
+/* The easter egg's hint at the Node editor's foot ("Drop a node onto another to merge"), a little brighter than the
+   labels; in the same style the Spline editor's header and the Inspector's expression field show the playing expression
+   during the egg. */
+.hero-ghost-text.is-hint { fill: rgba(var(--silver-rgb), 0.26); }
+/* The Spline editor's grid, fainter than the lines; its silver stand-in for the curve only without the live canvas. */
+.hero-ghost-grid { fill: none; stroke: rgba(var(--silver-rgb), 0.06); stroke-width: 1; }
+/* The panels' outlines and the lime dot's strip: outlines only (their headers are pixel bands); a translucent fill that
+   large showed the soft reveal's falloff as rings (owner, 2026-10-15: "the cursor glow shows bands"). */
+.hero-ghost-frame { fill: none; stroke: rgba(var(--silver-rgb), 0.11); stroke-width: 1; }
+.has-live-curve .hero-ghost-fallback { display: none; }
+/* The easter egg (living-signal-grid.js; owner, 2026-10-15: "nice easter egg with everything and expressions"): the whole
+   Fusion page brightens and the playing expression shows bright in the Spline editor's header and the Inspector. */
+.hero-reveal :is(.hero-ghost-line, .hero-ghost-panel, .hero-ghost-strong, .hero-ghost-chip, .hero-ghost-grid, .hero-ghost-frame) { transition: stroke 0.6s var(--ease-out), fill 0.6s var(--ease-out); }
+.hero-reveal .hero-ghost-text { transition: fill 0.6s var(--ease-out); }
+.is-egg .hero-reveal :is(.hero-ghost-line, .hero-ghost-panel, .hero-ghost-chip, .hero-ghost-frame) { stroke: rgba(var(--silver-rgb), 0.24); }
+.is-egg .hero-reveal .hero-ghost-strong { stroke: rgba(var(--silver-rgb), 0.4); }
+.is-egg .hero-reveal .hero-ghost-grid { stroke: rgba(var(--silver-rgb), 0.12); }
+.is-egg .hero-reveal .hero-ghost-text { fill: rgba(var(--silver-rgb), 0.34); }
+.is-egg .hero-reveal .hero-ghost-text.is-strong { fill: rgba(var(--silver-rgb), 0.5); }
+.is-egg .hero-reveal .hero-ghost-text.is-hint { fill: rgba(var(--silver-rgb), 0.72); }
+/* The light under the cursor (owner, 2026-10-13: "under my cursor, there should be a light ... a sharp glow, like the silver
+   lines that we had animated before"): a lit copy of the pieces that living-signal-grid.js shows through a small light on the
+   pointer, a layer of its own so it leads while the reveal drags behind. A sharp glow, no blur: each lit line is a bright
+   1px core over the same line 3px wide and faint. */
+.hero-reveal-light { position: absolute; inset: 0; z-index: -1; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease-out); -webkit-mask-image: radial-gradient(1px at -999px -999px, #000, transparent); mask-image: radial-gradient(1px at -999px -999px, #000, transparent); }
+.hero-reveal-light.is-on { opacity: 1; }
+/* The hero curve's ease handles (hero-curve.js): the grab cursor over one, grabbing while one is dragged. */
+[data-signal-hero].is-curve-grab { cursor: grab; }
+[data-signal-hero].is-curve-grabbing { cursor: grabbing; user-select: none; }
+/* The lime dot's track scrubs the animation (drag along it). */
+[data-signal-hero].is-curve-scrub { cursor: ew-resize; }
+[data-signal-hero].is-curve-scrubbing { cursor: ew-resize; user-select: none; }
+.hero-reveal-light svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.hero-light-edge :is(.hero-ghost-line, .hero-ghost-panel, .hero-ghost-strong, .hero-ghost-chip, .hero-ghost-frame) { fill: none; stroke: rgba(var(--silver-rgb), 0.16); stroke-width: 3; }
+.hero-light-edge .hero-ghost-text { display: none; }
+.hero-light-core :is(.hero-ghost-line, .hero-ghost-panel, .hero-ghost-chip, .hero-ghost-frame) { stroke: rgba(var(--silver-rgb), 0.72); }
+.hero-light-core .hero-ghost-strong { stroke: rgba(var(--silver-rgb), 0.95); }
+/* The light lights lines and text only: fills under its soft falloff read as a banded disc (owner, 2026-10-15: "the cursor
+   glow shows bands"). */
+.hero-light-core :is(.hero-ghost-panel, .hero-ghost-chip, .hero-ghost-frame) { fill: none; }
+.hero-light-edge .hero-ghost-fill, .hero-light-core .hero-ghost-fill { display: none; }
+.hero-light-core .hero-ghost-text { fill: rgba(var(--silver-rgb), 0.86); }
+.hero-light-core .hero-ghost-text.is-strong { fill: rgba(var(--silver-rgb), 1); }
+@media (prefers-reduced-motion: reduce) {
+    .hero-reveal { transition: none; }
+}
+.signal-page .contact-section, .signal-page .policy-page { background-color: transparent; }
+.signal-page .contact-section::before { display: none; }
+
+::selection { color: var(--color-on-accent); background: var(--color-accent); }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 88px; }
+
+:where(h1, h2, h3, h4) {
+    font-family: var(--font-body);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-heading);
+    line-height: var(--leading-heading);
+    text-wrap: balance;
+}
+
+/* Signature punctuation uses the face's naturally weight-dependent period. */
+:root body .signature-dot {
+    display: inline;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+}
+:root body .signature-dot::before,
+:root body :is(h1, h2, h3, h4, h5, h6):not([data-signature="off"])::after,
+:root body .product-card .product-info h3:not([data-signature="off"])::after {
+    content: var(--signature-dot-content) / "";
+    display: inline;
+    position: static;
+    inset: auto;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: var(--color-accent);
+    font: inherit;
+    letter-spacing: var(--signature-dot-tracking);
+    word-spacing: 0;
+    box-shadow: none;
+    transform: none;
+    filter: none;
+    opacity: 1;
+    vertical-align: baseline;
+    pointer-events: none;
+}
+
+/* The asymmetric tactile border is compensated so the SVG is box-centered. */
+.tool-back-link {
+    display: grid;
+    place-items: center;
+    width: var(--control-height);
+    height: var(--control-height);
+    min-width: var(--control-height);
+    min-height: var(--control-height);
+    padding: calc(var(--border-depth) - var(--border-control)) 0 0;
+    border: var(--border-control) solid var(--color-border);
+    border-bottom-width: var(--border-depth);
+    border-radius: var(--radius-control);
+    background: var(--color-panel);
+    color: var(--color-accent);
+    line-height: 0;
+}
+.tool-back-link svg {
+    display: block;
+    width: var(--back-icon-size);
+    height: var(--back-icon-size);
+    pointer-events: none;
+}
+
+/* Shared Iconizo select affordance; the native select retains keyboard/touch behavior. */
+.iconizo-select, .upload-select-field, .thread-tool-group--compact { position: relative; }
+.iconizo-select { display: block; }
+.iconizo-select::after, .upload-select-field::after, .thread-tool-group--compact::after {
+    content: "";
+    position: absolute;
+    right: var(--space-3);
+    top: 50%;
+    width: var(--space-4);
+    height: var(--space-4);
+    transform: translateY(-50%);
+    background-color: var(--color-muted);
+    mask: url('/assets/iconizo/svg/chevron-down.svg?v=1.0.0') center / contain no-repeat;
+    pointer-events: none;
+}
+.iconizo-select > select, .upload-select-field > select { appearance: none; padding-right: var(--space-8); }
+/* Menus (owner, 2026-11-07: "apply the same menu style across the whole site", after Caption Animator's): where the browser
+   draws a select's list as the page styles it (customizable select: Chrome and Edge), the open list is a Clipyx popover:
+   the surface colour, a 1px border, panel corners and the popover shadow; Inter rows that brighten on hover; the chosen item
+   in accent text with an accent check, never a fill or a stripe; group names as quiet labels between hairlines. The chevron
+   (the wrappers' Iconizo mask, or a bare select's own) turns up while the list is open. Firefox and Safari keep their own. */
+@supports (appearance: base-select) {
+    select, .iconizo-select > select, .upload-select-field > select, .store-filter-select, select::picker(select) { appearance: base-select; }
+    select { cursor: pointer; }
+    /* (such a menu is as wide as its chosen item, a native one as its longest: the store's sort keeps its width) */
+    #store-sort { min-width: 11.8em; }
+    select::picker-icon {
+        content: ""; width: var(--space-4); height: var(--space-4); background-color: var(--color-muted);
+        mask: url('/assets/iconizo/svg/chevron-down.svg?v=1.0.0') center / contain no-repeat; transition: rotate var(--duration-fast) var(--ease-standard);
+    }
+    select:open::picker-icon { rotate: 180deg; }
+    :is(.iconizo-select, .upload-select-field, .thread-tool-group--compact, .store-filter-select-wrap) select::picker-icon { display: none; }
+    :is(.iconizo-select, .upload-select-field, .thread-tool-group--compact, .store-filter-select-wrap)::after { transition: transform var(--duration-fast) var(--ease-standard); }
+    :is(.iconizo-select, .upload-select-field, .thread-tool-group--compact, .store-filter-select-wrap):has(select:open)::after { transform: translateY(-50%) rotate(180deg); }
+    select::picker(select) {
+        margin-block: var(--space-1); padding: var(--space-1); border: var(--border-control) solid var(--color-border); border-radius: var(--radius-panel);
+        background: var(--color-surface); color: var(--color-text); box-shadow: var(--shadow-popover);
+        font: var(--weight-regular) var(--text-small) / 1.4 var(--font-body); scrollbar-width: thin;
+    }
+    select option, .store-filter-select option {
+        display: flex; align-items: center; gap: var(--space-3); box-sizing: border-box; min-height: 36px; padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-control); background: transparent; color: var(--color-text); font-weight: var(--weight-regular); white-space: nowrap; cursor: pointer;
+    }
+    select option:hover, select option:focus-visible, .store-filter-select option:hover, .store-filter-select option:focus-visible { background: var(--color-surface-hover); outline: none; }
+    select option:checked, .store-filter-select option:checked { color: var(--color-accent); font-weight: var(--weight-regular); }
+    select option::checkmark { order: 1; margin-left: auto; color: var(--color-accent); }
+    select option:disabled { color: var(--color-subtle); cursor: default; }
+    select optgroup { padding-top: var(--space-1); color: var(--color-subtle); font-size: var(--text-label); font-weight: 600; }
+    select optgroup + optgroup { margin-top: var(--space-1); border-top: var(--border-hairline) solid var(--color-border-subtle); }
+    select optgroup:has(+ option) { margin-bottom: var(--space-1); padding-bottom: var(--space-1); border-bottom: var(--border-hairline) solid var(--color-border-subtle); }
+    select optgroup option { font-size: var(--text-small); }
+    @media (pointer: coarse) { select option, .store-filter-select option { min-height: 44px; } }
+    @media (prefers-reduced-motion: reduce) {
+        select::picker-icon, :is(.iconizo-select, .upload-select-field, .thread-tool-group--compact, .store-filter-select-wrap)::after { transition: none; }
+    }
+}
+.upload-help-icon { border: 0; color: var(--color-accent); }
+.upload-remove-file-button { align-items: center; justify-content: center; }
+.play-btn > .iconizo { color: var(--color-on-primary); }
+.tool-back-link:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--color-border-strong);
+}
+.tool-page-header {
+    padding-left: calc(var(--control-height) + var(--space-4));
+}
+
+.hero h1 {
+    font-size: var(--text-display);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-heading);
+    margin-bottom: var(--space-6);
+}
+
+:is(.store-page-header, .tool-page-header, .portfolio-header, .dashboard-header) h1 {
+    font-size: var(--text-page);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+}
+
+.section-header h2, .contact-info h2 {
+    font-size: var(--text-section);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+}
+
+.product-info h3 { font-size: var(--text-card); font-weight: var(--weight-bold); }
+.hero p, .section-header p { font-size: var(--text-lead); line-height: var(--leading-body); }
+.product-info p, .tool-panel p, .tool-panel li, .contact-info p { font-size: var(--text-body); line-height: var(--leading-body); }
+.nav-links a { font-size: var(--text-small); font-weight: var(--weight-medium); }
+.nav-links a[aria-current="page"] { color: var(--color-accent); }
+
+.btn, .product-footer .btn {
+    min-height: var(--control-height);
+    padding: var(--control-padding-y) var(--control-padding-x);
+    gap: var(--space-2);
+    border: var(--border-control) solid var(--color-border);
+    border-bottom-width: var(--border-depth);
+    border-radius: var(--radius-control);
+    background: var(--color-panel);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    font-weight: var(--weight-bold);
+    line-height: 1.15;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-standard);
+}
+
+.btn:visited { color: var(--color-text); }
+.btn:hover { color: var(--color-text); background-color: var(--color-surface-hover); border-color: var(--color-border-hover); }
+/* Flat: style.css's old 3D press (a 2px drop, marked !important, and a thicker bottom edge) ends here. */
+.btn:active { transform: none !important; border-bottom-width: var(--border-control); }
+.btn.btn--primary, .btn.btn--primary:visited { background: var(--color-primary); color: var(--color-on-primary); border-color: var(--color-primary); }
+.btn.btn--primary:hover { background: var(--color-primary-hover); color: var(--color-on-primary); border-color: var(--color-primary-hover); }
+.btn.btn--primary:active { background: var(--color-primary-active); border-color: var(--color-primary-active); }
+/* A lime ring can't be read against a lime button: the main button's keyboard ring is white. */
+.btn.btn--primary:focus-visible, .tool-video-facade:focus-visible, .play-btn:focus-visible { outline-color: var(--color-text) !important; }
+.btn.btn--quiet { color: var(--color-text); background: var(--color-section); border-color: var(--color-border); }
+.btn.btn--quiet:hover { background: var(--color-panel); border-color: var(--color-border-hover); }
+/* The signature dot (owner, 2026-10-17: "Do the signature dot", labels white): like every heading's lime period, it
+   bounces in after the label on hover or keyboard focus and pops bigger on a click. It cancels the button's gap while
+   hidden. Not on the hero's Fusion-node buttons (their own ports and wires) or icon-only buttons. */
+.btn:not(.hero-button-group .btn):not(.profile-icon-button)::after {
+    content: ".";
+    display: inline-block;
+    width: 0;
+    margin-left: calc(-1 * var(--space-2));
+    color: var(--color-accent);
+    font-weight: 900;
+    line-height: 1;
+    transform: scale(0) translateY(0.2em);
+    transform-origin: 50% 85%;
+    transition: width 220ms var(--ease-out), margin-left 220ms var(--ease-out), transform 460ms cubic-bezier(0.34, 2, 0.5, 1);
+    pointer-events: none;
+}
+.btn:not(.hero-button-group .btn):not(.profile-icon-button):not(:disabled):not([aria-disabled="true"]):not(.btn-disabled):is(:hover, :focus-visible)::after {
+    width: 0.3em;
+    margin-left: calc(1px - var(--space-2));
+    transform: scale(1.35) translateY(0);
+}
+.btn:not(.hero-button-group .btn):not(.profile-icon-button):not(:disabled):not([aria-disabled="true"]):not(.btn-disabled):active::after { transform: scale(2); transition-duration: 90ms; }
+/* On the lime main button the dot is black, as everything on it is. */
+.btn.btn--primary:not(.hero-button-group .btn):not(.profile-icon-button)::after { color: var(--color-on-primary); }
+@media (prefers-reduced-motion: reduce) {
+    .btn::after { transition: none !important; }
+}
+.btn:disabled, .btn[aria-disabled="true"], .btn.btn-disabled {
+    color: var(--color-subtle);
+    background: var(--color-section);
+    border-color: var(--color-border-subtle);
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Intentional specialist component: Fusion node geometry and existing drag transforms. */
+.hero-button-group .btn {
+    min-height: 28px;
+    padding: 4px 18px 7px;
+    gap: 0;
+    border-width: var(--border-hairline);
+    border-radius: var(--radius-node);
+    border-color: var(--node-edge);
+    background-color: var(--node-face);
+    background-image: linear-gradient(var(--node-title-line), var(--node-title-line));
+    background-repeat: no-repeat;
+    background-position: 0 calc(100% - 3px);
+    background-size: 100% 2px;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-weight: 700;
+    line-height: 1;
+    font-size: 13px;
+    cursor: grab;
+}
+.hero-button-group .btn:hover { background-color: var(--node-face-hover); }
+/* Node wires and port markers live inside the hero (node-effects.js), so they scroll with the nodes natively instead of
+   being repositioned after each scroll. */
+.hero .node-link-layer, .hero .node-input-marker, .hero .node-output-marker { position: absolute; }
+.hero .node-link-layer { inset: 0; width: 100%; height: 100%; }
+@media (min-width: 1400px) and (hover: hover) and (pointer: fine) {
+    /* The nodes show together with their wires and ports: hidden until node-effects.js has drawn them, and shown after
+       1.5 s anyway if the script never runs. */
+    .hero-button-group:not([data-nodes-ready]) { visibility: hidden; animation: hero-nodes-failsafe 0s linear 1.5s forwards; }
+}
+@keyframes hero-nodes-failsafe { to { visibility: visible; } }
+
+/* Conventional controls for phones, tablets, small windows and touch-first devices. */
+@media (max-width: 1399px), (hover: none), (pointer: coarse) {
+    .hero[data-signal-hero] {
+        min-height: 0;
+        padding-inline: var(--gutter);
+        padding-block: clamp(64px, 9vw, 120px);
+    }
+    .hero-button-group {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-3);
+        max-width: 640px;
+        margin-inline: auto;
+    }
+    .hero-button-group .btn {
+        min-width: 0;
+        min-height: var(--space-12);
+        padding: var(--control-padding-y) var(--control-padding-x);
+        gap: var(--space-2);
+        z-index: auto;
+        overflow: hidden;
+        border: var(--border-control) solid var(--color-border);
+        border-bottom-width: var(--border-depth);
+        border-radius: var(--radius-control);
+        background: var(--color-panel);
+        color: var(--color-text);
+        font: var(--weight-bold) var(--text-small) / 1.15 var(--font-body);
+        text-shadow: none;
+        box-shadow: none;
+        cursor: pointer;
+        touch-action: manipulation;
+        /* Override legacy mobile/drag transforms, including inline node offsets. */
+        transform: none !important;
+        transition: background-color var(--duration-fast), border-color var(--duration-fast), transform var(--duration-press);
+    }
+    .hero-button-group .btn:hover {
+        background: var(--color-surface-hover);
+        border-color: var(--color-border-hover);
+        box-shadow: none;
+    }
+    .hero-button-group .btn:active {
+        transform: translateY(var(--press-travel)) !important;
+        border-bottom-width: var(--border-control);
+        box-shadow: none;
+    }
+    .hero-button-group .btn[data-node-id="products"] {
+        background: var(--color-primary);
+        color: var(--color-on-primary);
+        border-color: var(--color-primary);
+    }
+    .hero-button-group .btn[data-node-id="products"]:hover { background: var(--color-primary-hover); color: var(--color-on-primary); border-color: var(--color-primary-hover); }
+    .hero-button-group .btn::before, .hero-button-group .btn::after,
+    .hero-button-group .btn > span::before, .hero-button-group .btn > span::after,
+    .hero-button-group .hero-merge-node,
+    .node-link-layer, .node-input-marker, .node-output-marker, .node-selection-box { display: none !important; }
+    .hero-button-group .btn .hero-btn-icon {
+        display: inline-block;
+        width: var(--space-4);
+        height: var(--space-4);
+        flex: 0 0 var(--space-4);
+        color: inherit;
+        fill: currentColor;
+    }
+}
+@media (max-width: 600px) {
+    .hero[data-signal-hero] h1 { font-size: clamp(26px, 8vw, 36px); }
+    .hero-button-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-button-group .btn[data-node-id="products"] { grid-column: 1 / -1; }
+}
+
+.product-card, .preset-card, .faq-item, .tool-panel, .release-card,
+.auth-container, .upload-container, .details-card, .policy-card {
+    border-radius: var(--radius-panel);
+    border-width: var(--border-control);
+    border-color: var(--color-border-subtle);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+.product-card { transition: transform var(--duration-base) var(--ease-out), background-color var(--duration-fast), border-color var(--duration-fast); }
+.product-info { padding: var(--space-6); }
+.preset-title { font-size: var(--text-small); font-weight: var(--weight-bold); }
+.tag { border-radius: var(--radius-tag); font-size: var(--text-label); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); }
+.tool-panel h2, .auth-container :is(h1, h2), .upload-container h2, .faq-item summary { font-weight: var(--weight-bold); }
+.price { font-size: var(--text-card); font-weight: var(--weight-bold); }
+.nav-user-dropdown, .mobile-menu-panel { border-radius: var(--radius-panel); box-shadow: var(--shadow-popover); }
+/* The admin look on older parts that style.css still draws with 2px edges and 4px bottoms (owner, 2026-10-17): hairline
+   boundaries, no tactile edges or drop shadows. */
+.nav-auth { border-left-width: var(--border-hairline); }
+.nav-user-dropdown, .mobile-menu-panel { border: var(--border-hairline) solid var(--color-border); }
+.mobile-menu-toggle { border: var(--border-control) solid var(--color-border); border-radius: var(--radius-control); }
+.product-image { border-bottom: var(--border-hairline) solid var(--color-border-subtle); }
+.faq-item[open] summary { border-bottom-width: var(--border-hairline); }
+.release-card__body { border-top: var(--border-hairline) solid var(--color-border-subtle); }
+.install-paths div { border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-control); }
+.tool-video-frame, .yt-facade { border: var(--border-hairline) solid var(--color-border-subtle); }
+/* A play button is the main button: lime with a black mark (owner, 2026-11-19, option A). */
+.tool-video-play, .play-btn { border-width: var(--border-control); box-shadow: none; background-color: var(--color-primary); }
+
+.dry-form { gap: var(--space-5); }
+.form-group { gap: var(--space-2); }
+.form-group label, .email-label, .store-filter-label {
+    font-size: var(--text-label);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-label);
+}
+.dry-form input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.dry-form textarea, .dry-form select, .store-filter-select {
+    min-height: var(--control-height);
+    padding: 9px var(--space-3);
+    border: var(--border-control) solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-section);
+    color: var(--color-text);
+    font: var(--weight-regular) var(--text-body) / 1.5 var(--font-body);
+    transition: border-color var(--duration-fast), background-color var(--duration-fast);
+}
+.store-filter-select { padding-right: var(--space-8); font-size: var(--text-small); }
+.dry-form :is(input, textarea, select):focus, .store-filter-select:focus { border-color: var(--color-focus); }
+/* As in the admin, a focused field shows only its lime border, not a second ring around it. */
+.dry-form :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), textarea, select):focus-visible,
+.store-filter-select:focus-visible { outline: none !important; }
+.dry-form :is(input, textarea)::placeholder { color: var(--color-subtle); opacity: 1; }
+.dry-form :is(input[type="checkbox"], input[type="radio"]) { accent-color: var(--color-accent); }
+.contact-section .dry-form textarea { min-height: 144px; max-height: 420px; height: 144px; resize: vertical; }
+.contact-form-status { border-radius: var(--radius-control); font-size: var(--text-small); }
+/* A message box says its state in the colour of its words, on the plain panel: no tinted fill, no coloured edge. */
+.contact-form-status.is-error { color: var(--color-danger); border-color: var(--color-border); background: var(--color-surface); }
+.contact-form-status.is-success, .form-success { color: var(--color-success); border-color: var(--color-border); background: var(--color-surface); }
+
+.signal-page .faq-section { padding-block: var(--space-section); }
+/* The full-width grid line replaces the inset footer rule without changing its spacing. */
+.signal-page.signal-section-lines .footer-bottom { border-top-color: transparent; }
+.faq-item summary { gap: var(--space-4); font-weight: var(--weight-semibold); }
+.faq-item summary::after { flex-shrink: 0; }
+.faq-item[open] summary { border-bottom-color: var(--color-border-subtle); }
+.faq-item .faq-content { background: var(--color-surface); color: var(--color-muted); }
+.tool-back-link { min-width: var(--control-height); min-height: var(--control-height); }
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    max-width: var(--content-wide);
+    margin-inline: auto;
+    border-top-color: var(--color-border-subtle);
+}
+.footer-bottom > p { order: -1; margin: 0; }
+.footer-legal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    margin-top: var(--space-3);
+    font-size: var(--text-small);
+}
+.footer-legal a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--control-height);
+    color: var(--color-muted);
+    text-decoration: none;
+    text-underline-offset: var(--space-1);
+}
+.footer-legal a:hover { color: var(--color-text); text-decoration: underline; }
+.site-footer { padding: var(--space-5) var(--gutter); margin-top: auto; }
+.site-footer .footer-legal { margin-top: 0; }
+.footer-bottom .footer-legal { margin-top: 0; }
+/* Policy pages (privacy, terms); these replaced the pages' own inline style blocks on 2026-10-08. */
+.policy-page { min-height: 100vh; padding: var(--space-16) var(--space-5); background-color: var(--color-canvas); color: var(--color-text); }
+.policy-wrap { max-width: var(--content-reading); margin: 0 auto; }
+.policy-page .back-link { display: inline-block; padding: 12px 12px 12px 0; margin: -12px 0 calc(var(--space-5) - 12px); color: var(--color-muted); font-size: var(--text-small); text-decoration: none; }
+.policy-page .back-link:hover { color: var(--color-accent); }
+.policy-page .policy-card { padding: clamp(24px, 4vw, 48px); }
+.policy-page .policy-card h1 { margin-bottom: var(--space-2); font-size: var(--text-page); line-height: var(--leading-heading); }
+.policy-page .policy-card h2 { margin: var(--space-8) 0 var(--space-3); color: var(--color-text); font-size: var(--text-card); line-height: var(--leading-heading); }
+.policy-page .policy-card h3 { margin: var(--space-6) 0 var(--space-3); color: var(--color-text); font-size: var(--text-body); line-height: var(--leading-heading); }
+.policy-page .policy-card :is(p, li) { max-width: 75ch; color: var(--color-muted); line-height: var(--leading-body); overflow-wrap: anywhere; }
+.policy-page .policy-card :is(ul, ol) { padding-left: var(--space-6); }
+.policy-page .policy-card a { color: var(--color-accent); }
+.policy-page .policy-updated { margin-bottom: var(--space-6); color: var(--color-muted); }
+
+/* Intentional priority: older pages suppress outlines, including on card overlays. */
+:is(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: var(--focus-width) solid var(--color-focus) !important;
+    outline-offset: var(--focus-offset) !important;
+}
+.product-card:focus-within { border-color: var(--color-focus); }
+
+@media (hover: hover) and (pointer: fine) {
+    .product-card:hover { transform: translateY(var(--hover-lift)); border-color: var(--color-border-hover); }
+}
+@media (max-width: 768px) {
+    .navbar { padding: var(--space-4) var(--gutter); gap: var(--space-2); }
+    .navbar .logo-link { flex-basis: auto; }
+    .nav-links { gap: var(--space-1) var(--space-3); flex-wrap: wrap; }
+    .nav-links a { display: inline-flex; align-items: center; min-height: var(--control-height); font-size: var(--text-small); }
+    .auth-container { width: calc(100% - 2 * var(--gutter)); max-width: 440px; margin: var(--space-10) auto; padding: var(--space-6); }
+    .mobile-menu-toggle { width: var(--space-12); height: var(--space-12); }
+    .mobile-menu-panel { top: var(--space-16); }
+    .footer-bottom { justify-content: center; }
+    .product-info { padding: var(--space-5); }
+    .product-card:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    .product-card:hover { transform: none; }
+}
+/* Phones and small tablets, up to 768px (owner, 2026-10-18: "The website needs to look better on mobile view. Each card
+   takes almost the entire screen ... the text properly sized. Feels too big"): product cards as compact rows, the image
+   as a thumbnail beside the tags, title and two lines of text, the price and Download below. */
+@media (max-width: 768px) {
+    .product-grid { gap: var(--space-3); }
+    .product-card {
+        display: grid;
+        grid-template-columns: minmax(96px, 36%) minmax(0, 1fr);
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas: "image tags" "image title" "image copy" "footer footer";
+        column-gap: var(--space-3);
+        padding: var(--space-3);
+    }
+    .product-card .product-info { display: contents; }
+    .product-card .product-image {
+        grid-area: image;
+        align-self: start;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        border: var(--border-hairline) solid var(--color-border-subtle);
+        border-radius: var(--radius-control);
+        background-size: 10px 10px;
+    }
+    .product-card .tags { grid-area: tags; gap: var(--space-1) var(--space-2); margin: 0 0 var(--space-1); }
+    .product-card .tag { padding: 2px 6px; }
+    .product-card .product-info h3 { grid-area: title; margin: 0 0 2px; line-height: 1.25; }
+    .product-card .product-copy-block { grid-area: copy; }
+    .product-card .product-info p {
+        display: -webkit-box;
+        margin: 0;
+        overflow: hidden;
+        font-size: var(--text-small);
+        line-height: 1.45;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .product-card .product-footer { grid-area: footer; gap: var(--space-3); margin-top: var(--space-3); padding-top: var(--space-3); }
+    .product-card .price-stack { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 2px var(--space-2); }
+    .product-card .price { font-size: var(--text-body); }
+    .product-footer .btn { min-height: var(--control-height); padding: 0 var(--space-4); font-size: var(--text-small); }
+}
+/* Phones, up to 600px: a phone type scale and tighter spacing. Form fields stay at 16px, below which phones zoom into
+   them. */
+@media (max-width: 600px) {
+    :root {
+        --text-label: 0.75rem;     /* 12px (11px until 20261111-styles-1) */
+        --text-fine: 0.6875rem;    /* 11px (10px until then) */
+        --text-small: 0.8125rem;   /* 13px */
+        --text-body: 0.9375rem;    /* 15px */
+        --text-lead: 1rem;         /* 16px */
+        --text-card: 1.0625rem;    /* 17px */
+        --text-section: 1.5rem;    /* 24px */
+        --text-page: 1.75rem;      /* 28px */
+        --space-section: 40px;
+        --gutter: 16px;
+    }
+    body { font-size: var(--text-body); }
+    .dry-form input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .dry-form textarea, .dry-form select,
+    .store-filter-select, :is(input, textarea, select):not([type="checkbox"]):not([type="radio"]):not([type="file"]) { font-size: 16px; }
+    .hero[data-signal-hero] { padding-block: var(--space-10) var(--space-12); }
+    .hero-split p { margin-bottom: var(--space-6); }
+    .hero-button-group .btn { min-height: var(--control-height); }
+    .section-header { margin-bottom: var(--space-6); }
+    .section-header h2 { margin-bottom: var(--space-2); }
+    .faq-item summary { padding: var(--space-3) var(--space-4); font-size: var(--text-body); }
+    .faq-item .faq-content { padding: var(--space-3) var(--space-4) var(--space-4); }
+    .tool-page { padding-top: var(--space-8); }
+    #reviews, .tool-closing-cta { padding: var(--space-4); }
+}
+
+/* Names a control for assistive technology without changing its visible label. */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Click-to-play video: a local poster link; the privacy-enhanced player loads only on request. */
+.tool-video-facade { isolation: isolate; cursor: pointer; }
+.tool-video-facade .tool-video-poster {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.tool-video-facade::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgb(12 12 12 / 0.35);
+    transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.tool-video-facade:hover::before { background-color: rgb(12 12 12 / 0.2); }
+/* Centre the triangle's visual mass on the lime face; the 4px bottom edge is depth, not face. */
+.tool-video-play::after { left: 50%; top: 50%; }
+.tool-video-facade:hover .tool-video-play { background-color: var(--color-primary-hover); }
+/* The frame clips overflow, so the focus ring is drawn inside it. */
+.tool-video-facade:focus-visible { outline-offset: calc(-2 * var(--focus-offset)) !important; }
+
+/* Product requirements: facts supplied by each product definition. */
+.tool-requirements { display: grid; gap: var(--space-3); margin: 0 0 var(--space-3); }
+.tool-requirements > div { display: grid; gap: var(--space-1); }
+.tool-requirements dt {
+    color: var(--color-muted);
+    font-size: var(--text-label);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-label);
+}
+.tool-requirements dd { margin: 0; color: var(--color-text); font-size: var(--text-body); line-height: var(--leading-body); }
+.tool-panel .tool-requirements-note { color: var(--color-muted); font-size: var(--text-small); }
+/* A tool's presets (tool-page.php 'presets'; plugin presets moved here from Community on 2026-10-12): a lazy preview
+   beside the title, a line about it and its download, spanning the panel grid; stacked on phones. */
+.tool-panel--presets { grid-column: 1 / -1; }
+.tool-panel .tool-presets { display: grid; gap: var(--space-5); margin: 0; padding: 0; list-style: none; }
+.tool-preset { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: var(--space-5); align-items: center; }
+.tool-preset img { display: block; width: 100%; height: auto; border-radius: var(--radius-control); background: var(--color-canvas); }
+.tool-preset__text { display: grid; gap: var(--space-3); justify-items: start; }
+.tool-panel .tool-preset__title { color: var(--color-text); font-size: var(--text-body); font-weight: var(--weight-bold); line-height: var(--leading-heading); }
+.tool-panel .tool-preset__text p { margin: 0; }
+@media (max-width: 600px) { .tool-preset { grid-template-columns: minmax(0, 1fr); } }
+.tool-requirements-note a, .tool-closing-cta p a { color: var(--color-accent); text-decoration: underline; }
+
+/* Product help (product-help-view.php): one card that opens in place. Its toggle is the card's own header (the title,
+   what the guide covers, a chevron that turns); open, the guide reads on a darker sheet in full-contrast text, each
+   section a disclosure (Install open first) with the controls' groups inside theirs. Native disclosures, no script. */
+.tool-help { margin-top: var(--space-6); min-width: 0; border: var(--border-control) solid var(--color-border-subtle); border-bottom-width: var(--border-depth); border-radius: var(--radius-panel); background: var(--color-surface); box-shadow: var(--shadow-card); overflow: hidden; }
+.tool-help__toggle { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-5) var(--space-6); color: var(--color-text); cursor: pointer; list-style: none; }
+.tool-help__toggle:hover { background: var(--color-surface-hover); }
+.tool-help__heading { display: grid; gap: var(--space-1); min-width: 0; }
+.tool-help__title { font-size: var(--text-card); font-weight: var(--weight-bold); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
+.tool-help__hint { color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.tool-help__toggle::-webkit-details-marker, .tool-help__section > summary::-webkit-details-marker, .tool-help__group > summary::-webkit-details-marker { display: none; }
+.tool-help__toggle::after, .tool-help__section > summary::after, .tool-help__group > summary::after { content: ""; flex: 0 0 auto; width: 20px; height: 20px; background: currentColor; mask: url('/assets/iconizo/svg/chevron-down.svg?v=1.0.0') center / contain no-repeat; transition: transform var(--duration-fast) var(--ease-standard); }
+.tool-help[open] > .tool-help__toggle::after, .tool-help__section[open] > summary::after, .tool-help__group[open] > summary::after { transform: rotate(180deg); }
+.tool-help[open] > .tool-help__toggle { border-bottom: var(--border-hairline) solid var(--color-border); }
+.tool-help__body { padding: var(--space-2) var(--space-6) var(--space-6); background: var(--color-panel); color: color-mix(in srgb, var(--color-text) 86%, var(--color-panel)); font-size: var(--text-body); line-height: 1.7; overflow-wrap: anywhere; }
+.tool-help:not([open]) > .tool-help__body { display: none; }
+.tool-help__version { max-width: 72ch; margin: var(--space-4) 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.tool-help__note { margin: 0 0 var(--space-4); color: var(--color-muted); }
+.tool-help__section { border-top: var(--border-hairline) solid var(--color-border); scroll-margin-top: calc(var(--space-16) + var(--space-8)); }
+.tool-help__section > summary { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: calc(var(--control-height) + var(--space-3)); padding: var(--space-3) 0; color: var(--color-text); font-size: var(--text-lead); font-weight: var(--weight-semibold); line-height: var(--leading-heading); cursor: pointer; list-style: none; }
+.tool-help__content { max-width: 72ch; padding: 0 0 var(--space-6); }
+.tool-help__content p { margin: 0 0 var(--space-3); }
+.tool-help__steps { margin: 0; padding: 0; list-style: none; counter-reset: help-step; }
+.tool-help__steps li { position: relative; padding-left: calc(26px + var(--space-3)); counter-increment: help-step; }
+.tool-help__steps li + li { margin-top: var(--space-4); }
+.tool-help__steps li::before { content: counter(help-step); position: absolute; top: 0.1em; left: 0; display: grid; place-items: center; width: 26px; height: 26px; border: var(--border-hairline) solid var(--color-border-strong); border-radius: 50%; background: var(--color-surface); color: var(--color-text); font-size: var(--text-label); font-weight: var(--weight-semibold); line-height: 1; }
+.tool-help__content dl { margin: 0; }
+.tool-help__content dl > div + div { margin-top: var(--space-4); }
+.tool-help__content dt { color: var(--color-text); font-weight: var(--weight-semibold); }
+.tool-help__content dd { margin: var(--space-1) 0 0; }
+.tool-help__body a { color: var(--color-accent); text-decoration: underline; }
+.tool-help__group { border-top: var(--border-hairline) solid var(--color-border-subtle); }
+.tool-help__group > summary { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--control-height); padding: var(--space-2) 0; color: var(--color-text); font-weight: var(--weight-semibold); cursor: pointer; list-style: none; }
+.tool-help__group > summary::after { width: 16px; height: 16px; }
+.tool-help__group > dl { padding: var(--space-2) 0 var(--space-5); }
+.tool-help__body .tool-help__support { max-width: none; margin: var(--space-2) 0 0; padding-top: var(--space-4); border-top: var(--border-hairline) solid var(--color-border); color: var(--color-muted); font-size: var(--text-small); }
+@media (max-width: 600px) {
+    .tool-help__toggle { padding: var(--space-4) var(--space-5); }
+    .tool-help__body { padding: var(--space-2) var(--space-5) var(--space-5); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .tool-help__toggle::after, .tool-help__section > summary::after, .tool-help__group > summary::after { transition: none; }
+}
+
+/* Second purchase point after the product details. */
+.tool-closing-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-6);
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    border: var(--border-control) solid var(--color-border);
+    border-bottom-width: var(--border-depth);
+    border-radius: var(--radius-panel);
+    background: var(--color-surface);
+}
+.tool-closing-cta h2 {
+    margin: 0 0 var(--space-1);
+    font-size: var(--text-card);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+}
+.tool-closing-cta p { margin: 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.tool-closing-cta .tool-price-row { justify-content: flex-end; }
+@media (max-width: 600px) {
+    .tool-closing-cta { flex-direction: column; align-items: stretch; padding: var(--space-5); text-align: center; }
+    .tool-closing-cta .tool-price-row { justify-content: center; }
+}
+
+/* Branded not-found page. */
+.error-page { max-width: var(--content-reading); margin: 0 auto; padding: var(--space-section) var(--gutter); text-align: center; }
+.error-page .error-code {
+    margin: 0 0 var(--space-3);
+    color: var(--color-accent);
+    font-size: var(--text-label);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-label);
+}
+.error-page h1 {
+    margin: 0 auto var(--space-4);
+    font-size: var(--text-page);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+    text-wrap: balance;
+}
+.error-page > p { max-width: 560px; margin: 0 auto var(--space-8); color: var(--color-muted); font-size: var(--text-lead); }
+.error-page-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-bottom: var(--space-12); }
+.error-page-links { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2) var(--space-6); margin: 0; padding: 0; list-style: none; }
+.error-page-links a { display: inline-flex; align-items: center; min-height: var(--control-height); color: var(--color-muted); text-decoration: none; text-underline-offset: var(--space-1); }
+.error-page-links a:hover { color: var(--color-text); text-decoration: underline; }
+
+/* Verified Payhip reviews (data: payhip_reviews.php, markup: review_helpers.php/tool-page.php, behaviour: reviews.js).
+   Stars are a masked bar: border colour for the empty track, accent for the rated share, so 4.3 shows a partial star. */
+.review-stars {
+    --review-star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.4l2.95 6.1 6.7.9-4.9 4.65 1.2 6.6L12 17.5l-5.95 3.15 1.2-6.6L2.35 9.4l6.7-.9z'/%3E%3C/svg%3E");
+    --review-star-size: 1.125rem;
+    position: relative;
+    display: inline-block;
+    flex: none;
+    width: calc(5 * var(--review-star-size));
+    height: var(--review-star-size);
+    background: var(--color-border-strong);
+    -webkit-mask: var(--review-star) left center / var(--review-star-size) var(--review-star-size) repeat-x;
+    mask: var(--review-star) left center / var(--review-star-size) var(--review-star-size) repeat-x;
+}
+.review-stars-fill { position: absolute; inset: 0 auto 0 0; background: var(--color-accent); }
+.review-stars--small { --review-star-size: 0.875rem; }
+/* Reviews sit at the top of the product details, right after the price, in one panel styled like the detail panels
+   (surface, 2px border, panel radius, card shadow); the details grid follows. */
+.tool-reviews { margin-top: var(--space-4); padding: var(--space-6); border: var(--border-control) solid var(--color-border); border-radius: var(--radius-panel); background-color: var(--color-surface); box-shadow: var(--shadow-card); }
+.tool-reviews + .tool-detail-grid { margin-top: var(--space-8); }
+.tool-updates { margin-top: var(--space-8); } /* Updates log sits last, after the closing purchase panel. */
+/* Botizo, the chat (botizo.php): its app (bots.clipyx.com/botizo-web/) fills the page below the header and styles itself
+   with these tokens; until it mounts, a quiet loading line. */
+.botizo-page { display: flex; flex-direction: column; min-height: calc(100vh - 54px); min-height: calc(100dvh - 54px); }
+.botizo-page #botizo-app { display: flex; flex: 1; flex-direction: column; min-height: 0; }
+.botizo-loading { margin: auto; color: var(--color-muted); font-size: var(--text-small); }
+/* The first supporters, who bought a tool before it became free: a panel in the detail grid right after Best for
+   (owner 2026-10-16: "move the supporters card there"). It takes the free cell beside Best for (Exprizo) and spans
+   the row when it would sit alone. The names (owner 2026-10-16: "make it look expensive") are metallic gold type, each
+   behind a small gold diamond, under a gold hairline fading to the right; flat gold where text clipping is unsupported.
+   tool-page.php shows the panel only once its list has names. */
+.tool-detail-grid > .tool-panel--supporters:nth-child(odd):last-child { grid-column: 1 / -1; }
+/* Under the names (owner 2026-10-16): "many more supporters chose to remain anonymous", quiet beside the gold. */
+.tool-panel .tool-supporters-note { margin: var(--space-5) 0 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.tool-panel .tool-supporters-list { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-6); margin: var(--space-5) 0 0; padding: var(--space-5) 0 0; list-style: none; background: linear-gradient(90deg, color-mix(in srgb, var(--color-gold) 45%, transparent), color-mix(in srgb, var(--color-gold) 12%, transparent) 70%, transparent) top left / 100% 1px no-repeat; }
+.tool-panel .tool-supporters-list li { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-gold); font-size: var(--text-lead); font-weight: var(--weight-semibold); letter-spacing: 0.005em; line-height: 1.3; }
+.tool-panel .tool-supporters-list li::before { content: ''; flex: none; width: 6px; height: 6px; transform: rotate(45deg); background: linear-gradient(135deg, color-mix(in srgb, var(--color-gold), white 60%), var(--color-gold) 55%, color-mix(in srgb, var(--color-gold), black 25%)); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .tool-panel .tool-supporters-list li { background: linear-gradient(180deg, color-mix(in srgb, var(--color-gold), white 55%) 0%, var(--color-gold) 55%, color-mix(in srgb, var(--color-gold), black 18%) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+}
+@media (forced-colors: active) {
+    .tool-panel .tool-supporters-list li { background: none; -webkit-text-fill-color: currentColor; }
+    .tool-panel .tool-supporters-list li::before { background: currentColor; }
+}
+/* Download counts (download_counts.php): "576 downloads" under Free in the Payhip tools' price rows and on their
+   cards, quiet like the review count. */
+.price-downloads { color: var(--color-muted); font-size: var(--text-label); font-weight: var(--weight-medium); line-height: 1.3; white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* Continue with Google (login and register; google_auth.php): Google's dark button as its branding guidelines set it
+   (fill #131314, a 1px #8E918F border, #E3E3E3 text), its standard G on a white tile, then an "or" line above the page's
+   own form; the notes on google-auth.php's username and password steps. */
+.google-auth-btn { --google-fill: #131314; --google-stroke: #8e918f; --google-text: #e3e3e3; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: var(--control-height); padding: 0 12px; border: 1px solid var(--google-stroke); border-radius: var(--radius-control); background: var(--google-fill); color: var(--google-text); font-family: var(--font-body); font-size: var(--text-small); font-weight: var(--weight-medium); line-height: 20px; text-decoration: none; transition: background-color var(--duration-fast) var(--ease-standard); }
+.google-auth-btn:hover { background: color-mix(in srgb, var(--google-fill), var(--google-text) 8%); }
+.google-auth-btn__logo { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: #fff; }
+.auth-divider { display: flex; align-items: center; gap: var(--space-3); margin: var(--space-5) 0; color: var(--color-muted); font-size: var(--text-label); }
+.auth-divider::before, .auth-divider::after { content: ''; flex: 1; border-top: 1px solid var(--color-border); }
+.google-auth-note { margin: 0 0 var(--space-5); color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); text-align: center; overflow-wrap: anywhere; }
+.google-auth-note strong { color: var(--color-text); }
+.google-auth-note a { color: var(--color-accent); }
+.google-auth-note--fine { margin: var(--space-4) 0 0; font-size: var(--text-label); }
+/* Log out (logout.php; owner 2026-10-16: "this UI is horrible when logging out"): the login card's width and padding,
+   in <main> (which stretches to the footer) rather than as it; Log out with the signature period, a muted line, then
+   Stay signed in (quiet) and Log out (primary) side by side, stacked under 400px. */
+.auth-confirm { width: calc(100% - 2 * var(--gutter)); max-width: 400px; margin: var(--space-20) auto; padding: var(--space-8); text-align: center; }
+.auth-confirm :is(h1, h2) { margin: 0 0 var(--space-2); font-size: var(--text-card); }
+.auth-confirm__text { margin: 0 0 var(--space-6); color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.auth-confirm__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+.auth-confirm__actions .btn { width: 100%; }
+@media (max-width: 768px) { .auth-confirm { margin: var(--space-10) auto; padding: var(--space-6); } }
+@media (max-width: 400px) { .auth-confirm__actions { grid-template-columns: minmax(0, 1fr); } }
+/* Header: title; the average (big number, stars, count) beside a 5-to-1 star breakdown; Write a review on the right from
+   768px, a full-width row below that. Phones (<480px) stack score, bars and button, with the number beside its stars.
+   A hairline separates the header from the reviews. Without reviews it is just the title and the button. */
+.tool-reviews-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "title" "score" "bars" "actions";
+    gap: var(--space-5) var(--space-8);
+    align-items: center;
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-bottom: var(--border-hairline) solid var(--color-border);
+}
+.tool-reviews-header > h2 { grid-area: title; margin: 0; font-size: var(--text-card); font-weight: var(--weight-bold); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
+.tool-reviews-score { grid-area: score; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: var(--space-1) var(--space-4); }
+.tool-reviews-score > :not(.tool-reviews-average) { grid-column: 2; }
+.tool-reviews-average { grid-row: 1 / span 2; margin: 0; color: var(--color-text); font-size: var(--text-section); font-weight: var(--weight-bold); line-height: var(--leading-tight); letter-spacing: var(--tracking-heading); font-variant-numeric: tabular-nums; }
+.tool-reviews-count { margin: 0; color: var(--color-muted); font-size: var(--text-label); line-height: var(--leading-body); }
+.tool-reviews-bars { grid-area: bars; display: grid; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+.tool-reviews-bars li { display: grid; grid-template-columns: 2.25em minmax(0, 1fr) 2.5ch; align-items: center; gap: var(--space-3); color: var(--color-muted); font-size: var(--text-label); line-height: var(--leading-body); font-variant-numeric: tabular-nums; }
+.tool-reviews-bar-label span { margin-left: 1px; color: var(--color-subtle); }
+.tool-reviews-bar { height: calc(var(--space-1) * 1.5); border-radius: var(--radius-pill); background: var(--color-border); overflow: hidden; }
+.tool-reviews-bar > span { display: block; inline-size: var(--share, 0%); height: 100%; border-radius: inherit; background: var(--color-muted); }
+.tool-reviews-bars li.is-top .tool-reviews-bar > span { background: var(--color-accent); }
+.tool-reviews-actions { grid-area: actions; display: flex; align-items: center; gap: var(--space-2); }
+.tool-reviews-actions .tool-review-write-btn { flex: 1 1 auto; justify-content: center; }
+@media (min-width: 480px) {
+    .tool-reviews-header { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "title title" "score bars" "actions actions"; }
+    .tool-reviews-score { grid-template-columns: auto; justify-items: start; }
+    .tool-reviews-score > :not(.tool-reviews-average) { grid-column: auto; }
+    .tool-reviews-average { grid-row: auto; }
+}
+@media (min-width: 768px) {
+    .tool-reviews-header { grid-template-columns: auto minmax(0, 20rem) minmax(0, 1fr); grid-template-areas: "title title title" "score bars actions"; }
+    .tool-reviews-actions { justify-self: end; }
+    .tool-reviews-actions .tool-review-write-btn { flex: 0 0 auto; }
+}
+.tool-reviews-header--empty { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4) var(--space-6); padding-bottom: 0; border-bottom: 0; }
+.tool-reviews-header--empty .tool-review-write-btn { flex: 0 0 auto; }
+/* Carousel: one row of equal cards (flex stretch), 5-star reviews first, sideways scroll with snap. Edges fade only
+   where more cards are hidden (reviews.js toggles can-scroll-left/right); arrow buttons appear only on overflow. */
+.tool-review-carousel { border-radius: var(--radius-panel); }
+.tool-review-carousel:has(.tool-review-list:focus-visible) { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+.tool-review-list {
+    --review-fade-left: 0px;
+    --review-fade-right: 0px;
+    /* Positioned so absolutely positioned children (visually-hidden labels) stay clipped instead of widening phone pages. */
+    position: relative;
+    display: flex;
+    gap: var(--space-8);
+    scroll-padding-inline-start: var(--space-8);
+    /* Room for focus rings inside the scroll clip, cancelled by the margin so columns stay aligned with the header. */
+    margin: calc(-1 * var(--space-2));
+    padding: var(--space-2);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    outline: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--review-fade-left), #000 calc(100% - var(--review-fade-right)), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--review-fade-left), #000 calc(100% - var(--review-fade-right)), transparent 100%);
+}
+.tool-review-list::-webkit-scrollbar { display: none; }
+/* The left fade covers only the gutter before the snapped column (scroll padding), never its text; the right fade covers the peeking column. */
+.tool-review-list.can-scroll-left { --review-fade-left: var(--space-8); }
+.tool-review-list.can-scroll-right { --review-fade-right: var(--space-12); }
+/* Three cards per row from tablet width up, two on large phones, one with a peek of the next on small phones;
+   arrows appear only when there are more reviews than fit. */
+.tool-review-list > .tool-review { flex: 0 0 80%; scroll-snap-align: start; }
+@media (min-width: 560px) { .tool-review-list > .tool-review { flex-basis: calc((100% - var(--space-8)) / 2); } }
+@media (min-width: 768px) { .tool-review-list > .tool-review { flex-basis: calc((100% - 2 * var(--space-8)) / 3); } }
+@media (prefers-reduced-motion: no-preference) { .tool-review-list { scroll-behavior: smooth; } }
+.tool-review-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--control-height);
+    height: var(--control-height);
+    border: var(--border-control) solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-surface);
+    color: var(--color-text);
+    cursor: pointer;
+}
+.tool-review-nav:hover:not(:disabled) { border-color: var(--color-border-strong); background: var(--color-surface-hover); }
+.tool-review-nav:disabled { opacity: 0.4; cursor: default; }
+.tool-review-nav[hidden] { display: none; }
+.tool-review-nav .iconizo { width: 20px; height: 20px; }
+.tool-review {
+    /* Text columns inside the reviews panel (no box of their own); a hairline in the gutter separates neighbours. */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: 0;
+}
+.tool-review + .tool-review::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--space-8) / -2); width: var(--border-hairline); background: var(--color-border); }
+.tool-review-title, .tool-review-text, .tool-review-reply { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; margin: 0; overflow-wrap: anywhere; }
+.tool-review-title { -webkit-line-clamp: 1; color: var(--color-text); font-size: var(--text-body); font-weight: var(--weight-semibold); line-height: var(--leading-heading); }
+.tool-review-text { -webkit-line-clamp: 4; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.tool-review-reply {
+    -webkit-line-clamp: 2;
+    /* With the column gap: 16px between the review and the creator reply, so the reply reads as its own block. */
+    margin-top: var(--space-2);
+    padding: 0;
+    color: var(--color-muted);
+    font-size: var(--text-label);
+    line-height: var(--leading-body);
+}
+.tool-review-reply-label { color: var(--color-text); font-weight: var(--weight-semibold); }
+/* Cut-off review text and replies (reviews.js adds .is-clamped) fade out along their last line instead of ending hard on
+   an ellipsis; the lines above stay fully opaque. --fade-line is one line of the element's own text. */
+.tool-review-text.is-clamped, .tool-review-reply.is-clamped {
+    --fade-line: calc(1em * var(--leading-body));
+    -webkit-mask-image: linear-gradient(#000, #000), linear-gradient(to right, #000 30%, transparent 95%);
+    mask-image: linear-gradient(#000, #000), linear-gradient(to right, #000 30%, transparent 95%);
+    -webkit-mask-size: 100% calc(100% - var(--fade-line)), 100% var(--fade-line);
+    mask-size: 100% calc(100% - var(--fade-line)), 100% var(--fade-line);
+    -webkit-mask-position: top, bottom;
+    mask-position: top, bottom;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+.tool-review > .review-stars { margin-bottom: var(--space-1); }
+.tool-review-name { color: var(--color-text); font-weight: var(--weight-semibold); }
+.tool-review-name::after { content: "\00B7"; margin-left: var(--space-2); color: var(--color-subtle); font-weight: var(--weight-regular); }
+.tool-review-badge { display: inline-flex; align-items: center; gap: var(--space-1); color: var(--color-muted); }
+/* Accent only on the check icon: stars, the icon and links carry the lime. */
+.tool-review-badge .iconizo { color: var(--color-accent); }
+.tool-review-badge .iconizo { flex: none; width: 14px; height: 14px; }
+/* The byline row sits at the bottom of every column (auto margin), so names line up however long each review is; every
+   row is as tall as the Read more line, so rows with and without that link centre their names at the same height. */
+.tool-review-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-1) var(--space-3); min-height: calc(var(--text-small) * var(--leading-body) + var(--space-2)); margin-top: auto; padding-top: var(--space-2); }
+.tool-review-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); min-width: 0; margin: 0; color: var(--color-muted); font-size: var(--text-label); line-height: var(--leading-body); }
+.tool-review-more { color: var(--color-accent); font-size: var(--text-small); line-height: var(--leading-body); text-decoration: underline; text-underline-offset: var(--space-1); white-space: nowrap; }
+.tool-review-more[hidden] { display: none; }
+/* Without JavaScript, "Read more" targets its card; the dialog copy is always complete. */
+.tool-review:target .tool-review-title, .tool-review:target .tool-review-text, .tool-review:target .tool-review-reply,
+.tool-review.is-full .tool-review-title, .tool-review.is-full .tool-review-text, .tool-review.is-full .tool-review-reply { display: block; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+.tool-review:target .tool-review-more { display: none; }
+.tool-review-dialog {
+    /* The global reset zeroes margins; auto margins re-centre the modal dialog in the viewport. */
+    margin: auto;
+    width: min(640px, calc(100vw - 2 * var(--space-4)));
+    max-height: min(80vh, 720px);
+    padding: var(--space-6);
+    border: var(--border-control) solid var(--color-border);
+    border-radius: var(--radius-panel);
+    background: var(--color-surface);
+    color: var(--color-text);
+    overflow: auto;
+}
+.tool-review-dialog::backdrop { background: rgb(0 0 0 / 0.7); }
+.tool-review-dialog .tool-review { padding: 0; border: 0; background: none; }
+.tool-review-dialog .tool-review-text { font-size: var(--text-body); }
+.tool-review-dialog .tool-review-reply { font-size: var(--text-small); }
+/* Icon close button pinned to the dialog's top-right corner (44px target); the body keeps clear of it. */
+.tool-review-dialog-close { position: absolute; top: var(--space-3); right: var(--space-3); display: grid; place-items: center; width: var(--control-height); height: var(--control-height); padding: 0; border: 0; border-radius: var(--radius-control); background: transparent; color: var(--color-muted); cursor: pointer; }
+.tool-review-dialog-close:hover { background: var(--color-surface-hover); color: var(--color-text); }
+.tool-review-dialog-close:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: calc(-1 * var(--focus-width)); }
+.tool-review-dialog-close .iconizo { width: 20px; height: 20px; }
+.tool-review-dialog-body { padding-right: var(--space-8); }
+/* One quiet line of fine print (wraps only on narrow phones). */
+.tool-reviews-note { margin: var(--space-6) 0 0; padding-top: var(--space-4); border-top: var(--border-hairline) solid var(--color-border); color: var(--color-subtle); font-size: var(--text-fine); line-height: var(--leading-body); }
+.tool-reviews-note a { color: var(--color-accent); text-decoration: underline; }
+/* The reviews' last row: the fine print on the left, the carousel's arrows at the bottom right (owner 2026-10-16: the
+   arrows belong at the bottom right of the card, not beside Write a review); the arrows show only when the reviews
+   overflow (reviews.js). */
+.tool-reviews-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-6); padding-top: var(--space-4); border-top: var(--border-hairline) solid var(--color-border); }
+.tool-reviews-foot .tool-reviews-note { max-width: 80ch; margin: 0; padding: 0; border: 0; text-wrap: balance; }
+.tool-reviews-pager { display: flex; flex: none; gap: var(--space-2); }
+/* Member reviews: write/edit form, status, admin moderation. Fields inherit .dry-form. */
+.tool-reviews-empty { margin: 0; color: var(--color-muted); font-size: var(--text-small); }
+.tool-review-write { display: grid; gap: var(--space-3); }
+.tool-review-write:has(> .tool-review-flash, > .tool-review-own, > .tool-review-compose, > .tool-review-cta, > .tool-review-howto:target) { margin-top: var(--space-6); }
+/* With JavaScript the header button opens the member form, so its own toggle is hidden. */
+.tool-reviews.is-enhanced .tool-review-compose > summary { display: none; }
+.tool-review-cta, .tool-review-own, .tool-review-form-note { margin: 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.tool-review-cta a { color: var(--color-accent); text-decoration: underline; }
+.tool-review-form-note strong, .tool-review-own { color: var(--color-text); }
+/* No coloured side stripes anywhere (owner, 2026-10-18: "i dont wanna see this side green vibe coded UI anywhere"): a hairline panel, the
+   state in the text colour, like the site admin's flash messages. */
+.tool-review-flash { margin: 0; padding: var(--space-3) var(--space-4); border: var(--border-hairline) solid var(--color-border); border-radius: var(--radius-tag); background: var(--color-panel); color: var(--color-text); font-size: var(--text-small); }
+.tool-review-flash.is-error { color: var(--color-danger, #ff6f59); }
+.tool-review-status { display: inline-block; padding: 0 var(--space-2); border-radius: var(--radius-tag); background: var(--color-panel); color: var(--color-muted); font-size: var(--text-label); font-weight: var(--weight-semibold); }
+.tool-review-status.is-approved { color: var(--color-accent); }
+.tool-review-compose > summary { width: fit-content; list-style: none; cursor: pointer; }
+.tool-review-compose > summary::-webkit-details-marker { display: none; }
+/* Paid plugins: Write a review opens this explanation of verified reviews in the review dialog (inline through
+   #review-howto without JavaScript), with a button to write a non-verified member review instead. */
+.tool-review-howto { display: grid; gap: var(--space-4); max-width: 640px; padding: var(--space-5); border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-deep); color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.tool-review-howto:not(:target) { display: none; }
+dialog.tool-review-dialog .tool-review-howto { display: grid; max-width: none; padding: 0; border: 0; background: none; font-size: var(--text-body); }
+.tool-review-howto-title { margin: 0; color: var(--color-text); font-size: var(--text-card); font-weight: var(--weight-bold); line-height: var(--leading-heading); }
+.tool-review-howto p { margin: 0; }
+.tool-review-howto strong { color: var(--color-text); }
+.tool-review-howto-member { display: grid; gap: var(--space-2); padding-top: var(--space-4); border-top: var(--border-hairline) solid var(--color-border); }
+.tool-review-howto-member .btn { width: fit-content; }
+.tool-review-howto-note { font-size: var(--text-small); }
+.tool-review-form { display: grid; gap: var(--space-4); max-width: 640px; margin-top: var(--space-4); }
+.tool-review-form .btn, .tool-review-delete .btn, .tool-review-moderate .btn { width: fit-content; }
+.tool-review-delete { margin-top: var(--space-3); }
+.tool-review-field { display: grid; gap: var(--space-1); color: var(--color-text); font-size: var(--text-label); font-weight: var(--weight-semibold); }
+.tool-review-field > span { color: var(--color-muted); font-weight: var(--weight-regular); }
+.tool-review-field textarea { resize: vertical; }
+.tool-review-rating { margin: 0; padding: 0; border: 0; }
+.tool-review-rating legend { margin-bottom: var(--space-2); color: var(--color-text); font-size: var(--text-label); font-weight: var(--weight-semibold); }
+.tool-review-stars-input {
+    --review-star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.4l2.95 6.1 6.7.9-4.9 4.65 1.2 6.6L12 17.5l-5.95 3.15 1.2-6.6L2.35 9.4l6.7-.9z'/%3E%3C/svg%3E");
+    position: relative;
+    display: flex;
+    gap: var(--space-1);
+}
+.tool-review-stars-input input { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; }
+.tool-review-stars-input label {
+    width: var(--control-height);
+    height: var(--control-height);
+    background: var(--color-border-strong);
+    cursor: pointer;
+    -webkit-mask: var(--review-star) center / 75% 75% no-repeat;
+    mask: var(--review-star) center / 75% 75% no-repeat;
+}
+.tool-review-stars-input input:checked + label { background: var(--color-accent); }
+.tool-review-stars-input:has(input:nth-of-type(2):checked) label:nth-of-type(-n+2),
+.tool-review-stars-input:has(input:nth-of-type(3):checked) label:nth-of-type(-n+3),
+.tool-review-stars-input:has(input:nth-of-type(4):checked) label:nth-of-type(-n+4),
+.tool-review-stars-input:has(input:nth-of-type(5):checked) label:nth-of-type(-n+5) { background: var(--color-accent); }
+.tool-review-stars-input:has(label:nth-of-type(1):hover) label:nth-of-type(-n+1),
+.tool-review-stars-input:has(label:nth-of-type(2):hover) label:nth-of-type(-n+2),
+.tool-review-stars-input:has(label:nth-of-type(3):hover) label:nth-of-type(-n+3),
+.tool-review-stars-input:has(label:nth-of-type(4):hover) label:nth-of-type(-n+4),
+.tool-review-stars-input:has(label:nth-of-type(5):hover) label:nth-of-type(-n+5) { background: var(--color-accent-hover); }
+.tool-review-stars-input:has(input:focus-visible) { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); border-radius: var(--radius-tag); }
+.tool-review-admin { margin-top: var(--space-6); padding: var(--space-5); border: var(--border-control) dashed var(--color-border-strong); border-radius: var(--radius-panel); }
+.tool-review-admin > summary { cursor: pointer; color: var(--color-text); font-weight: var(--weight-semibold); }
+.tool-review-moderate { display: grid; gap: var(--space-3); margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border); }
+.tool-review-admin-text { margin: 0; color: var(--color-text); font-size: var(--text-small); line-height: var(--leading-body); overflow-wrap: anywhere; }
+/* Store and Home cards: compact rating at the end of the tag row (keeps every card's height). */
+.product-rating { display: inline-flex; align-items: center; gap: var(--space-1); margin-left: auto; color: var(--color-text); font-size: var(--text-label); font-weight: var(--weight-semibold); }
+.product-rating-count { color: var(--color-muted); font-weight: var(--weight-regular); }
+@media (forced-colors: active) {
+    .review-stars { forced-color-adjust: none; background: GrayText; }
+    .review-stars-fill { background: CanvasText; }
+}
+/* Explore the Library (store.php, above the FAQ on the home page and /store/), laid out as its sibling Most Popular Tools:
+   a centred section header, six of the Library's liveliest expressions as its own tiles (.library-tile, below), each
+   opening its item on the Library page (one row of six from 1024px, three columns on tablets, two on phones), and a
+   centred Open the Library button under them, as Explore Store under the tools. Their loops play only while visible
+   (library/showcase.js, the same rules as the Library page). */
+.library-showcase { position: relative; padding: var(--space-section) var(--gutter); }
+.library-showcase-inner { max-width: 1200px; margin: 0 auto; }
+.library-showcase .library-showcase-head { margin-bottom: var(--space-8); }
+.library-showcase-more { margin-top: var(--space-10); text-align: center; }
+.library-showcase-link { min-height: var(--space-12); padding-inline: var(--space-8); font-size: var(--text-body); }
+.library-showcase-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+@media (max-width: 1023px) { .library-showcase-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .library-showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Clipyx Library (/library/): ready-made Fusion code, expressions first (data: library/expressions.json, markup:
+   library/index.php, behaviour: library/library.js). A compact header (title and one-line lead beside the search), type
+   tabs on a hairline, category chips, and a deliberately dense media grid (owner: as many presets on screen as
+   possible): square preview tiles of at least 176px with an 8px gap, up to 1680px wide, two columns on phones.
+   Previews are short muted loops behind posters that play only while visible; reduced motion and Save-Data start with
+   Autoplay off (hover or focus still plays one). Chips and the Autoplay switch are 32px on fine pointers, 44px on touch. */
+.library-main { --library-control: var(--space-8); width: 100%; max-width: 1680px; margin: 0 auto; padding: var(--space-10) var(--gutter) var(--space-16); }
+@media (pointer: coarse) { .library-main { --library-control: var(--control-height); } }
+.library-head { display: grid; gap: var(--space-5); align-items: end; margin-bottom: var(--space-8); }
+.library-head h1 { margin: 0; font-size: var(--text-section); line-height: var(--leading-tight); }
+.library-lead { margin: var(--space-2) 0 0; color: var(--color-muted); font-size: var(--text-lead); line-height: var(--leading-body); }
+.library-search { position: relative; }
+.library-search input { width: 100%; min-height: var(--control-height); margin: 0; padding: 0 var(--space-12) 0 calc(var(--space-4) + var(--space-6)); border: var(--border-control) solid var(--color-border); border-radius: var(--radius-control); background: var(--color-panel); color: var(--color-text); font: inherit; font-size: var(--text-body); transition: border-color var(--duration-fast) var(--ease-standard); }
+.library-search input::placeholder { color: var(--color-subtle); }
+.library-search input:hover { border-color: var(--color-border-strong); }
+.library-search .iconizo { position: absolute; top: 50%; left: var(--space-4); color: var(--color-subtle); pointer-events: none; transform: translateY(-50%); }
+/* "/" focuses the search (fine pointers only); the hint hides while typing. */
+.library-kbd { position: absolute; top: 50%; right: var(--space-3); display: grid; place-items: center; min-width: var(--space-6); height: var(--space-6); padding: 0 var(--space-2); border: var(--border-hairline) solid var(--color-border); border-radius: var(--radius-tag); color: var(--color-subtle); font: inherit; font-size: var(--text-label); font-weight: var(--weight-semibold); line-height: var(--leading-tight); pointer-events: none; transform: translateY(-50%); }
+.library-search input:focus ~ .library-kbd, .library-search input:not(:placeholder-shown) ~ .library-kbd { display: none; }
+@media (hover: none), (pointer: coarse) { .library-kbd { display: none; } }
+/* Type tabs on a hairline with a 2px indicator under the current type; types still to come are disabled with "Soon". */
+.library-toolbar { display: grid; grid-template-columns: minmax(0, 1fr); margin-bottom: var(--space-4); }
+.library-tabs { display: flex; gap: var(--space-4); overflow-x: auto; border-bottom: var(--border-hairline) solid var(--color-border-subtle); scrollbar-width: none; }
+.library-tabs::-webkit-scrollbar, .library-chips::-webkit-scrollbar { display: none; }
+.library-tab { position: relative; flex: none; display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--control-height); padding: 0 var(--space-2); border: 0; background: none; color: var(--color-muted); font: inherit; font-size: var(--text-body); font-weight: var(--weight-semibold); white-space: nowrap; cursor: pointer; transition: color var(--duration-fast) var(--ease-standard); }
+.library-tab::after { content: ""; position: absolute; right: var(--space-2); bottom: 0; left: var(--space-2); height: var(--border-control); border-radius: var(--radius-pill); background: transparent; }
+.library-tab:hover:not(:disabled), .library-tab[aria-pressed="true"] { color: var(--color-text); }
+.library-tab[aria-pressed="true"]::after { background: var(--color-text); }
+.library-tab:disabled { color: var(--color-subtle); cursor: default; }
+/* Accessibility override: in the sideways-scrolling tab row the shared focus ring is drawn inside the tab, not clipped. */
+.library-tab:focus-visible { outline-offset: calc(-1 * var(--focus-width)) !important; border-radius: var(--radius-tag); }
+.library-tab-count { color: var(--color-subtle); font-weight: var(--weight-regular); font-variant-numeric: tabular-nums; }
+.library-soon { padding: 0 var(--space-1); border-radius: var(--radius-tag); background: var(--color-panel); color: var(--color-subtle); font-size: var(--text-fine); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); line-height: var(--leading-body); }
+/* Category chips (the selected one filled lime), then the live result count and the Autoplay switch. Scrolling rows
+   keep room for the shared focus ring. */
+.library-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3) var(--space-6); padding-top: var(--space-4); }
+.library-chips { display: flex; gap: var(--space-2); min-width: 0; max-width: calc(100% + 2 * var(--space-2)); margin: calc(-1 * var(--space-2)); padding: var(--space-2); overflow-x: auto; scrollbar-width: none; }
+.library-chip { flex: none; display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--library-control); padding: 0 var(--space-4); border: var(--border-hairline) solid var(--color-border); border-radius: var(--radius-pill); background: transparent; color: var(--color-muted); font: inherit; font-size: var(--text-small); font-weight: var(--weight-semibold); white-space: nowrap; cursor: pointer; transition: color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard); }
+.library-chip:hover { border-color: var(--color-border-strong); color: var(--color-text); }
+.library-chip[aria-pressed="true"] { border-color: var(--color-border-strong); background: var(--color-pressed); color: var(--color-text); }
+.library-chip-count { color: var(--color-subtle); font-weight: var(--weight-regular); font-variant-numeric: tabular-nums; }
+.library-chip[aria-pressed="true"] .library-chip-count { color: inherit; }
+.library-side { display: flex; align-items: center; gap: var(--space-5); margin-left: auto; }
+.library-status { margin: 0; color: var(--color-subtle); font-size: var(--text-small); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.library-switch { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--library-control); padding: 0; border: 0; background: none; color: var(--color-muted); font: inherit; font-size: var(--text-small); font-weight: var(--weight-semibold); white-space: nowrap; cursor: pointer; }
+.library-switch:hover { color: var(--color-text); }
+.library-switch-track { position: relative; flex: none; width: var(--space-8); height: var(--space-5); border-radius: var(--radius-pill); background: var(--color-border); transition: background-color var(--duration-fast) var(--ease-standard); }
+.library-switch-track::after { content: ""; position: absolute; top: var(--border-control); left: var(--border-control); width: var(--space-4); height: var(--space-4); border-radius: var(--radius-pill); background: var(--color-muted); transition: transform var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-standard); }
+.library-switch[aria-checked="true"] .library-switch-track { background: var(--color-primary); }
+.library-switch[aria-checked="true"] .library-switch-track::after { background: var(--color-on-primary); transform: translateX(var(--space-3)); }
+/* Tiles: the link fills the tile and clips the media to the inner radius; the tile itself does not clip, so the shared
+   focus ring stays visible around it. The copy button sits above the link. */
+.library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(176px, 1fr)); gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.library-tile { position: relative; aspect-ratio: 1; border: var(--border-control) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-canvas); transition: border-color var(--duration-fast) var(--ease-standard); }
+.library-tile:hover { border-color: var(--color-border-strong); }
+.library-tile:focus-within { border-color: var(--color-focus); }
+.library-tile-link { position: absolute; inset: 0; display: block; overflow: hidden; border-radius: calc(var(--radius-panel) - var(--border-control)); color: inherit; text-decoration: none; }
+.library-tile-link img, .library-tile-link video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.library-tile-link video { opacity: 0; transition: opacity var(--duration-base) var(--ease-standard); }
+.library-tile.is-playing .library-tile-link video { opacity: 1; }
+.library-tile-meta { position: absolute; inset: auto 0 0; display: grid; gap: var(--space-1); padding: var(--space-8) var(--space-3) var(--space-3); background: linear-gradient(to top, color-mix(in srgb, var(--color-canvas) 94%, transparent) 35%, transparent); }
+.library-tile-title, .library-tile-target { overflow: hidden; line-height: var(--leading-heading); text-overflow: ellipsis; white-space: nowrap; }
+.library-tile-title { color: var(--color-text); font-size: var(--text-small); font-weight: var(--weight-bold); }
+.library-tile-target { color: var(--color-muted); font-size: var(--text-label); }
+.library-copy { position: absolute; top: var(--space-2); right: var(--space-2); z-index: 1; display: grid; place-items: center; width: var(--control-height); height: var(--control-height); padding: 0; border: var(--border-hairline) solid var(--color-border); border-radius: var(--radius-control); background: color-mix(in srgb, var(--color-panel) 90%, transparent); color: var(--color-text); cursor: pointer; opacity: 0; transition: opacity var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard); }
+.library-tile:hover .library-copy, .library-tile:focus-within .library-copy, .library-copy.is-done { opacity: 1; }
+.library-copy:hover { border-color: var(--color-primary); background: var(--color-primary); color: var(--color-on-primary); }
+.library-copy.is-done, .library-copy.is-done:hover { border-color: var(--color-border); background: var(--color-panel); color: var(--color-text); }
+.library-copy.is-done :is(svg, .iconizo) { color: var(--color-accent); }
+@media (hover: none), (pointer: coarse) { .library-copy { opacity: 1; } }
+.library-empty { display: grid; justify-items: start; gap: var(--space-3); padding: var(--space-10) 0; color: var(--color-muted); }
+.library-empty p { margin: 0; }
+/* Item detail: a viewport-centred dialog, the large preview beside the code from 768px, stacked on phones. */
+.library-detail { width: min(1000px, calc(100vw - 2 * var(--space-4))); max-width: none; max-height: calc(100dvh - 2 * var(--space-4)); margin: auto; padding: 0; overflow: auto; border: var(--border-control) solid var(--color-border); border-radius: var(--radius-panel); background: var(--color-surface); color: var(--color-text); box-shadow: var(--shadow-popover); }
+.library-detail::backdrop { background: rgb(0 0 0 / 0.7); }
+.library-detail-body { display: grid; }
+.library-detail-media { display: grid; align-content: center; background: var(--color-canvas); }
+.library-detail-media video { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.library-detail-info { display: grid; align-content: start; gap: var(--space-4); padding: var(--space-6); }
+.library-detail-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: 0; color: var(--color-muted); font-size: var(--text-label); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); }
+.library-detail-info h2 { margin: 0; font-size: var(--text-section); }
+.library-detail-summary { margin: 0; color: var(--color-muted); line-height: var(--leading-body); }
+.library-detail-target { display: grid; gap: var(--space-1); margin: 0; }
+.library-detail-target dt { color: var(--color-subtle); font-size: var(--text-label); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); }
+.library-detail-target dd { margin: 0; color: var(--color-text); font-weight: var(--weight-semibold); }
+.library-code { margin: 0; padding: var(--space-4); border: var(--border-hairline) solid var(--color-border); border-radius: var(--radius-control); background: var(--color-canvas); color: var(--color-text); font-family: var(--font-mono); font-size: var(--text-small); line-height: var(--leading-body); white-space: pre-wrap; overflow-wrap: anywhere; max-height: min(24rem, 45vh); max-height: min(24rem, 45dvh); overflow: auto; overscroll-behavior: contain; }
+/* (the cap, 20261016-library-code-scroll: a long Scripts-tab Lua scrolls inside its box, so the dialog and its close
+   button stay put) */
+.library-detail-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.library-detail-actions .btn .iconizo { width: 16px; height: 16px; }
+.library-howto, .library-detail-note { margin: 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.library-howto strong { color: var(--color-text); font-weight: var(--weight-semibold); }
+.library-detail-note { padding-top: var(--space-4); border-top: var(--border-hairline) solid var(--color-border); color: var(--color-subtle); }
+.library-detail-note a { color: var(--color-accent); }
+.library-detail-close { position: absolute; top: var(--space-3); right: var(--space-3); z-index: 1; display: grid; place-items: center; width: var(--control-height); height: var(--control-height); padding: 0; border: 0; border-radius: var(--radius-control); background: color-mix(in srgb, var(--color-surface) 90%, transparent); color: var(--color-muted); cursor: pointer; }
+.library-detail-close:hover { background: var(--color-surface-hover); color: var(--color-text); }
+.library-detail-close .iconizo { width: 20px; height: 20px; }
+.library-toast { position: fixed; bottom: var(--space-6); left: 50%; z-index: 1001; max-width: calc(100vw - 2 * var(--gutter)); padding: var(--space-3) var(--space-4); border: var(--border-control) solid var(--color-border); border-radius: var(--radius-control); background: var(--color-surface); color: var(--color-text); font-size: var(--text-small); box-shadow: var(--shadow-popover); opacity: 0; pointer-events: none; transform: translate(-50%, var(--space-2)); transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out); }
+.library-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+@media (min-width: 768px) {
+    .library-detail-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .library-detail-info { padding: var(--space-8) calc(var(--space-6) + var(--control-height)) var(--space-8) var(--space-8); }
+}
+@media (min-width: 900px) {
+    .library-head { grid-template-columns: minmax(0, 1fr) minmax(280px, 400px); column-gap: var(--space-8); }
+}
+@media (max-width: 640px) {
+    .library-main { padding-top: var(--space-6); }
+    .library-head { margin-bottom: var(--space-6); }
+    .library-lead { font-size: var(--text-body); }
+    .library-tabs { gap: var(--space-2); }
+    .library-side { width: 100%; justify-content: space-between; }
+}
+@media (max-width: 559px) {
+    .library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .library-tile-meta { padding: var(--space-6) var(--space-2) var(--space-2); }
+}
+@media (forced-colors: active) {
+    .library-switch-track { border: var(--border-hairline) solid ButtonText; }
+    .library-switch[aria-checked="true"] .library-switch-track::after, .library-tab[aria-pressed="true"]::after { background: Highlight; }
+}
+
+/* Download gate (owner, 2026-10-17; download_gate.php): the email form and "check your inbox" page (/get/<tool>), the
+   personal download page (/d/<token>) and the unsubscribe page. An account card with the product on top, one lime
+   primary action per step; each file is a row with its own Download button. */
+.gate-page { display: flex; justify-content: center; align-items: flex-start; padding: var(--space-16) var(--gutter) var(--space-20); }
+.gate-page .gate-card { width: 100%; max-width: 460px; margin: 0; padding: var(--space-8); }
+.gate-page .gate-card--wide { max-width: 560px; }
+.gate-product { display: flex; align-items: center; gap: var(--space-4); margin: 0 0 var(--space-6); padding: 0 0 var(--space-5); border-bottom: var(--border-hairline) solid var(--color-border-subtle); }
+.gate-product__image { width: 64px; height: 64px; flex: 0 0 64px; border-radius: var(--radius-control); object-fit: cover; background: var(--color-panel); }
+.gate-product__name { margin: 0; color: var(--color-text); font-size: var(--text-card); font-weight: var(--weight-bold); line-height: var(--leading-heading); }
+.gate-product__name span { color: var(--color-muted); font-size: var(--text-small); font-weight: var(--weight-medium); }
+.gate-product__meta { margin: var(--space-1) 0 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.gate-title { margin: 0 0 var(--space-2); font-size: var(--text-card); font-weight: var(--weight-bold); line-height: var(--leading-heading); }
+.gate-lead { margin: 0 0 var(--space-6); color: var(--color-muted); font-size: var(--text-body); line-height: var(--leading-body); }
+.gate-lead strong, .gate-steps strong { color: var(--color-text); font-weight: var(--weight-semibold); }
+.gate-form { display: grid; gap: var(--space-5); }
+.gate-card .form-error { margin: 0 0 var(--space-5); padding: var(--space-3) var(--space-4); border: var(--border-hairline) solid var(--color-danger); border-radius: var(--radius-control); background: rgb(255 139 131 / 0.08); color: var(--color-danger); font-size: var(--text-small); font-weight: var(--weight-semibold); text-align: left; }
+.gate-form .form-error { margin: 0; }
+.gate-hint { margin: 0; color: var(--color-muted); font-size: var(--text-small); }
+.gate-hint:empty { display: none; }
+.gate-hint__fix { padding: 0; border: 0; background: none; color: var(--color-accent); font: inherit; font-weight: var(--weight-semibold); text-decoration: underline; cursor: pointer; }
+.gate-check { display: flex; align-items: center; gap: var(--space-3); min-height: var(--control-height); color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); cursor: pointer; }
+.gate-check input { width: 20px; height: 20px; flex: 0 0 20px; margin: 0; accent-color: var(--color-accent); }
+.gate-turnstile { min-height: 65px; }
+.gate-submit { width: 100%; }
+.gate-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.gate-note { margin: var(--space-5) 0 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); text-align: center; }
+.gate-note a { color: var(--color-accent); }
+.gate-note--help { margin-top: var(--space-6); padding-top: var(--space-5); border-top: var(--border-hairline) solid var(--color-border-subtle); }
+.gate-steps { display: grid; gap: var(--space-2); margin: 0 0 var(--space-6); padding-left: var(--space-5); color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.gate-resend { margin: 0; }
+.gate-files { display: grid; gap: var(--space-3); }
+.gate-file { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-4); border: var(--border-control) solid var(--color-border); border-radius: var(--radius-control); background: var(--color-panel); }
+.gate-file__label { margin: 0; color: var(--color-text); font-weight: var(--weight-bold); }
+.gate-file__meta { margin: var(--space-1) 0 0; color: var(--color-muted); font-size: var(--text-small); }
+.gate-file .gate-submit { width: auto; flex: 0 0 auto; }
+.gate-checksums { margin: var(--space-5) 0 0; color: var(--color-muted); font-size: var(--text-small); text-align: center; }
+.gate-checksums summary { list-style: none; } /* a quiet .btn (owner: "make it look like a button") */
+.gate-checksums summary::-webkit-details-marker { display: none; }
+.gate-checksums p { display: grid; gap: var(--space-1); margin: var(--space-3) 0 0; text-align: left; }
+.gate-checksums code { color: var(--color-text); font-family: var(--font-mono); font-size: var(--text-label); overflow-wrap: anywhere; }
+.gate-single-action { grid-template-columns: minmax(0, 1fr); }
+.gate-admin { max-width: var(--content-wide); margin: 0 auto; padding: var(--space-10) var(--gutter) var(--space-16); }
+.gate-admin__back a { color: var(--color-muted); font-size: var(--text-small); }
+.gate-admin__title { margin: var(--space-4) 0 var(--space-2); font-size: var(--text-section); line-height: var(--leading-heading); }
+.gate-admin__lead { margin: 0 0 var(--space-6); color: var(--color-muted); }
+.gate-admin__stats { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: 0 0 var(--space-6); }
+.gate-admin__stats p { margin: 0; padding: var(--space-4) var(--space-5); border: var(--border-control) solid var(--color-border); border-radius: var(--radius-panel); background: var(--color-surface); color: var(--color-muted); }
+.gate-admin__stats strong { display: block; color: var(--color-text); font-size: var(--text-card); }
+.gate-admin__export { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); margin: 0 0 var(--space-10); }
+.gate-admin__heading { margin: 0 0 var(--space-4); font-size: var(--text-card); }
+.gate-admin__table { margin: 0 0 var(--space-10); overflow-x: auto; border: var(--border-control) solid var(--color-border); border-radius: var(--radius-panel); background: var(--color-surface); }
+.gate-admin__table table { width: 100%; border-collapse: collapse; font-size: var(--text-small); font-variant-numeric: tabular-nums; }
+.gate-admin__table th, .gate-admin__table td { padding: var(--space-3) var(--space-4); border-bottom: var(--border-hairline) solid var(--color-border-subtle); text-align: left; white-space: nowrap; }
+.gate-admin__table th { color: var(--color-muted); font-size: var(--text-label); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); }
+/* Update emails (site-admin/updates.php): the composer, the campaign panel with its progress bar, and messages. */
+.gate-admin__notice, .gate-admin__error { margin: 0 0 var(--space-6); padding: var(--space-3) var(--space-4); border: var(--border-hairline) solid; border-radius: var(--radius-control); font-size: var(--text-small); font-weight: var(--weight-semibold); }
+.gate-admin__notice { border-color: var(--color-success); background: rgb(166 227 161 / 0.08); color: var(--color-success); }
+.gate-admin__error { border-color: var(--color-danger); background: rgb(255 139 131 / 0.08); color: var(--color-danger); }
+.gate-admin__panel { display: grid; gap: var(--space-5); max-width: 760px; margin: 0 0 var(--space-10); padding: var(--space-6); border: var(--border-control) solid var(--color-border); border-radius: var(--radius-panel); background: var(--color-surface); box-shadow: var(--shadow-card); }
+.gate-admin__panel .gate-admin__heading { margin: 0; }
+.gate-admin__meta { margin: 0; color: var(--color-muted); font-size: var(--text-small); }
+.gate-admin__meta strong { color: var(--color-text); }
+.gate-admin__progress { height: var(--space-2); overflow: hidden; border-radius: var(--radius-pill); background: var(--color-panel); }
+.gate-admin__progress span { display: block; height: 100%; background: var(--color-accent); transition: width var(--duration-base) var(--ease-out); }
+.gate-admin__message { padding: var(--space-4) var(--space-5); border-left: var(--border-control) solid var(--color-border-strong); color: var(--color-muted); }
+.gate-admin__message p { margin: 0 0 var(--space-3); }
+.gate-admin__message p:last-child { margin-bottom: 0; }
+.gate-admin__message a { color: var(--color-accent); overflow-wrap: anywhere; }
+.gate-admin__row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin: 0; }
+.gate-admin__row form { margin: 0; }
+.gate-admin__input { min-height: var(--control-height); padding: var(--space-3); border: var(--border-control) solid var(--color-border); border-radius: var(--radius-control); background: var(--color-panel); color: var(--color-text); font: var(--weight-regular) var(--text-body) / 1.5 var(--font-body); }
+.gate-admin__row .gate-admin__input { flex: 1 1 260px; }
+.gate-admin__input:focus { border-color: var(--color-focus); background-color: var(--color-surface); }
+.gate-admin__textarea { min-height: 220px; resize: vertical; }
+.gate-admin__choices { display: grid; gap: var(--space-1); margin: 0; padding: 0; border: 0; }
+.gate-admin__choices legend { margin-bottom: var(--space-2); padding: 0; font-size: var(--text-label); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); }
+@media (prefers-reduced-motion: reduce) { .gate-admin__progress span { transition: none; } }
+@media (max-width: 768px) {
+    .gate-page { padding: var(--space-10) var(--gutter) var(--space-16); }
+    .gate-page .gate-card { width: 100%; margin: 0; padding: var(--space-6); }
+}
+@media (max-width: 480px) {
+    .gate-file { flex-direction: column; align-items: stretch; }
+    .gate-file .gate-submit { width: 100%; }
+}
+
+/* Consistency pass (owner, 2026-10-24: "we need to be consistent, i like the plugin card design, make a good round of
+   consistency on the entire website"): the boxes the admin look had missed take the product card's geometry. Hairline
+   borders, 12px corners (8px for a box inside a box), the dark surface, no tactile bottom edge, hover lift or drop
+   shadow; headings white with their lime period; tags a quiet fill; states in their text colour on a hairline panel.
+   These override older rules still inline in community.php, thread.php, profile.php, preset.php and upload.php. */
+.discussion-item, .pinned-panel, .thread-header-card, .main-post, .comment-box, .reply-root-box, .profile-item, .profile-preset-card {
+    border: var(--border-hairline) solid var(--color-border-subtle);
+    border-radius: var(--radius-panel);
+    background-color: var(--color-surface);
+    box-shadow: none;
+}
+.pinned-item {
+    border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-control);
+    background-color: var(--color-panel);
+    box-shadow: none;
+}
+.discussion-item, .profile-item, .profile-preset-card, .pinned-item {
+    transition: background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+}
+.discussion-item:hover, .profile-item:hover, .profile-preset-card:hover, .pinned-item:hover {
+    transform: none;
+    background-color: var(--color-surface-hover);
+    border-color: var(--color-border-hover);
+}
+.pinned-panel, .thread-header-card, .main-post, .comment-box, .reply-root-box { padding: var(--space-6); }
+.pinned-panel h3 { margin-bottom: var(--space-2); color: var(--color-text); font-size: var(--text-card); font-weight: var(--weight-bold); }
+.pinned-panel p { font-size: var(--text-small); line-height: var(--leading-body); }
+.thread-type, .tag-qna, .tag-showcase, .tag-request {
+    border-radius: var(--radius-tag);
+    background: var(--color-panel);
+    color: var(--color-text);
+    font-size: var(--text-label);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-label);
+}
+.video-container { border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-control); }
+.comment-children { border-left: var(--border-hairline) solid var(--color-border-subtle); }
+.thread-action-button.is-danger, .icon-button.is-danger { color: var(--color-danger); }
+.profile-avatar { border: var(--border-hairline) solid var(--color-border); border-radius: var(--radius-panel); }
+.profile-preset-thumb, .preset-detail-media { background-color: var(--color-canvas); }
+.profile-preset-status--pending, .profile-preset-status--rejected, .profile-preset-status--approved { background: var(--color-panel); border: var(--border-hairline) solid var(--color-border); }
+.profile-preset-status--approved { color: var(--color-accent); }
+.profile-preset-status--pending { color: var(--color-warning); }
+.profile-preset-status--rejected { color: var(--color-danger); }
+.profile-password-form { border-radius: var(--radius-panel); }
+.preset-detail-media { border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-control); }
+.preset-status-card { border-radius: var(--radius-panel); }
+.preset-status-card--pending, .preset-status-card--rejected { border: var(--border-hairline) solid var(--color-border); background: var(--color-panel); }
+.preset-status-card--pending strong { color: var(--color-warning); }
+.preset-status-card--rejected strong { color: var(--color-danger); }
+.stat-block, .description-box, .file-icon { border-width: var(--border-hairline); border-color: var(--color-border); }
+.stat-block, .file-icon { border-radius: var(--radius-control); }
+.description-box { border-radius: var(--radius-panel); }
+.endorse-button { color: var(--color-text); background-color: var(--color-panel); border-color: var(--color-border); }
+/* Switched on, a button is the grey "on" with a lime mark, quieter than the main button (owner, 2026-11-19, option A). */
+.endorse-button.is-endorsed { color: var(--color-text); background-color: var(--color-pressed); border-color: var(--color-border-strong); }
+.endorse-button.is-endorsed:hover { color: var(--color-text); background-color: var(--color-pressed-hover); border-color: var(--color-border-strong); }
+.endorse-button.is-endorsed :is(.iconizo, svg) { color: var(--color-accent); }
+.endorse-button.is-pending { transform: none; }
+.upload-approval-note { border-color: var(--color-border); background: var(--color-panel); }
+.upload-approval-note strong, .upload-help-icon { color: var(--color-warning); }
+.upload-help-icon { border-color: var(--color-border-strong); }
+.file-upload-box { border-width: var(--border-hairline); border-radius: var(--radius-control); background-color: var(--color-section); }
+.file-upload-box.is-error { border-color: var(--color-danger); background-color: var(--color-section); }
+.upload-remove-file-button:hover { border-color: var(--color-danger); color: var(--color-danger); }
+.tool-video-frame { border-radius: var(--radius-panel); background-color: var(--color-canvas); }
+/* The plain canvas behind a video's poster and in picture fallbacks: style.css's old grid and lime glow stay off
+   (owner, 2026-11-07: "the website should be consistent everywhere"; 20261107-no-grid). */
+.tool-video-placeholder { background: var(--color-canvas); }
+.product-image--empty, .preset-logo-fallback { background-image: none; }
+.tool-video-play { border-color: var(--color-canvas); }
+.faq-item summary { color: var(--color-text); }
+@media (max-width: 600px) {
+    .pinned-panel, .thread-header-card, .main-post, .comment-box, .reply-root-box { padding: var(--space-5); }
+}
+/* Home's New and Most popular badges (store.php; owner, 2026-11-03: "The new and most popular tags need to be on the
+   outside of the card", then, of a lime-ringed pill: "These look vibe coded. Make them look better in my style", then,
+   of the tab in the card's colours: "need to be like green or something and the text black"): a lime tab with black
+   text, joined to the card's top edge. A badged card stops clipping so the tab shows, and its picture keeps the card's
+   rounded top corners itself. */
+.product-card--badged { overflow: visible; }
+.product-card--badged .product-image { overflow: hidden; border-radius: calc(var(--radius-panel) - var(--border-control)) calc(var(--radius-panel) - var(--border-control)) 0 0; }
+.card-badge {
+    position: absolute;
+    bottom: 100%;
+    left: var(--space-4);
+    z-index: 3;
+    padding: var(--space-1) var(--space-3) 2px;
+    border: var(--border-control) solid var(--color-accent);
+    border-bottom: 0;
+    border-radius: var(--radius-control) var(--radius-control) 0 0;
+    background-color: var(--color-accent);
+    color: var(--color-canvas);
+    font-size: var(--text-label);
+    font-weight: var(--weight-semibold);
+    line-height: 1.4;
+    pointer-events: none;
+}
+@media (max-width: 768px) {
+    .product-card--badged { margin-top: var(--space-6); }
+    .product-card--badged .product-image { border-radius: var(--radius-control); }
+    .card-badge { left: var(--space-3); }
+}
+/* The second stylesheet pass (20261111-styles-2; fix_later.md D4, D5, D13, D24).
+   One left edge: the header, the home hero, the card grids, the store's sort row and the community pages share the
+   1200px width (--content-wide); a product page, the FAQ and the contact section share the 1000px one
+   (--content-reading). Narrow windows keep their 5% gutter. The logo picture has 17% of empty canvas on its left, so its
+   box starts that far outside the edge and the letters sit on it. */
+@media (min-width: 769px) {
+    .navbar { padding-inline: max(5%, calc((100% - var(--content-wide)) / 2)); }
+    .navbar .logo-link { margin-left: calc(-0.17 * 110px); }
+}
+.store-filter { width: 90%; max-width: var(--content-wide); padding-inline: 0; }
+.faq-container { max-width: var(--content-reading); }
+.tool-page { max-width: none; padding-inline: max(5%, calc((100% - var(--content-reading)) / 2)); }
+.tool-page-header, .tool-tutorial { max-width: none; }
+.community-container { max-width: none; padding-inline: max(clamp(18px, 4vw, 48px), calc((100% - var(--content-wide)) / 2)); }
+/* Sizes that sat between the scale's steps (14.4, 16.8, 19.2, 13.12 and 12.48px, and the community filters' 10 and 11px
+   labels): the footer line, the line under a page title, the updates log and the sale line. */
+.footer-bottom { font-size: var(--text-small); }
+:is(.store-page-header, .contact-page-wrap) > p, .tool-page-header p { font-size: var(--text-lead); }
+.release-card__version, .release-card__section h3, .sale-callout__timer { font-size: var(--text-small); }
+.release-card__meta, .price-before, .sale-callout__note { font-size: var(--text-label); }
+.thread-tool-group label { font-size: var(--text-label); }
+/* A community plugin card's date and download count each stay on one line ("51 downloads" used to split). */
+.plugin-card-meta-item { white-space: nowrap; }
+/* A product page's boxes share one inner edge (the reviews box and the closing one had 24px, the four panels 20px), and
+   the help guide's title ends with the lime period like the other headings. */
+.tool-panel { padding: var(--space-6); }
+@media (max-width: 768px) {
+    .tool-panel, .tool-closing-cta, .tool-help__toggle { padding: var(--space-4); }
+    .tool-help__body { padding-inline: var(--space-4); }
+}
+.tool-help__title::after { content: var(--signature-dot-content); color: var(--color-accent); }
+/* The phone header (fix_later.md D24): one 56px bar that stays at the top, the logo on the left and a menu button on the
+   right; the links open under it. The button is site-nav.php's <details class="nav-menu">, a native disclosure, so it
+   works without a script; site-nav.js closes it on Escape, on a tap outside and on a link. A header without the button
+   (a page that still pastes its own menu) keeps the stacked look, and node-effects.js still gives it the floating
+   button once it has scrolled away. */
+.nav-menu { display: none; }
+@media (max-width: 768px) {
+    .navbar:has(> .nav-menu) { position: sticky; top: 0; flex-direction: row; align-items: center; justify-content: space-between; gap: 0; height: 56px; padding: 0 var(--gutter); }
+    .navbar:has(> .nav-menu) .logo-link { margin-left: calc(-0.17 * 86px); }
+    .nav-menu { display: block; flex: 0 0 auto; }
+    .nav-menu > summary { display: inline-flex; align-items: center; justify-content: center; width: var(--control-height); height: var(--control-height); border: var(--border-control) solid var(--color-border); border-radius: var(--radius-control); background: var(--color-surface); color: var(--color-text); cursor: pointer; list-style: none; -webkit-tap-highlight-color: transparent; }
+    .nav-menu > summary::-webkit-details-marker { display: none; }
+    .nav-menu > summary .iconizo { width: 20px; height: 20px; }
+    .nav-menu:not([open]) .nav-menu__close, .nav-menu[open] .nav-menu__open { display: none; }
+    .nav-menu ~ .nav-links { display: none; position: absolute; z-index: 1; top: 100%; left: 0; right: 0; flex-direction: column; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start; gap: 0; width: auto; max-height: calc(100dvh - 56px); overflow-y: auto; padding: var(--space-2) var(--gutter) var(--space-4); border-bottom: var(--border-hairline) solid var(--color-border); background: var(--color-canvas); box-shadow: var(--shadow-popover); }
+    .nav-menu[open] ~ .nav-links { display: flex; }
+    /* node-effects.js still builds its floating button and panel at the end of the page; beside this header they are
+       taken out altogether, so a screen reader does not meet a second, invisible menu. */
+    .navbar:has(> .nav-menu) ~ :is(.mobile-menu-toggle, .mobile-menu-panel) { display: none; }
+    .nav-menu ~ .nav-links a, .nav-menu ~ .nav-links .nav-user-menu summary { display: flex; align-items: center; min-height: var(--space-12); font-size: var(--text-body); }
+    .nav-menu ~ .nav-links > .nav-auth { display: block; margin: var(--space-2) 0 0; padding: var(--space-2) 0 0 !important; border-left: 0; border-top: var(--border-hairline) solid var(--color-border); }
+    .nav-menu ~ .nav-links .nav-user-dropdown { position: static; display: block; min-width: 0; margin: 0; padding: 0 0 0 var(--space-4); border: 0; border-radius: 0; background: none; box-shadow: none; }
+}
+/* The third stylesheet pass (20261111-styles-3; fix_later.md D4, D5, D15, D27).
+   A page that is one card (log in, register, the password pages, the sign-in hand-offs, log out) puts it in the middle of
+   the room between the header and the footer instead of leaving that room under it; the card keeps its own margins when
+   the window is short. The download and review pages (.gate-page, a flex row already) centre theirs the same way. */
+main:not(.gate-page):has(> .auth-container) { display: flex; flex-direction: column; justify-content: center; }
+@media (min-width: 769px) { main:not(.gate-page) > .auth-container { width: 100%; } }
+.gate-page { align-items: center; }
+/* The last sizes off the scale: a card's title is the card size on every one-card page (24px on the sign-in ones until
+   now), their small links, the contact section's address, the bookmark's code box. */
+.auth-container :is(h1, h2) { font-size: var(--text-card); }
+.auth-link, .remember-row { font-size: var(--text-small); }
+.email-address { font-size: var(--text-card); }
+.yts-code textarea { font-size: var(--text-small); }
+/* A profile and a thread sit on the 1000px width like a product page, with their sizes on the scale: the member's name
+   is the page title; a thread's title, a member's own sentence, is the section size and breaks into even lines. */
+.profile-container, .thread-container { max-width: none; padding-inline: max(5%, calc((100% - var(--content-reading)) / 2)); }
+.profile-hero h1 { font-size: var(--text-page); }
+.profile-meta, .profile-empty { font-size: var(--text-body); }
+.profile-tab, .profile-tab.is-active .profile-tab-count::before { font-size: var(--text-card); }
+.profile-tab-count { font-size: var(--text-label); }
+.thread-title { font-size: var(--text-section); text-wrap: balance; }
+.thread-meta { font-size: var(--text-small); }
+.post-body { font-size: var(--text-body); }
+/* Phones, the community list (fix_later.md D27): the plugins notice moves under the Plugins, Presets, Threads row, so
+   the row sits at the same height on all three (owner, 2026-10-27: "Keep the row still") without the invisible copy of
+   the notice that held about 130px of empty room open on Presets and Threads. */
+@media (max-width: 600px) {
+    .community-container:not(.plugins-page) { display: flex; flex-direction: column; }
+    .community-container:not(.plugins-page) > * { order: 2; }
+    .community-container:not(.plugins-page) > :is(.dashboard-header, .community-controls-row) { order: 0; }
+    .community-container:not(.plugins-page) > .plugins-notice { order: 1; margin: var(--space-3) 0 var(--space-4); }
+    .community-container:not(.plugins-page) > .plugins-notice.is-placeholder { display: none; }
+}
+/* The fourth stylesheet pass (20261111-styles-4). The contact cue (owner, 2026-11-11: the glow "doesn't really look
+   good, but I still want something to tell users ... glow or something, or maybe vibrate ... cooler and less vibe coded
+   looking"): when a Contact link brings the visitor to the form, node-effects.js sets .is-contact-pulse on the section
+   for about a second. The form answers instead of the section glowing: each label and field, then the button, takes the
+   lime focus line one after the other, and the form gives one short nod. Hairlines only: no blur, no shadow, no outline
+   around the section. Reduced motion keeps the lines and drops the nod. */
+.contact-section.is-contact-pulse .contact-container { animation: none; outline: 0; }
+.contact-section.is-contact-pulse .dry-form { animation: contact-nod 520ms var(--ease-out) both; }
+.contact-section.is-contact-pulse .dry-form label { animation: contact-label 700ms var(--ease-standard) both; }
+.contact-section.is-contact-pulse .dry-form :is(input, textarea, button[type="submit"]) { animation: contact-line 700ms var(--ease-standard) both; }
+.contact-section.is-contact-pulse .dry-form .form-group:nth-of-type(2) :is(label, input, textarea) { animation-delay: 140ms; }
+.contact-section.is-contact-pulse .dry-form button[type="submit"] { animation-delay: 280ms; }
+@keyframes contact-line { 25%, 55% { border-color: var(--color-accent); } }
+@keyframes contact-label { 25%, 55% { color: var(--color-accent); } }
+@keyframes contact-nod { 30% { transform: translateX(10px); } 62% { transform: translateX(-4px); } 100% { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) {
+    .contact-section.is-contact-pulse .dry-form { animation: none; }
+}

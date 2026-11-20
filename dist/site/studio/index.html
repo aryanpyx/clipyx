@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0c0c0c">
+    <meta name="description" content="Clipyx Studio: free tools for video creators that run in your browser. Plan your content in Planizo, or make something to bring into DaVinci Resolve.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Clipyx">
+    <meta property="og:title" content="Clipyx Studio - Free Web Tools for DaVinci Resolve | Clipyx">
+    <meta property="og:description" content="Clipyx Studio: free tools for video creators that run in your browser. Plan your content in Planizo, or make something to bring into DaVinci Resolve.">
+    <meta property="og:url" content="/studio/">
+    <meta property="og:image" content="/media/og-clipyx-4.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Clipyx's home page: Master The Node. Elevate Your Edits., the Latest news and the Fusion node buttons">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Clipyx Studio - Free Web Tools for DaVinci Resolve | Clipyx">
+    <meta name="twitter:description" content="Clipyx Studio: free tools for video creators that run in your browser. Plan your content in Planizo, or make something to bring into DaVinci Resolve.">
+    <meta name="twitter:image" content="/media/og-clipyx-4.jpg">
+    <link rel="canonical" href="/studio/">
+    <title>Clipyx Studio - Free Web Tools for DaVinci Resolve | Clipyx</title>
+    <link rel="icon" href="/media/icon-48.png?v=2" type="image/png" sizes="48x48">
+    <link rel="icon" href="/media/clipyx-icon.svg?v=1" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/media/apple-touch-icon.png?v=4" sizes="180x180">
+    <link rel="preload" href="/fonts/InterVariable-latin.woff2?v=4.1" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css?v=229">
+    <style nonce="8UI818bn4dCr2AnqbTwqrQ">
+        .store-page-header { text-align: center; padding: 60px 20px 30px; }
+        .store-page-header h1 { font-family: var(--font-body); font-size: clamp(1.9rem, 3.6vw, 3.3rem); font-weight: 800; line-height: 1.08; letter-spacing: -1.5px; max-width: 880px; margin: 0 auto 16px; text-wrap: balance; }
+        .store-page-header p { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+        /* Tool cards: product cards on the store's grid: three a row across the 1200 px width from 769 px (the row's
+           edges are the header's), one column on phones. Until 20261111-planizo-in-studio the columns were 380 px at
+           most inside the gutters, which fits two a row; the third card would have sat alone under the first. The
+           previews are 16:9 on the canvas colour, which the tools' square loops share, so the crop takes only empty
+           canvas. No price and no Open button (owner, 2026-11-05: "don't say free on the cards, and they don't need an
+           open button. People can just click the card"): the card's own link overlay opens the tool. */
+        .studio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: var(--space-6); max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); list-style: none; }
+        @media (min-width: 769px) { .studio-grid { width: 90%; max-width: var(--content-wide); padding: 0; gap: var(--space-8); } }
+        .studio-card .product-image { position: relative; height: auto; aspect-ratio: 16 / 9; background: var(--color-canvas); }
+        .studio-card .product-image img, .studio-card .product-image video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+        .studio-card .product-image video { opacity: 0; transition: opacity var(--duration-base) var(--ease-standard); }
+        .studio-card.is-playing .product-image video { opacity: 1; }
+        .studio-card h2 { margin: 0 0 var(--space-3); color: var(--color-text); font-size: var(--text-card); font-weight: var(--weight-bold); letter-spacing: var(--tracking-heading); }
+        .studio-note { margin: 0; padding: var(--space-8) var(--gutter) var(--space-10); color: var(--color-muted); font-size: var(--text-small); text-align: center; }
+    </style>
+    <link rel="stylesheet" href="/theme.css?v=20261119-no-tint">
+    <script nonce="8UI818bn4dCr2AnqbTwqrQ" src="/living-signal-grid.js?v=20261026-no-reveal" defer></script>
+    <script nonce="8UI818bn4dCr2AnqbTwqrQ" src="/node-effects.js?v=69" defer></script>
+    <script nonce="8UI818bn4dCr2AnqbTwqrQ" src="/hero-letters.js?v=20261026-springy-titles" defer></script>
+    <script nonce="8UI818bn4dCr2AnqbTwqrQ" src="/studio/studio.js?v=1" defer></script>
+</head>
+<body>
+<nav class="navbar">
+        <a href="" class="logo-link">
+            <img src="/media/site%20logo.png?v=3" alt="Clipyx Logo" class="logo-img" width="107" height="40">
+        </a>
+        <details class="nav-menu">
+            <summary aria-label="Menu"><svg class="iconizo nav-menu__open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-menu"></use></svg><svg class="iconizo nav-menu__close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/iconizo/iconizo-sprite.svg?v=1.0.0#iz-x"></use></svg></summary>
+        </details>
+        <div class="nav-links" style="column-gap: clamp(var(--space-3), calc(var(--space-3) + (100vw - 769px) * 0.0232), var(--space-5));">
+            <a href="" data-nav="home">Home</a>
+            <a href="/store/" data-nav="store">Store</a>
+            <a href="/library/" data-nav="library">Library</a>
+            <a href="/studio/" data-nav="studio" aria-current="page">Studio</a>
+            <a href="/community" data-nav="community">Community</a>
+            <a href="/pricing" data-nav="pricing">Pricing</a>
+            <a href="/contact" data-nav="contact">Contact</a>
+            <div class="nav-auth">
+                <a href="/login" class="nav-login-link" data-nav="login">Login</a>
+            </div>
+        </div>
+    </nav>
+    <script nonce="8UI818bn4dCr2AnqbTwqrQ" src="/site-nav.js?v=1" defer></script>
+
+    <main class="store-main">
+        <div class="store-page-header">
+            <h1>Clipyx Studio</h1>
+            <p>Free tools for video creators that run in your browser.</p>
+        </div>
+
+        <ul class="studio-grid" aria-label="Studio tools" data-studio-grid>
+                        <li class="product-card product-card--clickable studio-card" data-slug="planizo">
+                <a href="/planizo/" class="product-card-link-overlay" target="_blank" rel="noopener" aria-label="Open Planizo"></a>
+                <div class="product-image">
+                    <img src="/studio/media/planizo-480.webp?v=5" alt="" width="480" height="480" decoding="async">
+                                        <video data-src="/studio/media/planizo-480.mp4?v=5" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+                                    </div>
+                <div class="product-info">
+                    <div class="tags"><span class="tag">Web app</span></div>
+                    <h2>Planizo</h2>
+                    <div class="product-copy-block">
+                        <p>A planner for video creators: your day, a calendar with weekly routines, whiteboards for scripts and a content tracker.</p>
+                    </div>
+                </div>
+            </li>
+                        <li class="product-card product-card--clickable studio-card" data-slug="curve-animator">
+                <a href="/studio/curve-animator/" class="product-card-link-overlay" aria-label="Open Curve Animator"></a>
+                <div class="product-image">
+                    <img src="/studio/media/curve-animator-480.webp?v=5" alt="" width="480" height="480" decoding="async">
+                                        <video data-src="/studio/media/curve-animator-480.mp4?v=5" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+                                    </div>
+                <div class="product-info">
+                    <div class="tags"><span class="tag">Web tool</span></div>
+                    <h2>Curve Animator</h2>
+                    <div class="product-copy-block">
+                        <p>Draw an easing curve as a line in Fusion and morph it between curves on the frames you choose. Copy the Polygon node it writes and paste it into the Node Editor.</p>
+                    </div>
+                </div>
+            </li>
+                        <li class="product-card product-card--clickable studio-card" data-slug="youtube-to-srt">
+                <a href="/studio/youtube-to-srt/" class="product-card-link-overlay" aria-label="Open YouTube to SRT"></a>
+                <div class="product-image">
+                    <img src="/studio/media/youtube-to-srt-480.webp?v=5" alt="" width="480" height="480" decoding="async">
+                                        <video data-src="/studio/media/youtube-to-srt-480.mp4?v=5" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+                                    </div>
+                <div class="product-info">
+                    <div class="tags"><span class="tag">Web tool</span></div>
+                    <h2>YouTube to SRT</h2>
+                    <div class="product-copy-block">
+                        <p>A browser bookmark that turns a YouTube video&#039;s captions into subtitles for Resolve, a few words per line.</p>
+                    </div>
+                </div>
+            </li>
+                    </ul>
+        <p class="studio-note">More tools are coming.</p>
+    </main>
+
+    <footer class="site-footer">
+    <div class="footer-bottom">
+        <nav class="footer-legal" aria-label="Legal and contact information">
+    <a href="/pricing">Pricing</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/terms#refunds">Refunds</a>
+    <a href="/contact">Contact</a>
+</nav>
+        <p>&copy; 2026 Clipyx. All rights reserved.</p>
+    </div>
+</footer>
+    <script nonce="8UI818bn4dCr2AnqbTwqrQ" src="/chat-widget.js?v=32"></script>
+</body>
+</html>

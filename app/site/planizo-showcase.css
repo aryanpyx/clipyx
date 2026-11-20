@@ -1,0 +1,131 @@
+/* Explore Planizo (store.php, home page only, after Explore the Library; owner, 2026-11-01: "add a section like this for
+   planizo"). The section, grid, tiles and button are Explore the Library's own classes in theme.css; this file draws
+   the six previews (inline SVG, viewBox 160 x 160, art in the top 60% above the tile's caption). Each drawing's resting
+   state is a finished frame: the motion runs only while planizo-showcase.js marks the tile .is-live (on screen, tab
+   visible, no reduced motion), restarting from its first keyframe each time. No text inside: numbers and labels are bars,
+   since text tools read SVG text run together (20261101-planizo-art-text). */
+.planizo-art { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.planizo-art * { transform-box: fill-box; transform-origin: 50% 50%; }
+.planizo-art .pz-frame { fill: none; stroke: var(--color-border); stroke-width: 1; }
+.planizo-art .pz-fill { fill: var(--color-panel); }
+.planizo-art .pz-bar { fill: var(--color-border-hover); }
+.planizo-art .pz-dim { fill: var(--color-border-strong); }
+.planizo-art .pz-lime { fill: var(--color-accent); }
+.planizo-art .pz-tint { fill: var(--color-pressed, #262626); }
+.planizo-art .pz-path { fill: none; stroke: var(--color-accent); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.planizo-art .pz-ring { fill: var(--color-canvas); stroke: var(--color-border-strong); stroke-width: 1.25; }
+.planizo-art .pz-check { fill: none; stroke: var(--color-on-accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.planizo-art .pz-thin { stroke-width: 1.25; }
+.planizo-art .pz-track { fill: var(--color-surface); }
+.planizo-art .pz-rail { fill: none; stroke: var(--color-border); stroke-width: 1.5; stroke-linecap: round; }
+.planizo-art .pz-drop { fill: var(--color-pressed, #262626); stroke: var(--color-border-strong); stroke-width: 1; }
+.planizo-art .pz-tintline { fill: var(--color-border-strong); }
+.planizo-art .pz-pill { fill: var(--color-canvas); stroke: var(--color-accent); stroke-width: 1.2; }
+.planizo-art .pz-icon { fill: none; stroke: var(--color-accent); stroke-width: 1.1; }
+.planizo-art .pz-from-left { transform-origin: 0 50%; }
+.planizo-art .pz-from-top { transform-origin: 50% 0; }
+.planizo-tile.is-live .pz-anim { animation-duration: 6s; animation-iteration-count: infinite; animation-fill-mode: both; animation-timing-function: var(--ease-standard); }
+
+/* Your day (Today): the now line glides down the agenda and each item it passes is ticked. At rest: halfway, two
+   ticked. */
+.planizo-tile--today .pz-now { transform: translateY(40px); }
+.planizo-tile--today .pz-done-3, .planizo-tile--today .pz-done-4 { opacity: 0; }
+.planizo-tile.is-live .pz-now { animation-name: pz-now; }
+.planizo-tile.is-live .pz-done-1 { animation-name: pz-done-1; }
+.planizo-tile.is-live .pz-done-2 { animation-name: pz-done-2; }
+.planizo-tile.is-live .pz-done-3 { animation-name: pz-done-3; }
+.planizo-tile.is-live .pz-done-4 { animation-name: pz-done-4; }
+@keyframes pz-now { 0% { transform: translateY(0); opacity: 1; animation-timing-function: linear; } 80% { transform: translateY(82px); opacity: 1; } 90%, 100% { transform: translateY(82px); opacity: 0; } }
+@keyframes pz-done-1 { 0%, 10% { opacity: 0; transform: scale(0.4); } 14%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; transform: none; } }
+@keyframes pz-done-2 { 0%, 28% { opacity: 0; transform: scale(0.4); } 32%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; transform: none; } }
+@keyframes pz-done-3 { 0%, 45% { opacity: 0; transform: scale(0.4); } 49%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; transform: none; } }
+@keyframes pz-done-4 { 0%, 63% { opacity: 0; transform: scale(0.4); } 67%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; transform: none; } }
+
+/* Drag and drop (Calendar): an event lifts, tilts, glides to another day and lands, then goes back; the day under
+   it lights up as it arrives. At rest: in its first day. */
+.planizo-tile--calendar .pz-target { opacity: 0; }
+.planizo-tile.is-live .pz-chip { animation-name: pz-chip; }
+.planizo-tile.is-live .pz-target-there { animation-name: pz-target-there; }
+.planizo-tile.is-live .pz-target-home { animation-name: pz-target-home; }
+@keyframes pz-chip {
+    0%, 10% { transform: none; }
+    18% { transform: translate(0, -4px) rotate(-8deg) scale(1.15); }
+    42% { transform: translate(60px, 22px) rotate(-8deg) scale(1.15); }
+    50%, 60% { transform: translate(60px, 26px); }
+    68% { transform: translate(60px, 22px) rotate(-8deg) scale(1.15); }
+    90% { transform: translate(0, -4px) rotate(-8deg) scale(1.15); }
+    97%, 100% { transform: none; }
+}
+@keyframes pz-target-there { 0%, 30% { opacity: 0; } 42%, 52% { opacity: 1; } 60%, 100% { opacity: 0; } }
+@keyframes pz-target-home { 0%, 78% { opacity: 0; } 90%, 97% { opacity: 1; } 100% { opacity: 0; } }
+
+/* Weekly routines (Calendar › Routines): a day's routines fill in, then the same routines on each following day. At
+   rest: the whole week. */
+.planizo-tile.is-live .pz-day { animation-name: pz-day; animation-timing-function: var(--ease-out); }
+.planizo-tile.is-live .pz-day-2 { animation-delay: 0.32s; }
+.planizo-tile.is-live .pz-day-3 { animation-delay: 0.64s; }
+.planizo-tile.is-live .pz-day-4 { animation-delay: 0.96s; }
+.planizo-tile.is-live .pz-day-5 { animation-delay: 1.28s; }
+.planizo-tile.is-live .pz-day-6 { animation-delay: 1.6s; }
+.planizo-tile.is-live .pz-day-7 { animation-delay: 1.92s; }
+@keyframes pz-day { 0%, 4% { opacity: 0; transform: scaleY(0.3); } 12%, 64% { opacity: 1; transform: none; } 70%, 100% { opacity: 0; transform: none; } }
+
+/* Idea boards (Whiteboard): a connector draws from one card to another, then a note drops onto the board. At rest: all
+   three in place. */
+.planizo-tile--whiteboard .pz-link { stroke-dasharray: 100 102; stroke-dashoffset: 0; } /* the longer gap: no round-cap dot while hidden */
+.planizo-tile--whiteboard .pz-note { transform: rotate(-5deg); }
+.planizo-tile.is-live .pz-link { animation-name: pz-link; animation-timing-function: var(--ease-out); }
+.planizo-tile.is-live .pz-link-end { animation-name: pz-link-end; }
+.planizo-tile.is-live .pz-note { animation-name: pz-note; }
+@keyframes pz-link { 0%, 8% { stroke-dashoffset: 100; opacity: 1; } 38%, 86% { stroke-dashoffset: 0; opacity: 1; } 94%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes pz-link-end { 0%, 36% { opacity: 0; transform: scale(0); } 44%, 86% { opacity: 1; transform: none; } 94%, 100% { opacity: 0; transform: none; } }
+@keyframes pz-note {
+    0%, 48% { opacity: 0; transform: translateY(-16px) rotate(-14deg); }
+    58% { opacity: 1; transform: translateY(2px) rotate(-3deg); }
+    64%, 86% { opacity: 1; transform: rotate(-5deg); }
+    94%, 100% { opacity: 0; transform: rotate(-5deg); }
+}
+
+/* Script mode (Whiteboard › Script): numbered lines type in, one is picked, and a B-roll item links to it. At rest: the
+   finished script with its link. */
+.planizo-tile.is-live .pz-line { animation-name: pz-line; animation-timing-function: var(--ease-out); }
+.planizo-tile.is-live .pz-line-2 { animation-name: pz-line-2; }
+.planizo-tile.is-live .pz-line-3 { animation-name: pz-line-3; }
+.planizo-tile.is-live .pz-line-4 { animation-name: pz-line-4; }
+.planizo-tile.is-live .pz-line-5 { animation-name: pz-line-5; }
+.planizo-tile.is-live .pz-pick { animation-name: pz-pick; }
+.planizo-tile.is-live .pz-broll { animation-name: pz-broll; }
+@keyframes pz-line { 0%, 3% { transform: scaleX(0); opacity: 1; } 11%, 88% { transform: none; opacity: 1; } 95%, 100% { transform: none; opacity: 0; } }
+@keyframes pz-line-2 { 0%, 12% { transform: scaleX(0); opacity: 1; } 20%, 88% { transform: none; opacity: 1; } 95%, 100% { transform: none; opacity: 0; } }
+@keyframes pz-line-3 { 0%, 21% { transform: scaleX(0); opacity: 1; } 29%, 88% { transform: none; opacity: 1; } 95%, 100% { transform: none; opacity: 0; } }
+@keyframes pz-line-4 { 0%, 30% { transform: scaleX(0); opacity: 1; } 38%, 88% { transform: none; opacity: 1; } 95%, 100% { transform: none; opacity: 0; } }
+@keyframes pz-line-5 { 0%, 39% { transform: scaleX(0); opacity: 1; } 47%, 88% { transform: none; opacity: 1; } 95%, 100% { transform: none; opacity: 0; } }
+@keyframes pz-pick { 0%, 52% { opacity: 0; } 58%, 88% { opacity: 1; } 95%, 100% { opacity: 0; } }
+@keyframes pz-broll { 0%, 60% { opacity: 0; transform: scale(0.6); } 68%, 88% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; transform: none; } }
+
+/* Your videos (Content Tracker): a video moves through the four statuses (Idea, Working, Scheduled, Done), each stage
+   lighting up, and is ticked at the end. At rest: in Scheduled. */
+.planizo-tile--content .pz-card { transform: translateX(72px); }
+.planizo-tile--content .pz-progress { transform: scaleX(0.68); }
+.planizo-tile--content .pz-stage-4, .planizo-tile--content .pz-tick { opacity: 0; }
+.planizo-tile.is-live .pz-card { animation-name: pz-card; }
+.planizo-tile.is-live .pz-progress { animation-name: pz-progress; }
+.planizo-tile.is-live .pz-stage-2 { animation-name: pz-stage-2; }
+.planizo-tile.is-live .pz-stage-3 { animation-name: pz-stage-3; }
+.planizo-tile.is-live .pz-stage-4 { animation-name: pz-stage-4; }
+.planizo-tile.is-live .pz-tick { animation-name: pz-tick; }
+@keyframes pz-card {
+    0%, 8% { transform: none; opacity: 1; }
+    16%, 28% { transform: translateX(34px); opacity: 1; }
+    36%, 48% { transform: translateX(72px); opacity: 1; }
+    56%, 86% { transform: translateX(106px); opacity: 1; }
+    94% { transform: translateX(106px); opacity: 0; }
+    100% { transform: none; opacity: 0; }
+}
+@keyframes pz-progress { 0%, 8% { transform: scaleX(0); } 16%, 28% { transform: scaleX(0.32); } 36%, 48% { transform: scaleX(0.68); } 56%, 88% { transform: none; } 96%, 100% { transform: scaleX(0); } }
+@keyframes pz-stage-2 { 0%, 14% { opacity: 0; transform: scale(0.4); } 17%, 88% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
+@keyframes pz-stage-3 { 0%, 34% { opacity: 0; transform: scale(0.4); } 37%, 88% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
+@keyframes pz-stage-4 { 0%, 54% { opacity: 0; transform: scale(0.4); } 57%, 88% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
+@keyframes pz-tick { 0%, 60% { opacity: 0; transform: scale(0.3); } 66% { opacity: 1; transform: scale(1.15); } 70%, 86% { opacity: 1; transform: none; } 94%, 100% { opacity: 0; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) { .planizo-tile.is-live .pz-anim { animation: none; } }

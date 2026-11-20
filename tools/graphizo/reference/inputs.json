@@ -1,0 +1,4316 @@
+{
+ "product": "Graphizo",
+ "version": "1.0",
+ "inputs": {
+  "GraphType": {
+   "label": "Graph Type",
+   "page": "Controls",
+   "section": "Graph",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Bar"
+    },
+    {
+     "label": "Grouped Bar"
+    },
+    {
+     "label": "Stacked Bar"
+    },
+    {
+     "label": "Line"
+    },
+    {
+     "label": "Area"
+    },
+    {
+     "label": "Scatter"
+    },
+    {
+     "label": "Pie"
+    },
+    {
+     "label": "Donut"
+    },
+    {
+     "label": "Rose"
+    },
+    {
+     "label": "Radar"
+    },
+    {
+     "label": "Parliament"
+    },
+    {
+     "label": "Bar Chart Race"
+    },
+    {
+     "label": "Waterfall"
+    },
+    {
+     "label": "Gauge"
+    },
+    {
+     "label": "Funnel"
+    },
+    {
+     "label": "Heatmap"
+    },
+    {
+     "label": "Bubble"
+    }
+   ],
+   "integer": true
+  },
+  "Orientation": {
+   "label": "Orientation (Bars)",
+   "page": "Controls",
+   "section": "Graph",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Vertical"
+    },
+    {
+     "label": "Horizontal"
+    }
+   ],
+   "integer": true
+  },
+  "CreatorLook": {
+   "label": "Creator Look",
+   "page": "Controls",
+   "section": "Graph",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Custom"
+    },
+    {
+     "label": "Midnight"
+    },
+    {
+     "label": "Studio Lime"
+    },
+    {
+     "label": "Editorial Paper"
+    },
+    {
+     "label": "Neon"
+    },
+    {
+     "label": "Sunset"
+    }
+   ],
+   "integer": true
+  },
+  "StarterPreset": {
+   "label": "Creator Starter",
+   "page": "Controls",
+   "section": "Graph",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Audience Race"
+    },
+    {
+     "label": "Growth Story"
+    },
+    {
+     "label": "Traffic Breakdown"
+    },
+    {
+     "label": "Ranked Comparison"
+    }
+   ],
+   "integer": true
+  },
+  "DataSource": {
+   "label": "Data Source",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Fields"
+    },
+    {
+     "label": "Text"
+    }
+   ],
+   "integer": true
+  },
+  "FieldCount": {
+   "label": "Field Count",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 4,
+   "min": 1,
+   "max": 16,
+   "slider": [
+    1,
+    16
+   ],
+   "integer": true
+  },
+  "FieldLabel1": {
+   "label": "Label 1",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "Q1"
+  },
+  "FieldValue1": {
+   "label": "Value 1",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 120,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel2": {
+   "label": "Label 2",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "Q2"
+  },
+  "FieldValue2": {
+   "label": "Value 2",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 90,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel3": {
+   "label": "Label 3",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "Q3"
+  },
+  "FieldValue3": {
+   "label": "Value 3",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 60,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel4": {
+   "label": "Label 4",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "Q4"
+  },
+  "FieldValue4": {
+   "label": "Value 4",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 40,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel5": {
+   "label": "Label 5",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F5"
+  },
+  "FieldValue5": {
+   "label": "Value 5",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 30,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel6": {
+   "label": "Label 6",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F6"
+  },
+  "FieldValue6": {
+   "label": "Value 6",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 20,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel7": {
+   "label": "Label 7",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F7"
+  },
+  "FieldValue7": {
+   "label": "Value 7",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 10,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel8": {
+   "label": "Label 8",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F8"
+  },
+  "FieldValue8": {
+   "label": "Value 8",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 5,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel9": {
+   "label": "Label 9",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F9"
+  },
+  "FieldValue9": {
+   "label": "Value 9",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 50,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel10": {
+   "label": "Label 10",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F10"
+  },
+  "FieldValue10": {
+   "label": "Value 10",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 45,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel11": {
+   "label": "Label 11",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F11"
+  },
+  "FieldValue11": {
+   "label": "Value 11",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 40,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel12": {
+   "label": "Label 12",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F12"
+  },
+  "FieldValue12": {
+   "label": "Value 12",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 35,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel13": {
+   "label": "Label 13",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F13"
+  },
+  "FieldValue13": {
+   "label": "Value 13",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 30,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel14": {
+   "label": "Label 14",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F14"
+  },
+  "FieldValue14": {
+   "label": "Value 14",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 25,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel15": {
+   "label": "Label 15",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F15"
+  },
+  "FieldValue15": {
+   "label": "Value 15",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 20,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "FieldLabel16": {
+   "label": "Label 16",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "F16"
+  },
+  "FieldValue16": {
+   "label": "Value 16",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 15,
+   "slider": [
+    0,
+    1000
+   ]
+  },
+  "Data": {
+   "label": "Data (Label,Value,...)",
+   "page": "Controls",
+   "section": "Data Fields",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "#,Sales,Costs\nQ1,120,90\nQ2,145,96\nQ3,132,101\nQ4,178,120"
+  },
+  "CSVPath": {
+   "label": "CSV File",
+   "page": "Controls",
+   "section": "Csv Import",
+   "type": "Text",
+   "control": "FileControl",
+   "role": "internal",
+   "default": ""
+  },
+  "CSVTarget": {
+   "label": "Import To",
+   "page": "Controls",
+   "section": "Csv Import",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Data Table (All Series)"
+    },
+    {
+     "label": "Fields (First Series)"
+    }
+   ],
+   "integer": true
+  },
+  "AutoResolution": {
+   "label": "Auto Resolution (Follow Input)",
+   "page": "Controls",
+   "section": "Image",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "OutputPreset": {
+   "label": "Canvas",
+   "page": "Controls",
+   "section": "Image",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Custom"
+    },
+    {
+     "label": "YouTube 1920 x 1080"
+    },
+    {
+     "label": "Shorts 1080 x 1920"
+    },
+    {
+     "label": "Square 1080 x 1080"
+    },
+    {
+     "label": "YouTube 4K 3840 x 2160"
+    }
+   ],
+   "integer": true
+  },
+  "OutputWidth": {
+   "label": "Output Width",
+   "page": "Controls",
+   "section": "Image",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1920,
+   "min": 16,
+   "max": 8192,
+   "slider": [
+    16,
+    8192
+   ],
+   "integer": true
+  },
+  "OutputHeight": {
+   "label": "Output Height",
+   "page": "Controls",
+   "section": "Image",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1080,
+   "min": 16,
+   "max": 8192,
+   "slider": [
+    16,
+    8192
+   ],
+   "integer": true
+  },
+  "AutoY": {
+   "label": "Auto Y Range",
+   "page": "Controls",
+   "section": "Scale And Sorting",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "YMin": {
+   "label": "Y Min",
+   "page": "Controls",
+   "section": "Scale And Sorting",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -100000,
+    100000
+   ]
+  },
+  "YMax": {
+   "label": "Y Max",
+   "page": "Controls",
+   "section": "Scale And Sorting",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 100,
+   "slider": [
+    -100000,
+    100000
+   ]
+  },
+  "SortMode": {
+   "label": "Sort (First Series)",
+   "page": "Controls",
+   "section": "Scale And Sorting",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "None"
+    },
+    {
+     "label": "Ascending"
+    },
+    {
+     "label": "Descending"
+    }
+   ],
+   "integer": true
+  },
+  "TransparentBg": {
+   "label": "Transparent Background",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "CustomBg": {
+   "label": "Custom Background",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "BgR": {
+   "label": "Background",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.07,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "BgG": {
+   "label": "Background",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.07,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "BgB": {
+   "label": "Background",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.09,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "MasterOpacity": {
+   "label": "Master Opacity",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Padding": {
+   "label": "Padding",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 60,
+   "slider": [
+    0,
+    400
+   ],
+   "integer": true
+  },
+  "ChartOffsetX": {
+   "label": "Chart X Offset (px)",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1000,
+    1000
+   ]
+  },
+  "ChartOffsetY": {
+   "label": "Chart Y Offset (px)",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1000,
+    1000
+   ]
+  },
+  "LineWidth": {
+   "label": "Grid Line Width",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1.5,
+   "slider": [
+    0.5,
+    8
+   ]
+  },
+  "CornerRadius": {
+   "label": "Corner Radius",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 10,
+   "slider": [
+    0,
+    50
+   ],
+   "integer": true
+  },
+  "BarWidth": {
+   "label": "Bar Width",
+   "page": "Style",
+   "section": "Style",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0.62,
+   "slider": [
+    0.05,
+    1
+   ]
+  },
+  "Shadow": {
+   "label": "Shadow",
+   "page": "Style",
+   "section": "Depth And Glow",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0.35,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "ShadowSoftness": {
+   "label": "Shadow Softness",
+   "page": "Style",
+   "section": "Depth And Glow",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 16,
+   "slider": [
+    0,
+    80
+   ]
+  },
+  "ShadowDistance": {
+   "label": "Shadow Distance",
+   "page": "Style",
+   "section": "Depth And Glow",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 6,
+   "slider": [
+    -40,
+    40
+   ]
+  },
+  "Glow": {
+   "label": "Glow",
+   "page": "Style",
+   "section": "Depth And Glow",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "GlowSize": {
+   "label": "Glow Size",
+   "page": "Style",
+   "section": "Depth And Glow",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 18,
+   "slider": [
+    2,
+    80
+   ]
+  },
+  "GridShow": {
+   "label": "Show Grid",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "GridFade": {
+   "label": "Grid Fade (Frames)",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 12,
+   "min": 0,
+   "max": 60,
+   "slider": [
+    0,
+    60
+   ],
+   "integer": true
+  },
+  "CustomGrid": {
+   "label": "Custom Grid Color",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "GridR": {
+   "label": "Grid",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.22,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "GridG": {
+   "label": "Grid",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.24,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "GridB": {
+   "label": "Grid",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.29,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "AxisShow": {
+   "label": "Show Axis",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "CustomAxis": {
+   "label": "Custom Axis Color",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "AxisR": {
+   "label": "Axis",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.55,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "AxisG": {
+   "label": "Axis",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.57,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "AxisB": {
+   "label": "Axis",
+   "page": "Style",
+   "section": "Grid And Axis",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.62,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "FontName": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "FontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "FontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "LabelScale": {
+   "label": "Font Scale",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 4,
+   "slider": [
+    1,
+    12
+   ],
+   "integer": true
+  },
+  "CustomText": {
+   "label": "Custom Text Color",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "LabelR": {
+   "label": "Text",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.92,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "LabelG": {
+   "label": "Text",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.93,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "LabelB": {
+   "label": "Text",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.95,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "ShowLabels": {
+   "label": "Show Labels",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "ShowValues": {
+   "label": "Show Values",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "ValueMode": {
+   "label": "Value Format",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Value"
+    },
+    {
+     "label": "Percent"
+    }
+   ],
+   "integer": true
+  },
+  "NumberStyle": {
+   "label": "Number Style",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Plain"
+    },
+    {
+     "label": "Compact (K / M / B / T)"
+    },
+    {
+     "label": "Thousands Separators"
+    }
+   ],
+   "integer": true
+  },
+  "ValuePrefix": {
+   "label": "Value Prefix",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": ""
+  },
+  "ValueSuffix": {
+   "label": "Value Suffix",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": ""
+  },
+  "Decimals": {
+   "label": "Decimals",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    0,
+    4
+   ],
+   "integer": true
+  },
+  "LegendMode": {
+   "label": "Legend",
+   "page": "Style",
+   "section": "Labels",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Outside (Radial)"
+    },
+    {
+     "label": "Legend"
+    },
+    {
+     "label": "None"
+    }
+   ],
+   "integer": true
+  },
+  "ShowTitle": {
+   "label": "Show Title",
+   "page": "Style",
+   "section": "Title",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "TitleText": {
+   "label": "Title",
+   "page": "Style",
+   "section": "Title",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "Graphizo"
+  },
+  "TitleScale": {
+   "label": "Title Scale",
+   "page": "Style",
+   "section": "Title",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1.5,
+   "slider": [
+    0.5,
+    6
+   ]
+  },
+  "TitleAlign": {
+   "label": "Title Alignment",
+   "page": "Style",
+   "section": "Title",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Left"
+    }
+   ],
+   "integer": true
+  },
+  "Subtitle": {
+   "label": "Subtitle",
+   "page": "Style",
+   "section": "Title",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": ""
+  },
+  "SourceText": {
+   "label": "Source / Credit",
+   "page": "Style",
+   "section": "Title",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": ""
+  },
+  "FocusItem": {
+   "label": "Highlight Item (0 = All)",
+   "page": "Style",
+   "section": "Storytelling",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    0,
+    64
+   ],
+   "integer": true
+  },
+  "FocusDim": {
+   "label": "Other Items Opacity",
+   "page": "Style",
+   "section": "Storytelling",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0.25,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "ShowTarget": {
+   "label": "Show Target Line",
+   "page": "Style",
+   "section": "Storytelling",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "TargetValue": {
+   "label": "Target Value",
+   "page": "Style",
+   "section": "Storytelling",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 100,
+   "slider": [
+    -100000,
+    100000
+   ]
+  },
+  "TargetLabel": {
+   "label": "Target Label",
+   "page": "Style",
+   "section": "Storytelling",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "Target"
+  },
+  "TargetShowValue": {
+   "label": "Show Target Value",
+   "page": "Style",
+   "section": "Storytelling",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "ChartLineWidth": {
+   "label": "Line Width",
+   "page": "Style",
+   "section": "Lines And Markers",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 5,
+   "slider": [
+    0.5,
+    20
+   ]
+  },
+  "Smooth": {
+   "label": "Smooth Curve",
+   "page": "Style",
+   "section": "Lines And Markers",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "Marker": {
+   "label": "Marker",
+   "page": "Style",
+   "section": "Lines And Markers",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "None"
+    },
+    {
+     "label": "Circle"
+    },
+    {
+     "label": "Square"
+    },
+    {
+     "label": "Diamond"
+    }
+   ],
+   "integer": true
+  },
+  "MarkerSize": {
+   "label": "Marker Size",
+   "page": "Style",
+   "section": "Lines And Markers",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 12,
+   "slider": [
+    2,
+    40
+   ],
+   "integer": true
+  },
+  "AreaOpacity": {
+   "label": "Area Opacity",
+   "page": "Style",
+   "section": "Lines And Markers",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0.35,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "StartAngle": {
+   "label": "Start Angle",
+   "page": "Style",
+   "section": "Radial Charts",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": -90,
+   "slider": [
+    -360,
+    360
+   ]
+  },
+  "SweepDir": {
+   "label": "Sweep Direction",
+   "page": "Style",
+   "section": "Radial Charts",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Clockwise"
+    },
+    {
+     "label": "Counter Clockwise"
+    }
+   ],
+   "integer": true
+  },
+  "InnerRadius": {
+   "label": "Inner Radius",
+   "page": "Style",
+   "section": "Radial Charts",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0.55,
+   "slider": [
+    0,
+    0.9
+   ]
+  },
+  "SliceGap": {
+   "label": "Slice Gap (Degrees)",
+   "page": "Style",
+   "section": "Radial Charts",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    0,
+    8
+   ]
+  },
+  "DonutTotal": {
+   "label": "Donut Center Total",
+   "page": "Style",
+   "section": "Radial Charts",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "DonutLabel": {
+   "label": "Center Caption",
+   "page": "Style",
+   "section": "Radial Charts",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "TOTAL"
+  },
+  "WaterfallTotal": {
+   "label": "Add Total Bar",
+   "page": "Style",
+   "section": "Waterfall",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "WaterfallTotalLabel": {
+   "label": "Total Label",
+   "page": "Style",
+   "section": "Waterfall",
+   "type": "Text",
+   "control": "TextEditControl",
+   "role": "public",
+   "default": "Total"
+  },
+  "ParlRows": {
+   "label": "Rows",
+   "page": "Style",
+   "section": "Parliament",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 4,
+   "slider": [
+    1,
+    12
+   ],
+   "integer": true
+  },
+  "SeatShape": {
+   "label": "Seat Shape",
+   "page": "Style",
+   "section": "Parliament",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Circle"
+    },
+    {
+     "label": "Rounded"
+    },
+    {
+     "label": "Square"
+    }
+   ],
+   "integer": true
+  },
+  "SeatSize": {
+   "label": "Seat Size",
+   "page": "Style",
+   "section": "Parliament",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.2,
+    1.5
+   ]
+  },
+  "ParlInner": {
+   "label": "Inner Radius",
+   "page": "Style",
+   "section": "Parliament",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0.35,
+   "slider": [
+    0,
+    0.85
+   ]
+  },
+  "CategoryFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Category Labels - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "CategoryWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Category Labels - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "CategoryUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Category Labels - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "CategoryFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Category Labels - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "CategoryFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Category Labels - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "CategorySize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Category Labels - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "CategoryTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Category Labels - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "CategoryOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Category Labels - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "CategoryOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Category Labels - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "CategoryTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Category Labels - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "ValueFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Value Labels - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "ValueWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Value Labels - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "ValueUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Value Labels - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "ValueFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Value Labels - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "ValueFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Value Labels - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "ValueSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Value Labels - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "ValueTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Value Labels - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "ValueOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Value Labels - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "ValueOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Value Labels - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "ValueTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Value Labels - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "AxisTextFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Axis Numbers - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "AxisTextWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Axis Numbers - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "AxisTextUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Axis Numbers - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "AxisTextFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Axis Numbers - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "AxisTextFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Axis Numbers - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "AxisTextSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Axis Numbers - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "AxisTextTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Axis Numbers - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "AxisTextOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Axis Numbers - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "AxisTextOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Axis Numbers - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "AxisTextTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Axis Numbers - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "LegendTextFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Legend - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "LegendTextWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Legend - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "LegendTextUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Legend - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "LegendTextFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Legend - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "LegendTextFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Legend - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "LegendTextSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Legend - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "LegendTextTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Legend - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "LegendTextOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Legend - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "LegendTextOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Legend - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "LegendTextTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Legend - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "TitleFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Title - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "TitleWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Title - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "TitleUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Title - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "TitleFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Title - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "TitleFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Title - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "TitleSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Title - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "TitleTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Title - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "TitleOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Title - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "TitleOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Title - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "TitleTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Title - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "SubtitleFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Subtitle - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "SubtitleWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Subtitle - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "SubtitleUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Subtitle - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "SubtitleFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Subtitle - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "SubtitleFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Subtitle - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "SubtitleSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Subtitle - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "SubtitleTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Subtitle - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "SubtitleOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Subtitle - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "SubtitleOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Subtitle - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "SubtitleTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Subtitle - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "SourceFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Source / Credit - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "SourceWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Source / Credit - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "SourceUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Source / Credit - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "SourceFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Source / Credit - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "SourceFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Source / Credit - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "SourceSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Source / Credit - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "SourceTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Source / Credit - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "SourceOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Source / Credit - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "SourceOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Source / Credit - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "SourceTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Source / Credit - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "TargetFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Target Label - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "TargetWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Target Label - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "TargetUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Target Label - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "TargetFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Target Label - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "TargetFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Target Label - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "TargetSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Target Label - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "TargetTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Target Label - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "TargetOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Target Label - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "TargetOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Target Label - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "TargetTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Target Label - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "DonutNumberFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Donut Total - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "DonutNumberWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Donut Total - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "DonutNumberUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Donut Total - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "DonutNumberFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Donut Total - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "DonutNumberFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Donut Total - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "DonutNumberSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Donut Total - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "DonutNumberTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Donut Total - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "DonutNumberOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Donut Total - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "DonutNumberOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Donut Total - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "DonutNumberTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Donut Total - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "DonutCaptionFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Donut Caption - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "DonutCaptionWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Donut Caption - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "DonutCaptionUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Donut Caption - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "DonutCaptionFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Donut Caption - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "DonutCaptionFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Donut Caption - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "DonutCaptionSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Donut Caption - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "DonutCaptionTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Donut Caption - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "DonutCaptionOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Donut Caption - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "DonutCaptionOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Donut Caption - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "DonutCaptionTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Donut Caption - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "RaceTimeFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Race Timeline - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "RaceTimeWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Race Timeline - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "RaceTimeUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Race Timeline - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "RaceTimeFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Race Timeline - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "RaceTimeFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Race Timeline - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "RaceTimeSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Race Timeline - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "RaceTimeTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Race Timeline - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "RaceTimeOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Race Timeline - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "RaceTimeOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Race Timeline - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "RaceTimeTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Race Timeline - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "RankFont": {
+   "label": "Legacy Font",
+   "page": "Style",
+   "section": "Rank Numbers - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Use Main Font"
+    },
+    {
+     "label": "Arial"
+    },
+    {
+     "label": "Verdana"
+    },
+    {
+     "label": "Tahoma"
+    },
+    {
+     "label": "Trebuchet MS"
+    },
+    {
+     "label": "Segoe UI"
+    },
+    {
+     "label": "Times New Roman"
+    },
+    {
+     "label": "Georgia"
+    },
+    {
+     "label": "Courier New"
+    }
+   ],
+   "integer": true
+  },
+  "RankWeight": {
+   "label": "Legacy Weight",
+   "page": "Style",
+   "section": "Rank Numbers - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "internal",
+   "default": 0,
+   "options": [
+    {
+     "label": "Regular"
+    },
+    {
+     "label": "Medium"
+    },
+    {
+     "label": "Semibold"
+    },
+    {
+     "label": "Bold"
+    }
+   ],
+   "integer": true
+  },
+  "RankUseMainFont": {
+   "label": "Use Main Font / Style",
+   "page": "Style",
+   "section": "Rank Numbers - Typography / Position",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "RankFontFamily": {
+   "label": "Font",
+   "page": "Style",
+   "section": "Rank Numbers - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Arial"
+  },
+  "RankFontStyle": {
+   "label": "Weight / Style",
+   "page": "Style",
+   "section": "Rank Numbers - Typography / Position",
+   "type": "Text",
+   "control": "FontFileControl",
+   "role": "public",
+   "default": "Regular"
+  },
+  "RankSize": {
+   "label": "Size Multiplier",
+   "page": "Style",
+   "section": "Rank Numbers - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0.25,
+    4
+   ]
+  },
+  "RankTracking": {
+   "label": "Letter Spacing",
+   "page": "Style",
+   "section": "Rank Numbers - Typography / Position",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -1,
+    6
+   ]
+  },
+  "RankOffsetX": {
+   "label": "X Offset (px)",
+   "page": "Style",
+   "section": "Rank Numbers - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "RankOffsetY": {
+   "label": "Y Offset (px)",
+   "page": "Style",
+   "section": "Rank Numbers - Typography / Position",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -500,
+    500
+   ]
+  },
+  "RankTextAlign": {
+   "label": "Alignment",
+   "page": "Style",
+   "section": "Rank Numbers - Typography / Position",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Auto"
+    },
+    {
+     "label": "Left"
+    },
+    {
+     "label": "Center"
+    },
+    {
+     "label": "Right"
+    }
+   ],
+   "integer": true
+  },
+  "MotionMode": {
+   "label": "Playback",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Manual Progress"
+    },
+    {
+     "label": "Auto Entrance"
+    },
+    {
+     "label": "Auto In + Out"
+    },
+    {
+     "label": "Loop"
+    }
+   ],
+   "integer": true
+  },
+  "TimeOrigin": {
+   "label": "Frame Origin",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "Composition Render Start"
+    },
+    {
+     "label": "Absolute Frame"
+    }
+   ],
+   "integer": true
+  },
+  "MotionStart": {
+   "label": "Entrance Start (Frames)",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -10000,
+    10000
+   ]
+  },
+  "MotionDuration": {
+   "label": "Entrance Duration",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 40,
+   "slider": [
+    1,
+    600
+   ]
+  },
+  "MotionHold": {
+   "label": "Hold (Frames)",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 90,
+   "slider": [
+    0,
+    36000
+   ]
+  },
+  "MotionExit": {
+   "label": "Exit Duration",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 20,
+   "slider": [
+    1,
+    600
+   ]
+  },
+  "MotionGap": {
+   "label": "Loop Gap (Frames)",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 15,
+   "slider": [
+    0,
+    600
+   ]
+  },
+  "Progress": {
+   "label": "Progress",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 1,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "BuildMode": {
+   "label": "Build Mode",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "None"
+    },
+    {
+     "label": "Grow"
+    },
+    {
+     "label": "Sweep"
+    },
+    {
+     "label": "Draw"
+    },
+    {
+     "label": "Fade"
+    }
+   ],
+   "integer": true
+  },
+  "Stagger": {
+   "label": "Stagger",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0.6,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "BuildOrder": {
+   "label": "Stagger Order",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 0,
+   "options": [
+    {
+     "label": "First To Last"
+    },
+    {
+     "label": "Last To First"
+    },
+    {
+     "label": "Center Out"
+    }
+   ],
+   "integer": true
+  },
+  "BuildEase": {
+   "label": "Ease",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 2,
+   "options": [
+    {
+     "label": "Linear"
+    },
+    {
+     "label": "Smooth"
+    },
+    {
+     "label": "Ease Out"
+    },
+    {
+     "label": "Back Out"
+    },
+    {
+     "label": "Bounce Out"
+    },
+    {
+     "label": "Elastic Out"
+    }
+   ],
+   "integer": true
+  },
+  "CountUp": {
+   "label": "Count Up Values",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "DrawHead": {
+   "label": "Animated Draw Head",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 0,
+   "integer": true
+  },
+  "DebugStage2": {
+   "label": "Debug Stage",
+   "page": "Animation",
+   "section": "Animation",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "internal",
+   "default": 0,
+   "min": 0,
+   "max": 4,
+   "slider": [
+    0,
+    4
+   ],
+   "integer": true
+  },
+  "TransitionMode": {
+   "label": "Value Changes",
+   "page": "Animation",
+   "section": "Value Transitions",
+   "type": "Number",
+   "control": "ComboControl",
+   "role": "public",
+   "default": 2,
+   "options": [
+    {
+     "label": "Instant"
+    },
+    {
+     "label": "Smooth"
+    },
+    {
+     "label": "Spring"
+    },
+    {
+     "label": "Bouncy"
+    }
+   ],
+   "integer": true
+  },
+  "TransitionFrames": {
+   "label": "Transition Frames",
+   "page": "Animation",
+   "section": "Value Transitions",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 18,
+   "min": 1,
+   "max": 240,
+   "slider": [
+    2,
+    60
+   ],
+   "integer": true
+  },
+  "RaceAuto": {
+   "label": "Auto Play Timeline",
+   "page": "Animation",
+   "section": "Bar Chart Race",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "RacePosition": {
+   "label": "Timeline Position",
+   "page": "Animation",
+   "section": "Bar Chart Race",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "RaceStart": {
+   "label": "Start Frame",
+   "page": "Animation",
+   "section": "Bar Chart Race",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 0,
+   "slider": [
+    -10000,
+    10000
+   ]
+  },
+  "RaceDuration": {
+   "label": "Duration (Frames)",
+   "page": "Animation",
+   "section": "Bar Chart Race",
+   "type": "Number",
+   "control": "ScrewControl",
+   "role": "public",
+   "default": 240,
+   "slider": [
+    1,
+    36000
+   ]
+  },
+  "RaceTopN": {
+   "label": "Visible Ranks",
+   "page": "Animation",
+   "section": "Bar Chart Race",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 8,
+   "slider": [
+    1,
+    16
+   ],
+   "integer": true
+  },
+  "RaceShowTime": {
+   "label": "Show Timeline Caption",
+   "page": "Animation",
+   "section": "Bar Chart Race",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "RaceShowRanks": {
+   "label": "Show Rank Numbers",
+   "page": "Animation",
+   "section": "Bar Chart Race",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "RaceTracks": {
+   "label": "Show Bar Tracks",
+   "page": "Animation",
+   "section": "Bar Chart Race",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "AutoPalette": {
+   "label": "Auto Palette",
+   "page": "Colors",
+   "section": "Auto Palette",
+   "type": "Number",
+   "control": "CheckboxControl",
+   "role": "public",
+   "default": 1,
+   "integer": true
+  },
+  "PaletteHue": {
+   "label": "Palette Hue",
+   "page": "Colors",
+   "section": "Auto Palette",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 210,
+   "slider": [
+    0,
+    360
+   ]
+  },
+  "PaletteSpread": {
+   "label": "Palette Spread",
+   "page": "Colors",
+   "section": "Auto Palette",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 300,
+   "slider": [
+    0,
+    720
+   ]
+  },
+  "PaletteSat": {
+   "label": "Palette Saturation",
+   "page": "Colors",
+   "section": "Auto Palette",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0.72,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "PaletteLight": {
+   "label": "Palette Lightness",
+   "page": "Colors",
+   "section": "Auto Palette",
+   "type": "Number",
+   "control": "SliderControl",
+   "role": "public",
+   "default": 0.55,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom1R": {
+   "label": "Color 1",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.851,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom1G": {
+   "label": "Color 1",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.106,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom1B": {
+   "label": "Color 1",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.376,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom2R": {
+   "label": "Color 2",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.459,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom2G": {
+   "label": "Color 2",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.749,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom2B": {
+   "label": "Color 2",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.871,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom3R": {
+   "label": "Color 3",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.98,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom3G": {
+   "label": "Color 3",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.671,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom3B": {
+   "label": "Color 3",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.25,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom4R": {
+   "label": "Color 4",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.353,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom4G": {
+   "label": "Color 4",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.784,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom4B": {
+   "label": "Color 4",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.392,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom5R": {
+   "label": "Color 5",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.6,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom5G": {
+   "label": "Color 5",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.365,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom5B": {
+   "label": "Color 5",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.741,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom6R": {
+   "label": "Color 6",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.925,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom6G": {
+   "label": "Color 6",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.427,
+   "slider": [
+    0,
+    1
+   ]
+  },
+  "Custom6B": {
+   "label": "Color 6",
+   "page": "Colors",
+   "section": "Custom Colors",
+   "type": "Number",
+   "control": "ColorControl",
+   "role": "public",
+   "default": 0.283,
+   "slider": [
+    0,
+    1
+   ]
+  }
+ }
+}

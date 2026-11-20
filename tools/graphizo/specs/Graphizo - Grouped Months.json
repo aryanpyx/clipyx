@@ -1,0 +1,18 @@
+{
+  "name": "Graphizo - Grouped Months",
+  "notes": "Two series side by side with a legend.",
+  "chart": "grouped_bar",
+  "look": "midnight",
+  "canvas": "youtube",
+  "data": "Month,Last year,This year\nJan,125000,168000\nFeb,140000,181000\nMar,152000,240000\nApr,149000,226000\nMay,171000,265000\nJun,188000,310000",
+  "title": "VIEWS, YEAR ON YEAR",
+  "subtitle": "Monthly views, first half | illustrative data",
+  "legend": "legend",
+  "number_style": "compact",
+  "animation": {
+    "playback": "entrance",
+    "duration": 45,
+    "ease": "ease_out",
+    "stagger": 0.4
+  }
+}

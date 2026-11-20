@@ -1,0 +1,23 @@
+{
+  "name": "Graphizo - Parliament Seats",
+  "notes": "Seats per party in a half circle; the legend lists the counts.",
+  "chart": "parliament",
+  "look": "editorial_paper",
+  "canvas": "youtube",
+  "data": "Party,Seats\nGreen Union,94\nCentre Alliance,71\nWorkers Party,58\nLiberal Front,42\nIndependents,35",
+  "title": "SEATS AFTER THE VOTE",
+  "subtitle": "300 seats | illustrative result",
+  "values": true,
+  "parliament": {
+    "rows": 8,
+    "seat_shape": "circle",
+    "seat_size": 0.9,
+    "inner_radius": 0.35
+  },
+  "animation": {
+    "playback": "entrance",
+    "build": "grow",
+    "duration": 60,
+    "ease": "ease_out"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Graphizo - Pie Share",
+  "notes": "Slices with percentages in a side legend.",
+  "chart": "pie",
+  "look": "sunset",
+  "canvas": "youtube",
+  "data": "Platform,Share\nYouTube,46\nTikTok,24\nInstagram,17\nPodcasts,8\nOther,5",
+  "title": "WHERE OUR AUDIENCE IS",
+  "subtitle": "Share of total watch time | illustrative data",
+  "legend": "legend",
+  "values": true,
+  "value_format": "percent",
+  "radial": {
+    "slice_gap": 1.5
+  },
+  "animation": {
+    "playback": "entrance",
+    "build": "sweep",
+    "duration": 45,
+    "ease": "ease_out"
+  }
+}

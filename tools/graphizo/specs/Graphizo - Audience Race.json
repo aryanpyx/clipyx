@@ -1,0 +1,25 @@
+{
+  "name": "Graphizo - Audience Race",
+  "notes": "Bar chart race: rows are channels, columns are years (like the Audience Race starter).",
+  "chart": "race",
+  "look": "midnight",
+  "canvas": "youtube",
+  "data": "#,2020,2021,2022,2023,2024,2025\nAtlas,420000,610000,850000,1300000,1900000,2700000\nNova,680000,760000,980000,1200000,1500000,2100000\nPulse,180000,320000,700000,1400000,2200000,3100000\nOrbit,530000,620000,710000,890000,1200000,1650000\nEcho,310000,430000,690000,960000,1400000,1950000",
+  "title": "THE RACE FOR ATTENTION",
+  "subtitle": "Audience growth by channel | illustrative data",
+  "values": true,
+  "number_style": "compact",
+  "decimals": 1,
+  "race": {
+    "auto": true,
+    "start": 30,
+    "duration": 240,
+    "ranks": 5
+  },
+  "animation": {
+    "playback": "entrance",
+    "duration": 30,
+    "ease": "ease_out",
+    "count_up": true
+  }
+}

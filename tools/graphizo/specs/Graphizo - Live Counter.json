@@ -1,0 +1,63 @@
+{
+  "name": "Graphizo - Live Counter",
+  "notes": "Fields with keyframes: the bars hold, then spring to new values on frames 75, 135 and 195.",
+  "chart": "bar",
+  "look": "studio_lime",
+  "canvas": "youtube",
+  "fields": [
+    {
+      "label": "Option A",
+      "keys": {
+        "0": 120,
+        "75": 180,
+        "135": 210,
+        "195": 260
+      }
+    },
+    {
+      "label": "Option B",
+      "keys": {
+        "0": 90,
+        "75": 160,
+        "135": 240,
+        "195": 250
+      }
+    },
+    {
+      "label": "Option C",
+      "keys": {
+        "0": 60,
+        "75": 75,
+        "135": 110,
+        "195": 170
+      }
+    },
+    {
+      "label": "Option D",
+      "keys": {
+        "0": 40,
+        "75": 70,
+        "135": 90,
+        "195": 95
+      }
+    }
+  ],
+  "title": "LIVE VOTE COUNT",
+  "subtitle": "Votes as they come in | illustrative data",
+  "values": true,
+  "y_range": [
+    0,
+    300
+  ],
+  "transitions": {
+    "mode": "spring",
+    "frames": 18
+  },
+  "animation": {
+    "playback": "entrance",
+    "duration": 40,
+    "ease": "back_out",
+    "stagger": 0.4,
+    "count_up": true
+  }
+}

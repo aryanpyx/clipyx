@@ -1,0 +1,28 @@
+{
+  "name": "Graphizo - Growth Line",
+  "notes": "A smooth line that draws on with a moving dot toward a goal line.",
+  "chart": "line",
+  "look": "sunset",
+  "canvas": "youtube",
+  "data": "Month,Subscribers\nJan,12000\nFeb,18500\nMar,26000\nApr,31000\nMay,44000\nJun,52000\nJul,61000\nAug,73000\nSep,86000\nOct,98000",
+  "title": "ROAD TO 100K",
+  "subtitle": "Subscribers at the end of each month | illustrative data",
+  "number_style": "compact",
+  "target": {
+    "value": 100000,
+    "label": "Goal"
+  },
+  "lines": {
+    "width": 6,
+    "smooth": true,
+    "marker": "circle",
+    "marker_size": 10
+  },
+  "animation": {
+    "playback": "entrance",
+    "build": "draw",
+    "duration": 90,
+    "ease": "smooth",
+    "draw_head": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Graphizo - Bubble Markets",
+  "notes": "X, Y and size: growth across, margin up, revenue as bubble size.",
+  "chart": "bubble",
+  "look": "neon",
+  "canvas": "youtube",
+  "data": "Market,Growth,Margin,Revenue\nNorth,12,18,420\nSouth,24,9,260\nEast,7,26,610\nWest,31,14,180\nCentral,18,21,350",
+  "title": "WHERE TO GROW",
+  "subtitle": "Growth % (across), margin % (up), revenue (size) | illustrative data",
+  "lines": {
+    "marker_size": 14
+  },
+  "depth": {
+    "glow": 0.4
+  },
+  "animation": {
+    "playback": "entrance",
+    "build": "grow",
+    "duration": 45,
+    "ease": "back_out",
+    "stagger": 0.5
+  }
+}

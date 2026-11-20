@@ -1,0 +1,19 @@
+{
+  "name": "Graphizo - Sales Funnel",
+  "notes": "Stages narrow by size; values show each stage as a share of the first.",
+  "chart": "funnel",
+  "look": "sunset",
+  "canvas": "youtube",
+  "data": "Stage,People\nVisitors,12000\nSign-ups,4800\nTrials,2100\nCustomers,760",
+  "title": "FROM VISIT TO CUSTOMER",
+  "subtitle": "Share of visitors at each step | illustrative data",
+  "values": true,
+  "value_format": "percent",
+  "decimals": 1,
+  "animation": {
+    "playback": "entrance",
+    "duration": 50,
+    "ease": "ease_out",
+    "stagger": 0.5
+  }
+}

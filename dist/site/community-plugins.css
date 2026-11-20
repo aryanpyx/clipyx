@@ -1,0 +1,331 @@
+/* Community plugins (owner, 2026-10-24), on theme.css's tokens and the admin's flat look: hairline borders, dark
+   surfaces, the lime-tinted fill for the current choice, states in text colour (no coloured side stripes). The list is
+   community.php's Plugins view, which loads this file for the cards and takes its header, tabs and Filter & sort from the
+   forum itself; a plugin's page and the upload form (community-plugins.php, main.plugins-page) use the rest. */
+
+.plugins-page.community-container { max-width: 1220px; margin: 0 auto; padding: 34px clamp(18px, 4vw, 48px); }
+.plugins-page .profile-user-link { color: var(--color-accent); font-weight: 700; text-decoration: none; }
+.plugins-page .profile-user-link:hover { color: var(--color-text); }
+
+.plugins-lead { max-width: 64ch; margin-top: var(--space-2); color: var(--color-muted); font-size: var(--text-body); line-height: var(--leading-body); }
+.plugins-page .btn .iconizo { width: 16px; height: 16px; flex: 0 0 auto; }
+.plugins-flash { margin: 0 0 var(--space-6); padding: var(--space-3) var(--space-4); border: var(--border-hairline) solid var(--color-border); border-radius: var(--radius-control); background: var(--color-panel); color: var(--color-text); font-size: var(--text-small); line-height: var(--leading-body); }
+.plugins-flash.is-error { color: var(--color-danger); }
+/* The notice at the top of every community plugin page and the list (owner, 2026-10-25: "we do not guarantee that these
+   plugins are safe. They are all community made"): the warning in text colour on a hairline panel, never a side stripe. */
+/* A plain line since 2026-10-27, no box (owner: "make this without borders"); above the tabs on the list. */
+.plugins-notice { display: flex; align-items: flex-start; gap: var(--space-3); max-width: 80ch; margin: 0 0 var(--space-6); padding: 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.plugins-notice strong { color: var(--color-warning); font-weight: var(--weight-bold); }
+/* Presets and Threads keep the line's space, unseen, so the tabs stay in place. */
+.plugins-notice.is-placeholder { visibility: hidden; }
+.plugins-notice .iconizo { flex: none; width: 18px; height: 18px; margin-top: 2px; color: var(--color-warning); }
+.plugins-back { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--control-height); margin-bottom: var(--space-4); color: var(--color-muted); font-size: var(--text-small); font-weight: var(--weight-semibold); text-decoration: none; }
+.plugins-back:hover { color: var(--color-text); }
+.plugins-back .iconizo { width: 18px; height: 18px; }
+
+/* Tags: a quiet fill and 4px corners; states are words in their colour. */
+.plugin-tag, .plugin-status, .plugin-studio {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    padding: 0 var(--space-2);
+    border-radius: var(--radius-tag);
+    background: var(--color-panel);
+    color: var(--color-muted);
+    font-size: var(--text-label);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-label);
+    white-space: nowrap;
+}
+.plugin-status { letter-spacing: 0; text-transform: none; }
+.plugin-status.is-pending { color: var(--color-warning); }
+.plugin-status.is-rejected, .plugin-status.is-removed { color: var(--color-danger); }
+.plugin-status.is-approved { color: var(--color-accent); }
+/* "Studio required" (20261028-studio-required, owner: "in orange"): the uploader's answer, beside the type on the card and
+   the page. The fallback is the token's value, for browsers still holding theme.css from before it had the token. */
+.plugin-studio { letter-spacing: 0; color: var(--color-orange, #ffa657); }
+
+/* Waiting for review / your uploads */
+.plugins-panel { margin: 0 0 var(--space-6); padding: var(--space-4) var(--space-5); border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-surface); }
+.plugins-panel-title { margin: 0 0 var(--space-3); font-size: var(--text-small); font-weight: var(--weight-bold); }
+.plugins-rows { display: grid; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+.plugins-row { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2) var(--space-3); min-height: var(--control-height); padding: var(--space-2) var(--space-3); border-radius: var(--radius-control); color: var(--color-text); text-decoration: none; }
+.plugins-row:hover { background: var(--color-surface-hover); }
+.plugins-row-title { flex: 1 1 12rem; min-width: 0; font-size: var(--text-small); font-weight: var(--weight-semibold); overflow-wrap: anywhere; }
+.plugins-row-meta { color: var(--color-muted); font-size: var(--text-label); }
+
+.plugins-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-4); }
+.plugin-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-width: 0;
+    padding: var(--space-5);
+    border: var(--border-hairline) solid var(--color-border-subtle);
+    border-radius: var(--radius-panel);
+    background: var(--color-surface);
+    transition: border-color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard);
+}
+.plugin-card:hover { border-color: var(--color-border-hover); background: var(--color-surface-hover); }
+/* A cover picture (20261027-plugin-covers) sits flush with the card's top edge like a product card's, 16:9 and cropped to
+   fill, with the card's own corners and a hairline under it. Cards without one stay as they were. */
+.plugin-card-cover {
+    display: block;
+    width: calc(100% + 2 * var(--space-5));
+    max-width: none;
+    height: auto;
+    margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) 0;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-bottom: var(--border-hairline) solid var(--color-border-subtle);
+    border-radius: calc(var(--radius-panel) - var(--border-hairline)) calc(var(--radius-panel) - var(--border-hairline)) 0 0;
+    background: var(--color-panel);
+}
+.plugin-card:has(.plugin-card-link:focus-visible) { border-color: var(--color-accent); }
+.plugin-card-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.plugin-card-size { margin-left: auto; color: var(--color-subtle); font-size: var(--text-label); font-variant-numeric: tabular-nums; }
+.plugin-card-title { margin: 0; font-size: var(--text-body); font-weight: var(--weight-bold); line-height: var(--leading-heading); overflow-wrap: anywhere; }
+.plugin-card-link { color: var(--color-text); text-decoration: none; }
+/* The whole card opens the plugin. */
+.plugin-card-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.plugin-card-link:focus-visible { outline: none; }
+.plugin-card-link:focus-visible::after { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+.plugin-card-text { display: -webkit-box; margin: 0; overflow: hidden; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; }
+.plugin-card-meta { margin: auto 0 0; padding-top: var(--space-3); border-top: var(--border-hairline) solid var(--color-border-subtle); color: var(--color-subtle); font-size: var(--text-label); overflow-wrap: anywhere; }
+.plugins-empty { padding: var(--space-8) 0; color: var(--color-muted); }
+.plugins-empty p { margin: 0 0 var(--space-2); }
+.plugins-empty h1 { margin-bottom: var(--space-3); color: var(--color-text); font-size: var(--text-section); }
+
+/* An empty list since the tabs opened (2026-10-26): a hairline panel that invites the first share. */
+.community-invite { display: grid; justify-items: start; gap: var(--space-3); padding: var(--space-8); border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-surface); }
+.community-invite h2 { margin: 0; color: var(--color-text); font-size: var(--text-card); line-height: var(--leading-heading); }
+.community-invite p { max-width: 60ch; margin: 0; color: var(--color-muted); font-size: var(--text-body); line-height: var(--leading-body); }
+.community-invite .btn { margin-top: var(--space-2); }
+
+/* Likes (2026-10-26): one quiet control beside the byline. Liked is the current choice: the lime-tinted fill, lime text
+   and a filled heart. The count is the member's number, so it uses tabular figures. */
+.plugin-byline-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3) var(--space-4); margin: var(--space-3) 0 var(--space-6); }
+.plugin-byline-row .plugin-byline { margin: 0; }
+.like-form { margin: 0; }
+.like-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--control-height);
+    padding: 0 var(--space-4);
+    border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-panel);
+    color: var(--color-text);
+    font: var(--weight-semibold) var(--text-small) / 1 var(--font-body);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+.like-button:hover { border-color: var(--color-border-hover); background: var(--color-surface-hover); color: var(--color-text); }
+.like-button:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+.like-button .like-heart { width: 16px; height: 16px; flex: 0 0 auto; fill: transparent; transition: fill var(--duration-fast) var(--ease-standard); }
+/* Liked: the grey "on" with a lime heart, quieter than the main button (owner, 2026-11-19, option A). */
+.like-button.is-liked { border-color: var(--color-border-strong); background: var(--color-pressed, #262626); color: var(--color-text); }
+.like-button.is-liked:hover { border-color: var(--color-border-strong); background: var(--color-pressed-hover, #2e2e2e); color: var(--color-text); }
+.like-button.is-liked .like-heart { color: var(--color-accent); fill: currentColor; }
+
+/* Ratings, in place of likes since 20261027-ratings (community_ratings.php). The summary reuses the product reviews' score
+   and bars, and the form their star picker (theme.css); this adds the section, the comments and the compact rating. */
+.rating-link { display: inline-flex; align-items: center; min-height: var(--control-height); color: var(--color-muted); font-size: var(--text-small); text-decoration: none; }
+.rating-link:hover { color: var(--color-text); }
+.rating-link:focus-visible { border-radius: var(--radius-tag); outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+.rating-inline { display: inline-flex; align-items: center; gap: var(--space-2); font-variant-numeric: tabular-nums; vertical-align: middle; }
+.rating-inline.is-empty, .rating-inline-count { color: var(--color-subtle); }
+.preset-rating { margin-top: var(--space-1); color: var(--color-muted); font-size: var(--text-label); }
+.rating-section { display: grid; gap: var(--space-5); max-width: 75ch; margin-top: var(--space-8); padding-top: var(--space-6); border-top: var(--border-hairline) solid var(--color-border-subtle); }
+.rating-section h2 { margin: 0; font-size: var(--text-card); }
+.rating-section .plugins-flash { margin: 0; }
+.rating-summary { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: var(--space-4) var(--space-8); }
+.rating-summary .tool-reviews-bars { max-width: 320px; }
+/* theme.css places these by the product reviews' grid areas; here they sit side by side (stacked on phones). */
+.rating-summary > .tool-reviews-score, .rating-summary > .tool-reviews-bars { grid-area: auto; }
+.rating-empty, .rating-note { margin: 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.rating-note a { color: var(--color-text); text-underline-offset: var(--space-1); }
+.rating-form { display: grid; gap: var(--space-4); padding: var(--space-5); border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-surface); }
+.rating-comment { display: grid; gap: var(--space-2); color: var(--color-text); font-size: var(--text-label); font-weight: var(--weight-semibold); }
+.rating-comment span { color: var(--color-subtle); font-weight: var(--weight-regular); }
+.rating-comment textarea { min-height: 96px; resize: vertical; }
+.rating-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.rating-list { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.rating-item { display: grid; gap: var(--space-2); padding: var(--space-4) var(--space-5); border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-surface); }
+.rating-item-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0; font-size: var(--text-label); }
+.rating-item-name { color: var(--color-text); font-weight: var(--weight-semibold); }
+.rating-item-date { color: var(--color-subtle); }
+.rating-item-text { margin: 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); overflow-wrap: anywhere; }
+.rating-moderate { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+@media (max-width: 560px) {
+    .rating-summary { grid-template-columns: 1fr; }
+}
+.like-count { color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.like-button.is-liked .like-count { color: inherit; }
+.like-button[aria-busy="true"] { cursor: progress; }
+
+/* A preset's page (preset.php) on the plugin page's layout: its cover picture, when it has one, above the description. */
+.preset-cover { max-width: 640px; margin: 0 0 var(--space-6); aspect-ratio: 16 / 10; overflow: hidden; border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-panel); }
+.preset-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* A plugin's cover on its page, as a preset's: under the byline, 16:9. */
+.plugin-cover { max-width: 640px; margin: 0 0 var(--space-6); aspect-ratio: 16 / 9; overflow: hidden; border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-panel); }
+.plugin-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.plugin-install dl { display: grid; gap: var(--space-2); margin: var(--space-4) 0 0; }
+.plugin-install dl > div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: var(--space-3); }
+.plugin-install dt { color: var(--color-muted); font-size: var(--text-label); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); line-height: 1.9; }
+.plugin-install dd { margin: 0; min-width: 0; }
+.plugin-install code { color: var(--color-text); font-size: var(--text-small); overflow-wrap: anywhere; }
+.plugin-download > .btn { width: 100%; justify-content: center; }
+.plugin-form .form-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+.plugin-form select { width: 100%; }
+.plugin-field-note a { color: var(--color-text); text-underline-offset: var(--space-1); }
+.plugin-field-note a:hover { color: var(--color-accent); }
+
+/* A plugin's page */
+.plugin-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 380px); gap: var(--space-8); align-items: start; }
+.plugin-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-3); }
+.plugin-main h1 { margin: 0; font-size: var(--text-section); line-height: var(--leading-heading); overflow-wrap: anywhere; }
+.plugin-byline { margin: var(--space-3) 0 var(--space-6); color: var(--color-muted); font-size: var(--text-small); }
+.plugin-description { max-width: 75ch; color: rgb(244 244 244 / 0.86); font-size: var(--text-body); line-height: 1.7; overflow-wrap: anywhere; }
+.plugin-description p { margin: 0 0 var(--space-4); }
+.plugin-install { max-width: 75ch; margin-top: var(--space-8); padding-top: var(--space-6); border-top: var(--border-hairline) solid var(--color-border-subtle); }
+.plugin-install h2 { margin: 0 0 var(--space-3); font-size: var(--text-card); }
+.plugin-install p { margin: 0; color: var(--color-muted); font-size: var(--text-body); line-height: var(--leading-body); overflow-wrap: anywhere; }
+.plugin-side { display: grid; gap: var(--space-4); position: sticky; top: var(--space-6); }
+.plugin-download, .plugin-manage { display: grid; gap: var(--space-5); padding: var(--space-6); border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-surface); }
+.plugin-facts { display: grid; gap: var(--space-3); margin: 0; }
+.plugin-facts > div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: var(--space-3); }
+.plugin-facts dt { color: var(--color-muted); font-size: var(--text-label); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); line-height: 1.9; }
+.plugin-facts dd { margin: 0; color: var(--color-text); font-size: var(--text-small); overflow-wrap: anywhere; }
+.plugin-hash { color: var(--color-muted) !important; font-size: var(--text-label) !important; font-variant-numeric: tabular-nums; word-break: break-all; }
+.plugin-risk { padding: var(--space-4); border: var(--border-hairline) solid var(--color-border); border-radius: var(--radius-control); background: var(--color-panel); }
+.plugin-risk p { margin: 0; color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.plugin-risk .plugin-risk-title { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); color: var(--color-warning); font-weight: var(--weight-bold); }
+.plugin-risk-title .iconizo { width: 16px; height: 16px; }
+.plugin-download-form { display: grid; gap: var(--space-4); }
+.plugin-download-form .btn, .plugin-manage .btn { width: 100%; justify-content: center; }
+.plugin-manage-title { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); margin: 0; font-size: var(--text-small); font-weight: var(--weight-bold); }
+.plugin-manage-actions { display: grid; gap: var(--space-3); }
+.plugin-manage p { margin: 0; color: var(--color-muted); font-size: var(--text-small); }
+.plugin-manage p.plugin-manage-title { color: var(--color-text); }
+details.plugin-manage { gap: 0; }
+details.plugin-manage[open] { gap: var(--space-4); }
+details.plugin-manage > summary { min-height: 24px; cursor: pointer; list-style: none; color: var(--color-muted); }
+details.plugin-manage > summary::-webkit-details-marker { display: none; }
+details.plugin-manage form { display: grid; gap: var(--space-4); margin-top: var(--space-4); }
+
+/* Ticks: the risk notice and the uploader's promise. style.css sizes every .dry-form input like a field; not these. */
+.plugin-check { display: flex; align-items: flex-start; gap: var(--space-3); color: var(--color-text); font-size: var(--text-small); line-height: var(--leading-body); cursor: pointer; }
+.plugin-check input[type="checkbox"], .plugin-type-option input[type="radio"] {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    min-height: 0;
+    margin: 3px 0 0;
+    padding: 0;
+    border: 0;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+}
+
+/* The upload form */
+.plugin-upload { max-width: 720px; }
+.plugin-upload h1 { margin: 0; font-size: var(--text-section); line-height: var(--leading-heading); }
+.plugin-upload .plugins-lead { margin-bottom: var(--space-6); }
+.plugin-form { gap: var(--space-6); padding: var(--space-6); border: var(--border-hairline) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-surface); }
+.plugin-type-field { min-width: 0; margin: 0; padding: 0; border: 0; }
+.plugin-type-field legend { margin-bottom: var(--space-2); padding: 0; color: var(--color-muted); font-size: var(--text-label); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); }
+.plugin-type-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+.plugin-type-option {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    min-height: var(--control-height);
+    padding: var(--space-3) var(--space-4);
+    border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-section);
+    cursor: pointer;
+    transition: background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+}
+.plugin-type-option:hover { border-color: var(--color-border-hover); }
+.plugin-type-option:has(input:checked) { border-color: var(--color-border-strong); background: var(--color-pressed, #262626); }
+.plugin-type-option:has(input:focus-visible) { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+/* The cover choice (20261028-plugin-thumbnails): Clipyx makes one by default; the picture field shows for "Upload my own". */
+.plugin-cover-upload { display: grid; gap: var(--space-2); margin-top: var(--space-3); }
+.plugin-cover-field:not(:has(input[value="upload"]:checked)) .plugin-cover-upload { display: none; }
+.plugin-type-text { display: grid; gap: 2px; min-width: 0; }
+.plugin-type-name { color: var(--color-text); font-size: var(--text-small); font-weight: var(--weight-bold); }
+.plugin-type-files { color: var(--color-muted); font-size: var(--text-label); line-height: 1.45; }
+.plugin-form textarea { min-height: 160px; resize: vertical; }
+.plugin-form input[type="file"], .plugin-cover-form input[type="file"] {
+    width: 100%;
+    min-height: var(--control-height);
+    padding: var(--space-2);
+    border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-section);
+    color: var(--color-muted);
+    font: var(--weight-regular) var(--text-small) / 1.5 var(--font-body);
+    cursor: pointer;
+}
+.plugin-form input[type="file"]::file-selector-button, .plugin-cover-form input[type="file"]::file-selector-button {
+    margin-right: var(--space-3);
+    padding: var(--space-2) var(--space-4);
+    border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-panel);
+    color: var(--color-text);
+    font: var(--weight-bold) var(--text-small) / 1.15 var(--font-body);
+    cursor: pointer;
+}
+.plugin-form input[type="file"]:focus-visible, .plugin-cover-form input[type="file"]:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+.plugin-field-note { margin: 0; color: var(--color-subtle); font-size: var(--text-label); line-height: 1.5; }
+/* The field for the chosen type: a GitHub link for Python scripts and OFX plugins, a file for Fuses and macros (from the
+   radios' data-source); before a type is chosen, neither. Without :has both show, and the server checks the right one. */
+.plugin-form:has(input[data-source="github"]:checked) .plugin-file-group,
+.plugin-form:has(input[data-source="file"]:checked) .plugin-link-group,
+.plugin-form:not(:has(input[name="plugin_type"]:checked)) :is(.plugin-file-group, .plugin-link-group) { display: none; }
+.plugin-form-actions { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-3); }
+.plugin-form-actions .btn { justify-content: center; }
+
+@media (max-width: 900px) {
+    .plugin-layout { grid-template-columns: 1fr; gap: var(--space-6); }
+    .plugin-side { position: static; }
+}
+@media (max-width: 640px) {
+    .plugin-type-options { grid-template-columns: 1fr; }
+    .plugin-form, .plugin-download, .plugin-manage { padding: var(--space-5); }
+    .plugin-form-actions { grid-template-columns: 1fr; }
+    .plugin-form-actions .btn--primary { order: -1; }
+    .plugins-panel { padding: var(--space-4); }
+    .community-invite { padding: var(--space-6); }
+    .plugin-form .form-pair { grid-template-columns: 1fr; }
+    .plugin-install dl > div { grid-template-columns: 1fr; gap: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .plugin-card, .plugin-type-option, .like-button, .like-button .like-heart { transition: none; }
+}
+/* The link helper under the GitHub field (20261027-pinned-links): how to get a link pinned to a commit. */
+.plugin-link-help { margin-top: var(--space-2); color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.plugin-link-help summary { width: fit-content; color: var(--color-accent); font-weight: var(--weight-semibold); cursor: pointer; }
+.plugin-link-help summary:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; border-radius: var(--radius-tag); }
+.plugin-link-help[open] summary { margin-bottom: var(--space-2); }
+.plugin-link-help p { margin: 0 0 var(--space-2); }
+.plugin-link-help ol { display: grid; gap: var(--space-2); margin: 0 0 var(--space-2); padding-left: 1.25em; }
+.plugin-link-help strong { color: var(--color-text); }
+/* Member updates (20261028-member-updates, community_updates.php): the approved ones under Updates, newest first, and the
+   new description an admin opens before approving one (as the link helper opens). */
+.plugin-update-list { display: grid; gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+.plugin-update-list li { display: grid; gap: var(--space-1); }
+.plugin-update-list .plugin-update-date { color: var(--color-text); font-size: var(--text-small); font-weight: var(--weight-semibold); }
+.plugin-update-text { color: var(--color-muted); font-size: var(--text-small); line-height: var(--leading-body); }
+.plugin-update-text summary { width: fit-content; color: var(--color-accent); font-weight: var(--weight-semibold); cursor: pointer; }
+.plugin-update-text summary:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; border-radius: var(--radius-tag); }
+.plugin-update-text[open] summary { margin-bottom: var(--space-2); }
+.plugin-update-text p { overflow-wrap: anywhere; }
+/* Your own work only (20261028-own-work): one line in the warning red above the share forms' promise, no box or stripe. */
+.plugin-own-work { margin: 0; color: var(--color-danger); font-size: var(--text-small); font-weight: var(--weight-semibold); line-height: var(--leading-body); }

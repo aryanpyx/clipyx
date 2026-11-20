@@ -1,0 +1,40 @@
+{
+  "name": "Graphizo - Shorts Overlay",
+  "notes": "A vertical 1080x1920 ranking on a transparent background, to merge over footage.",
+  "chart": "bar",
+  "orientation": "horizontal",
+  "look": "custom",
+  "canvas": "shorts",
+  "transparent": true,
+  "data": "App,Minutes\nVideo,95\nChat,62\nMusic,48\nGames,41\nNews,18",
+  "title": "DAILY MINUTES",
+  "subtitle": "Time per app | illustrative data",
+  "text_color": "#FFFFFF",
+  "colors": [
+    "#FF5A36",
+    "#FFB238",
+    "#2EC4B6",
+    "#7B6CF6",
+    "#E0E0E0"
+  ],
+  "sort": "descending",
+  "values": true,
+  "suffix": " min",
+  "grid": false,
+  "axis": false,
+  "font_scale": 5,
+  "depth": {
+    "shadow": 0.6,
+    "softness": 20,
+    "distance": 8
+  },
+  "animation": {
+    "playback": "in_out",
+    "duration": 40,
+    "hold": 120,
+    "exit": 20,
+    "ease": "back_out",
+    "stagger": 0.45,
+    "count_up": true
+  }
+}

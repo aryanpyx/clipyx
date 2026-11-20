@@ -1,0 +1,25 @@
+{
+  "name": "Graphizo - Goal Gauge",
+  "notes": "Three rings on a 0-100 scale; the first ring's value is the big number.",
+  "chart": "gauge",
+  "look": "midnight",
+  "canvas": "youtube",
+  "data": "Goal,Progress\nViews,82\nSubscribers,64\nWatch time,47",
+  "title": "MONTHLY GOALS",
+  "subtitle": "Percent of target reached | illustrative data",
+  "y_range": [
+    0,
+    100
+  ],
+  "suffix": "%",
+  "radial": {
+    "inner_radius": 0.55
+  },
+  "animation": {
+    "playback": "entrance",
+    "build": "sweep",
+    "duration": 60,
+    "ease": "ease_out",
+    "count_up": true
+  }
+}

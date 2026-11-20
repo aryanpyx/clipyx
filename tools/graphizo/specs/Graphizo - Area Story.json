@@ -1,0 +1,25 @@
+{
+  "name": "Graphizo - Area Story",
+  "notes": "Two channels drawn as soft overlapping areas over a year (like the Growth Story starter).",
+  "chart": "area",
+  "look": "studio_lime",
+  "canvas": "youtube",
+  "data": "Month,Atlas,Pulse\nJan,80000,45000\nFeb,95000,65000\nMar,120000,90000\nApr,110000,135000\nMay,160000,150000\nJun,190000,210000\nJul,225000,275000\nAug,260000,320000\nSep,295000,390000\nOct,350000,430000\nNov,410000,530000\nDec,470000,620000",
+  "title": "A YEAR OF MOMENTUM",
+  "subtitle": "Monthly views | two channels, one story",
+  "legend": "legend",
+  "number_style": "compact",
+  "lines": {
+    "smooth": true,
+    "marker": "circle",
+    "marker_size": 8,
+    "area_opacity": 0.18
+  },
+  "animation": {
+    "playback": "entrance",
+    "build": "draw",
+    "duration": 100,
+    "ease": "smooth",
+    "draw_head": true
+  }
+}

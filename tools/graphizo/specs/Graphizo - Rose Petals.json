@@ -1,0 +1,20 @@
+{
+  "name": "Graphizo - Rose Petals",
+  "notes": "Each petal's length follows its value.",
+  "chart": "rose",
+  "look": "editorial_paper",
+  "canvas": "youtube",
+  "data": "Month,Rain\nJan,78\nFeb,64\nMar,52\nApr,41\nMay,33\nJun,22\nJul,18\nAug,24\nSep,39\nOct,58\nNov,81\nDec,90",
+  "title": "A YEAR OF RAIN",
+  "subtitle": "Millimetres per month | illustrative data",
+  "radial": {
+    "inner_radius": 0.12,
+    "slice_gap": 1
+  },
+  "animation": {
+    "playback": "entrance",
+    "build": "sweep",
+    "duration": 60,
+    "ease": "ease_out"
+  }
+}

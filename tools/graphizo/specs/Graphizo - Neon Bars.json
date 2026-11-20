@@ -1,0 +1,25 @@
+{
+  "name": "Graphizo - Neon Bars",
+  "notes": "Glowing bars that pop in with a little overshoot, hold, then fade out.",
+  "chart": "bar",
+  "look": "neon",
+  "canvas": "youtube",
+  "data": "Day,Streams\nMon,42\nTue,55\nWed,61\nThu,48\nFri,73\nSat,88\nSun,80",
+  "title": "STREAMS THIS WEEK",
+  "subtitle": "Thousands of streams per day | illustrative data",
+  "values": true,
+  "suffix": "K",
+  "depth": {
+    "glow": 0.7,
+    "glow_size": 22
+  },
+  "animation": {
+    "playback": "in_out",
+    "duration": 40,
+    "hold": 150,
+    "exit": 20,
+    "ease": "back_out",
+    "stagger": 0.5,
+    "count_up": true
+  }
+}

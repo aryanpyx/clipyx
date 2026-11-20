@@ -1,0 +1,204 @@
+/* Latest news: the home hero's slideshow, in place of the animation curve (owner, 2026-10-26: "replace the curve with a
+   latest news slideshow (not for mobiel view) that talks about animizoFX, watchizo, clipyx plugins going free make it
+   look premuim"; then "i think the UI can look better and more professional", and "Something feels disproportional": its
+   top now lines up with the headline's letters and its height with the text block). Desktops from 1200px only (narrower, it
+   crowds the headline); phones and tablets keep the text-only hero. Since 20261027-hero-news-open (owner, 2026-10-27:
+   "make this not a card, something smoother that looks better, and betetr aligned") it is no box: right of the headline,
+   in the hero's 1280px column, on the plain canvas. Since 20261027-hero-news-header (owner: "maybe "latest news" should be
+   at the top ?") a header row leads: "Latest news", its capitals level with the headline's, then the progress bars (also
+   the navigation) and Pause. Then the picture, one drawn style for all, the slide's topic, the title, the text and a
+   link. The drawings are cropped to one content box, so they and the text share one left edge and one right edge,
+   and the panel ends level with the node buttons. hero-news.js turns the slides; without it the first slide shows alone,
+   and with reduced motion nothing turns, grows, drifts or fades. */
+.hero-news { display: none; }
+
+@media (min-width: 1200px) {
+    .hero-news {
+        --news-turn: 7s; /* hero-news.js turns the slide when the current bar's fill ends */
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 10px; /* the label's capitals, the panel's first line, level with the top of the headline's capitals */
+        right: 0;
+        z-index: 3;
+        width: clamp(340px, 29vw, 420px); /* at least about 110px clear of the headline at every width */
+        text-align: left;
+        animation: hero-news-in var(--duration-settle) var(--ease-out) 160ms both;
+    }
+    @keyframes hero-news-in { from { opacity: 0; transform: translateY(12px); } }
+
+    /* The slides lie on top of each other (the panel takes the tallest); the current one fades in over the last. */
+    .hero-news__slides { display: grid; }
+    .hero-news__slide {
+        grid-area: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity var(--duration-settle) var(--ease-out), visibility 0s linear var(--duration-settle);
+    }
+    .hero-news__slide.is-active { visibility: visible; opacity: 1; transition: opacity var(--duration-settle) var(--ease-out), visibility 0s; }
+
+    /* The picture: the drawings' content box (x 28 to 452 of 480, viewBox 27 16 426 174) is the column's width, so
+       their edges are the text's; it drifts up a little as its slide fades in. */
+    .hero-news__media {
+        display: block;
+        margin-top: var(--space-2);
+        aspect-ratio: 426 / 174;
+        transform: translateY(6px);
+        transition: transform var(--duration-settle) var(--ease-out);
+    }
+    .hero-news__slide.is-active .hero-news__media { transform: none; }
+    .hero-news__art { display: block; width: 100%; height: 100%; overflow: visible; }
+    .hero-news__art text { font-family: var(--font-body); }
+
+    /* AnimizoFX 1.1: the speed, the big number and three bars (1.0, a Mac, NVIDIA) that grow in. */
+    .hero-news__art .art-stat { fill: var(--color-text); font-size: 64px; font-weight: 800; letter-spacing: -0.02em; }
+    .hero-news__art .art-caption { fill: var(--color-muted); font-size: 14px; font-weight: 500; }
+    .hero-news__art .art-label { fill: var(--color-muted); font-size: 13px; font-weight: 500; }
+    .hero-news__art .art-label--on { fill: var(--color-text); font-weight: 600; }
+    .hero-news__art .art-track { fill: var(--color-panel); }
+    .hero-news__art .art-speed { fill: var(--color-border-strong); transform-box: fill-box; transform-origin: left center; }
+    .hero-news__art .art-speed--on { fill: var(--color-accent); }
+    .hero-news__art .art-value { fill: var(--color-muted); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .hero-news__art .art-value--on { fill: var(--color-accent); }
+    .hero-news__slide.is-active .art-speed { animation: hero-news-grow 900ms var(--ease-out) both; }
+    .hero-news__slide.is-active .art-speed--2 { animation-delay: 120ms; }
+    .hero-news__slide.is-active .art-speed--3 { animation-delay: 240ms; }
+    @keyframes hero-news-grow { from { transform: scaleX(0); } }
+
+    /* Watchizo, drawn as a small Fusion graph: Resolve's Scripts menu, the Watchizo node and the apps it opens. */
+    .hero-news__art .art-panel { fill: var(--color-panel); stroke: var(--color-border); stroke-width: 1; }
+    .hero-news__art .art-row { fill: var(--color-surface-hover); }
+    .hero-news__art .art-bar { fill: var(--color-border-strong); }
+    .hero-news__art .art-text { fill: var(--color-muted); font-size: 12px; font-weight: 500; }
+    .hero-news__art .art-text--on { fill: var(--color-text); font-weight: 600; }
+    .hero-news__art .art-node { fill: var(--node-face); stroke: var(--node-highlight); stroke-width: 1; }
+    .hero-news__art .art-node-label { fill: var(--color-text); font-size: 15px; font-weight: 700; }
+    .hero-news__art .art-tag { fill: var(--color-panel); stroke: var(--color-border); stroke-width: 1; }
+    .hero-news__art .art-tag-text { fill: var(--color-text); font-size: 11px; font-weight: 600; }
+    .hero-news__art .art-pin-in { fill: var(--node-pin-blue); }
+    .hero-news__art .art-pin-out { fill: var(--node-pin-gray); }
+    .hero-news__art .art-wire { fill: none; stroke: var(--node-link); stroke-opacity: 0.35; stroke-width: 1.5; }
+    .hero-news__art .art-window { fill: var(--color-panel); stroke: var(--color-border); stroke-width: 1; }
+    /* Their opacity is animated in the drawing (SMIL), so it starts there as an attribute, not here. */
+    .hero-news__art .art-light { fill: none; stroke: var(--color-accent); stroke-width: 1.5; }
+    .hero-news__art .art-dot { fill: var(--color-accent); }
+
+    /* Every plugin free: the nine tools as quiet chips, each marked Free; they come in one after another. */
+    .hero-news__art .art-chip { fill: var(--color-panel); stroke: var(--color-border); stroke-width: 1; }
+    .hero-news__art .art-chip-name { fill: var(--color-text); font-size: 14px; font-weight: 600; }
+    .hero-news__art .art-chip-type { fill: var(--color-subtle); font-size: 12px; font-weight: 500; }
+    .hero-news__art .art-chip-free { fill: var(--color-accent); font-size: 12px; font-weight: 600; }
+    .hero-news__slide.is-active .art-tool { animation: hero-news-rise var(--duration-settle) var(--ease-out) both; animation-delay: calc(var(--i) * 40ms); }
+
+    /* The text under the picture; the link keeps to the bottom, level with the bars. */
+    .hero-news__body { flex: 1; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4) 0 0; }
+    .hero-news .hero-news__body > * { margin: 0; } /* over the hero's own paragraphs (.hero p, .hero-split p) */
+    .hero-news .hero-news__kicker {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        color: var(--color-subtle);
+        font: var(--weight-semibold) var(--text-label) / 1.4 var(--font-body);
+        letter-spacing: var(--tracking-label);
+    }
+    .hero-news__kicker span { color: var(--color-text); }
+    .hero-news .hero-news__title {
+        margin-top: var(--space-1);
+        color: var(--color-text);
+        font: var(--weight-bold) var(--text-card) / 1.25 var(--font-body);
+        letter-spacing: var(--tracking-heading);
+        text-wrap: balance;
+    }
+    .hero-news .hero-news__text {
+        display: -webkit-box;
+        max-width: none;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        color: var(--color-muted);
+        font-size: var(--text-small);
+        line-height: 1.6;
+    }
+    .hero-news .hero-news__cta {
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
+        gap: var(--space-2);
+        min-height: 40px; /* 44px until the labels grew to 12px in 20261027-no-caps; the bottom stays on the node buttons */
+        margin-top: auto;
+        color: var(--color-text);
+        font: var(--weight-bold) var(--text-small) / 1 var(--font-body);
+        text-decoration: none;
+    }
+    .hero-news__cta .iconizo { width: 16px; height: 16px; color: var(--color-accent); transition: transform var(--duration-base) var(--ease-out); }
+    .hero-news__cta:hover .iconizo, .hero-news__cta:focus-visible .iconizo { transform: translateX(4px); }
+    .hero-news__cta:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: var(--radius-tag); }
+    /* The text rises in after the picture. */
+    .hero-news__slide.is-active :is(.hero-news__kicker, .hero-news__title, .hero-news__text, .hero-news__cta) { animation: hero-news-rise var(--duration-settle) var(--ease-out) both; }
+    .hero-news__slide.is-active .hero-news__title { animation-delay: 40ms; }
+    .hero-news__slide.is-active .hero-news__text { animation-delay: 80ms; }
+    .hero-news__slide.is-active .hero-news__cta { animation-delay: 120ms; }
+    @keyframes hero-news-rise { from { opacity: 0; transform: translateY(8px); } }
+
+    /* The progress bars, one per slide and also the way to a slide, a thin line across the top (the markup has them
+       after the slides); Pause at their end, its icon on the column's right edge. The shown slide's bar is green
+       (20261027-hero-news-bars; owner: "The tab that is currently being previewed should be the green one"): a dim
+       green track, paused or not, that fills bright green as it runs; the slides before it are white, the rest grey. */
+    .hero-news__nav { order: -1; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); }
+    .hero-news__label {
+        flex: 0 0 100%; /* its own line, above the bars */
+        color: var(--color-subtle);
+        font: var(--weight-semibold) var(--text-label) / 1.4 var(--font-body);
+        letter-spacing: var(--tracking-label);
+        white-space: nowrap;
+    }
+    .hero-news__seg {
+        flex: 1;
+        display: grid;
+        align-items: center;
+        height: 16px; /* the line in its middle; with the spacing between them, small targets are fine (WCAG 2.5.8) */
+        padding: 0;
+        background: none;
+        border: 0;
+        border-radius: var(--radius-tag);
+        cursor: pointer;
+    }
+    .hero-news__seg i { position: relative; display: block; height: 2px; overflow: hidden; border-radius: 1px; background: var(--color-border-strong); transition: background-color var(--duration-fast) var(--ease-out); }
+    .hero-news__seg:hover i { background: var(--color-muted); }
+    .hero-news__seg.is-current i { background: var(--color-accent-tint-border); }
+    .hero-news__seg i::after { content: ""; position: absolute; inset: 0; background: var(--color-text); transform: scaleX(0); transform-origin: left; }
+    .hero-news__seg.is-done i::after { transform: scaleX(1); }
+    .hero-news__seg.is-current i::after { background: var(--color-accent); animation: hero-news-fill var(--news-turn) linear both; animation-play-state: paused; }
+    .hero-news.is-running .hero-news__seg.is-current i::after { animation-play-state: running; }
+    @keyframes hero-news-fill { to { transform: scaleX(1); } }
+    .hero-news__pause {
+        display: inline-grid;
+        place-items: center;
+        width: 32px;
+        height: 24px;
+        margin: -4px -9px -4px 0; /* 24px to press, the bars' 16px in the row */
+        padding: 0;
+        color: var(--color-muted);
+        background: none;
+        border: 0;
+        border-radius: var(--radius-control);
+        cursor: pointer;
+        transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+    }
+    .hero-news__pause:hover { color: var(--color-text); background: var(--color-panel); }
+    .hero-news__pause .iconizo { width: 14px; height: 14px; pointer-events: none; }
+    .hero-news__pause [data-news-icon="play"], .hero-news.is-stopped .hero-news__pause [data-news-icon="pause"] { display: none; }
+    .hero-news.is-stopped .hero-news__pause [data-news-icon="play"] { display: block; }
+    .hero-news :is(.hero-news__seg, .hero-news__pause):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    /* Without hero-news.js: the first slide alone under the label, no bars or Pause. */
+    .hero-news:not(.is-ready) :is(.hero-news__seg, .hero-news__pause) { visibility: hidden; }
+
+}
+
+@media (min-width: 1200px) and (prefers-reduced-motion: reduce) {
+    .hero-news, .hero-news__slide, .hero-news__media, .hero-news__slide.is-active :is(.hero-news__kicker, .hero-news__title, .hero-news__text, .hero-news__cta, .art-speed, .art-tool) { animation: none; transition: none; }
+    .hero-news__media { transform: none; }
+    .hero-news__seg.is-current i::after { animation: none; transform: scaleX(1); }
+}

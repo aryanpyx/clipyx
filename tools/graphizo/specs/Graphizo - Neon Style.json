@@ -1,0 +1,19 @@
+{
+  "name": "Graphizo - Neon Style",
+  "notes": "A style preset with no data and no chart type: load it onto your own Graphizo node with Settings > Load.",
+  "look": "neon",
+  "values": true,
+  "number_style": "compact",
+  "decimals": 1,
+  "depth": {
+    "glow": 0.6,
+    "glow_size": 20
+  },
+  "animation": {
+    "playback": "entrance",
+    "duration": 40,
+    "ease": "back_out",
+    "stagger": 0.5,
+    "count_up": true
+  }
+}

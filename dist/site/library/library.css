@@ -1,0 +1,196 @@
+/* Clipyx Library additions (since 2026-10-20), loaded by /library/ only after theme.css. The Library's base styles live
+   in theme.css (the Library section at its end); rules the Library session adds on its own go here, theme tokens only, so
+   a Library release never needs a theme.css ?v change across the site. */
+
+/* Tweak: the numbers in an expression a member can drag or step before copying it. */
+.library-num {
+    border-bottom: var(--border-hairline) dashed currentColor;
+    border-radius: 2px;
+    color: var(--color-accent);
+    cursor: ew-resize;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+/* No lime tint (owner, 2026-11-19): a number under the pointer sits on the grey "on"; one that was changed is a lime
+   chip with black digits, and so is a place a setting filled. */
+.library-num:hover,
+.library-num:focus-visible,
+.library-num.is-dragging { background: var(--color-pressed, #262626); }
+.library-num:focus-visible { outline: var(--focus-width) solid var(--color-accent); outline-offset: 1px; }
+.library-num.is-changed, .library-num.is-changed:hover, .library-num.is-changed:focus-visible { color: var(--color-on-accent); background: var(--color-accent); }
+/* A lime ring can't be read against a lime chip: a changed number's keyboard ring is white, as the main button's is. */
+.library-num.is-changed:focus-visible { outline-color: var(--color-text) !important; }
+
+/* Settings (2026-11-11): a place in an expression that one of its fields fills in. */
+.library-slot { border-bottom: var(--border-hairline) solid var(--color-border-strong); border-radius: 2px; }
+.library-slot.is-changed { color: var(--color-on-accent); background: var(--color-accent); border-bottom-color: var(--color-accent); }
+
+/* The live preview takes the video's place while an expression is tweaked. */
+.library-detail-media [hidden] { display: none; }
+.library-tweak-canvas { display: block; width: 100%; aspect-ratio: 1; }
+
+/* Script settings: the capitals at the top of a script as fields above its code. */
+.library-settings { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: var(--space-3); }
+.library-settings[hidden] { display: none; }
+.library-settings > .library-howto, .library-settings .form-group:has(.library-check), .library-settings .library-setting-wide { grid-column: 1 / -1; }
+.library-settings input[aria-invalid="true"] { border-color: var(--color-danger); }
+.library-settings .library-setting-problem { color: var(--color-danger); }
+.library-settings .form-group { display: grid; align-content: start; }
+.library-settings .library-howto { margin: 0; }
+/* An expression's settings are small, three to a row (four when there are many), with one line under them for the
+   field in use; the code box under them is shorter still. */
+.library-settings.is-compact { grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: var(--space-2) var(--space-3); }
+.library-settings.is-compact.is-many { grid-template-columns: repeat(auto-fit, minmax(5.25rem, 1fr)); }
+.library-settings.is-compact .form-group { position: relative; align-content: end; gap: var(--space-1); }
+.library-settings.is-compact:not([hidden]) + .library-code { max-height: min(10rem, 24dvh); }
+@media (hover: hover) and (pointer: fine) {
+    .dry-form.library-settings.is-compact .form-group input[data-setting] { min-height: calc(var(--control-height) - var(--space-2)); padding: var(--space-1) var(--space-2); }
+}
+/* With a form above it the code box is shorter, so the dialog (and its close button) still fits the screen. */
+.library-settings:not([hidden]) + .library-code { max-height: min(14rem, 30dvh); }
+.library-check { display: flex; align-items: center; gap: var(--space-2); cursor: pointer; }
+.library-check input { width: 18px; height: 18px; margin: 0; }
+/* Options (2026-11-16, owner: "add more controls ... without cluttering the UI"): the ways an expression can work, as
+   small segmented switches in one row above its fields, the chips' quiet style: the chosen way has the site's pressed
+   look (--color-pressed, a --color-border-strong edge, white text; Clipyx.com's button system, 2026-11-19), the others
+   muted. A real radio button sits under each name, so arrows and screen readers work. */
+.library-choices { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); }
+.library-choice { display: inline-flex; align-items: center; gap: var(--space-2); min-width: 0; }
+.library-choice-label { color: var(--color-muted); font-size: var(--text-label); white-space: nowrap; }
+.library-choice-options { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 2px; border: var(--border-hairline) solid var(--color-border); border-radius: var(--radius-control); }
+.library-choice-option { position: relative; display: inline-flex; align-items: center; min-height: 26px; padding: 0 var(--space-2);
+    border-radius: calc(var(--radius-control) - 3px); color: var(--color-muted); font: var(--weight-medium) var(--text-label) / 1 var(--font-body);
+    white-space: nowrap; cursor: pointer; }
+.library-choice-option input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.library-choice-option:hover { color: var(--color-text); }
+.library-choice-option:has(input:checked) { background: var(--color-pressed); box-shadow: inset 0 0 0 var(--border-hairline) var(--color-border-strong); color: var(--color-text); }
+.library-choice-option:has(input:focus-visible) { outline: var(--focus-width) solid var(--color-accent); outline-offset: 1px; }
+@media (hover: none), (pointer: coarse) { .library-choice-option { min-height: 36px; } }
+@media (forced-colors: active) { .library-choice-option:has(input:checked) { outline: var(--border-hairline) solid Highlight; } }
+
+/* The dialog's close button stays in view when a tall item scrolls: its form sticks to the top of the dialog with no
+   height of its own, and the button keeps its place in the top corner. */
+.library-detail > form { position: sticky; top: 0; z-index: 2; height: 0; }
+
+/* Likes (2026-10-26): a heart and count in each tile's top-left corner (Copy has the top right; the title and target keep
+   their full width) and a Like button in the item window. A liked item's heart and any count always show (the counts help
+   people find the best); a heart with nothing yet appears on hover or focus, like Copy, and always on touch screens. A
+   liked item's button takes the site's pressed look (--color-pressed, a --color-border-strong edge, a white label, and
+   --color-pressed-hover under the pointer, as the endorse button) with the filled lime heart as its one mark. On hover
+   the tile's pill takes the chips' --color-border-strong edge; keyboard focus is the site's ring alone (Clipyx.com's
+   button system, 2026-11-19). */
+.library-like { position: absolute; top: var(--space-2); left: var(--space-2); z-index: 1; display: inline-flex; align-items: center;
+    gap: var(--space-1); min-height: 32px; padding: 0 var(--space-2); border: var(--border-hairline) solid var(--color-border);
+    border-radius: var(--radius-pill); background: color-mix(in srgb, var(--color-canvas) 82%, transparent); color: var(--color-muted);
+    font: var(--weight-semibold) var(--text-label) / 1 var(--font-body); font-variant-numeric: tabular-nums; text-decoration: none; cursor: pointer; }
+.library-like .iconizo { width: 16px; height: 16px; }
+.library-like:hover { border-color: var(--color-border-strong); color: var(--color-text); }
+.library-like[aria-pressed="true"], .library-detail-like[aria-pressed="true"] { border-color: var(--color-border-strong); background: var(--color-pressed); color: var(--color-text); }
+.library-like[aria-pressed="true"]:hover, .library-detail-like[aria-pressed="true"]:hover { border-color: var(--color-border-strong); background: var(--color-pressed-hover); color: var(--color-text); }
+.library-like[aria-pressed="true"] .iconizo, .library-detail-like[aria-pressed="true"] .iconizo { color: var(--color-accent); fill: currentColor; }
+.library-like-count:empty { display: none; }
+@media (hover: hover) and (pointer: fine) {
+    .library-like { transition: opacity var(--duration-fast) var(--ease-standard); }
+    .library-tile:not(:hover):not(:focus-within) .library-like:not([aria-pressed="true"]):has(.library-like-count:empty) { opacity: 0; }
+}
+.library-detail-like .library-like-count { margin-left: var(--space-1); color: var(--color-muted); }
+@media (hover: none), (pointer: coarse) { .library-like { min-height: 40px; } }
+
+@media (forced-colors: active) {
+    .library-num { color: LinkText; }
+    .library-num.is-changed { color: Highlight; }
+    .library-slot { border-bottom-color: CanvasText; }
+    .library-slot.is-changed { border-bottom-color: Highlight; }
+}
+
+/* How to use a copy (2026-10-27): right above the item window's Copy, in text colour, so members read it before
+   they copy (it sat under the buttons in muted type and people missed it). */
+.library-detail-info .library-howto:is([data-howto], [data-field="tip"]) { color: var(--color-text); }
+
+/* Members' names on their shares (owner, 2026-10-27: "show users names on things they upload"): a line under the tile's
+   title, and a link to their profile in the item window and the admin's list. */
+.library-tile-by { overflow: hidden; color: var(--color-text); font-size: var(--text-label); line-height: var(--leading-heading); text-overflow: ellipsis; white-space: nowrap; }
+.library-detail-kicker a, .library-requires-note a { color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-border-strong); text-underline-offset: 3px; }
+.library-detail-kicker a:hover, .library-requires-note a:hover { text-decoration-color: currentColor; }
+
+/* A plugin preset's plugin (owner, 2026-10-29: "have it more noticiabel that it rquires textizo"): a hairline panel right
+   under the summary, as the product card frames things: "Requires <plugin>" in red with the plugin's name a link to its
+   page (owner, 2026-11-04: "make this red, textizo underlines and takes users to that page"), "Free plugin · Watch the
+   video" muted below it, and a plain Get <plugin> button (Copy stays the window's one lime action). Stacks on phones. */
+.library-requires { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-4); border: var(--border-hairline) solid var(--color-border); border-radius: var(--radius-control); background: var(--color-panel); }
+.library-requires > p { display: grid; gap: var(--space-1); margin: 0; color: var(--color-text); line-height: var(--leading-body); }
+.library-requires strong { font-weight: var(--weight-semibold); }
+.library-requires-note { color: var(--color-muted); font-size: var(--text-small); }
+.library-requires-note:not(:has(> :not([hidden]))) { display: none; }
+.library-requires-note > :not([hidden]) ~ :not([hidden])::before { content: " · "; color: var(--color-subtle); }
+.library-requires .btn { flex: none; }
+.library-requires-line { color: var(--color-danger); }
+/* What a script needs before it runs, in the same panel, its line orange (owner, 2026-11-09: "show that in orange on the
+   page of the script"). */
+.library-needs-line { color: var(--color-orange); }
+.library-requires-line a, .library-tile-requires a { color: inherit; text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 3px; }
+.library-requires-line a:hover, .library-tile-requires a:hover { text-decoration-thickness: 2px; }
+/* The same line on a preset's tile ("same on the card from the outside"), in orange as "Studio required" is on
+   community plugins (owner, later on 2026-11-04: "Make the requires textizo on the card orange or something. This looks
+   like an error right now. Keep it red only inside the card"): drawn over the tile's own line, which keeps its room but
+   hides, since the tile is one link and a link can't hold another. Only the plugin's name takes clicks:
+   the rest of the line lets them through to the tile, which opens the item. */
+.library-tile-target[data-requires-room] { visibility: hidden; }
+.library-tile-requires { position: absolute; inset: auto var(--space-3) var(--space-3); margin: 0; overflow: hidden; color: var(--color-orange); font-size: var(--text-label); line-height: var(--leading-heading); text-overflow: ellipsis; white-space: nowrap; pointer-events: none; }
+.library-tile-requires a { pointer-events: auto; text-underline-offset: 2px; }
+.library-tile-requires-status { color: var(--color-muted); }
+@media (max-width: 559px) {
+    .library-tile-requires { inset: auto var(--space-2) var(--space-2); }
+}
+@media (max-width: 480px) {
+    .library-requires { flex-direction: column; align-items: stretch; }
+}
+
+/* Locked items (owner, 2026-10-29: "just put the lock icon and no name for now"): an empty tile with a lock, nothing to
+   open, copy or like. */
+.library-locked-tile { position: relative; display: grid; place-items: center; aspect-ratio: 1; border: var(--border-control) solid var(--color-border-subtle); border-radius: var(--radius-panel); background: var(--color-canvas); color: var(--color-muted); }
+.library-locked-tile .iconizo { --iconizo-size: 28px; }
+
+/* Category chips (owner, 2026-10-29: "make these look less vibe coded"): quiet text filters, not outlined pills with a
+   lime fill. The selected one has the site's pressed look (--color-pressed, a --color-border-strong edge, white label;
+   Clipyx.com's button system, 2026-11-19); the others are muted text that brightens on hover. Overrides theme.css's
+   pill chips. */
+.library-chips { gap: var(--space-1); }
+.library-chip { padding: 0 var(--space-3); border-color: transparent; border-radius: var(--radius-control); font-weight: var(--weight-medium); }
+.library-chip:hover { border-color: transparent; color: var(--color-text); }
+.library-chip[aria-pressed="true"] { border-color: var(--color-border-strong); background: var(--color-pressed); color: var(--color-text); }
+.library-chip[aria-pressed="true"] .library-chip-count { color: var(--color-muted); }
+@media (forced-colors: active) {
+    .library-chip[aria-pressed="true"] { border-color: Highlight; }
+}
+
+/* AI Integration items (2026-10-29): an AI guide or a link has no preview, so its tile and its window show its icon on
+   the canvas, the same muted icon as a lock tile; the tile's title sits at the foot as on every tile. */
+.library-tile-icon { position: absolute; inset: 0 0 var(--space-8); display: grid; place-items: center; color: var(--color-muted); }
+.library-tile-icon .iconizo { --iconizo-size: 40px; }
+.library-detail-icon { display: grid; place-items: center; aspect-ratio: 1; color: var(--color-muted); }
+.library-detail-icon .iconizo { --iconizo-size: 64px; }
+
+/* Sort (owner, 2026-10-29: "sort by new"): the store's select with its Iconizo chevron, at the chips' compact height
+   (32px on fine pointers, 44px on touch), beside the result count. */
+.library-sort .store-filter-select { min-height: var(--library-control); padding-block: 0; align-items: center; } /* the chosen item's text in the middle, not at the top (review D28) */
+/* Phones (2026-11-11): on the two tabs with a sort, the sort, the count and Autoplay are wider than a 360-412px row
+   and ran past the screen (the Motion graphics tab scrolled sideways). There the sort and Autoplay share the first
+   line and the count goes under them; on the other tabs the row wraps instead of overflowing. */
+@media (max-width: 640px) {
+    .library-side { flex-wrap: wrap; row-gap: var(--space-2); }
+    .library-side:has(> .library-sort:not([hidden])) .library-status { order: 1; flex-basis: 100%; }
+}
+
+/* Site review, 2026-11-11. D28: on phones the type tabs and category chips scroll sideways; the edge that still has more
+   fades out, as the store's reviews do (library.js marks it). D20: a long title wraps onto a second line instead of
+   being cut off ("Typewriter with cu..."). */
+.library-tabs, .library-chips {
+    --library-fade-left: 0px; --library-fade-right: 0px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--library-fade-left), #000 calc(100% - var(--library-fade-right)), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--library-fade-left), #000 calc(100% - var(--library-fade-right)), transparent 100%);
+}
+.library-tabs.can-scroll-left, .library-chips.can-scroll-left { --library-fade-left: var(--space-8); }
+.library-tabs.can-scroll-right, .library-chips.can-scroll-right { --library-fade-right: var(--space-12); }
+.library-tile-title { display: -webkit-box; white-space: normal; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; }

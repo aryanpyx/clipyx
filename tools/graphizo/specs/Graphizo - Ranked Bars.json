@@ -1,0 +1,25 @@
+{
+  "name": "Graphizo - Ranked Bars",
+  "notes": "Horizontal ranking, sorted, one category highlighted and the others faded. Editorial look for documentary videos.",
+  "chart": "bar",
+  "orientation": "horizontal",
+  "look": "editorial_paper",
+  "canvas": "youtube",
+  "data": "Category,Views\nScience,280000\nTechnology,340000\nHistory,190000\nTravel,145000\nDesign,115000",
+  "title": "WHAT PEOPLE WATCH",
+  "subtitle": "Average views per upload | illustrative data",
+  "source": "Source: example data",
+  "sort": "descending",
+  "highlight": 2,
+  "dim": 0.32,
+  "values": true,
+  "number_style": "compact",
+  "decimals": 1,
+  "animation": {
+    "playback": "entrance",
+    "duration": 45,
+    "ease": "ease_out",
+    "stagger": 0.35,
+    "count_up": true
+  }
+}

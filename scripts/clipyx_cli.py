@@ -35,21 +35,11 @@ def get_library_data():
 # Planizo Web Server
 # -------------------------------------------------------------
 def cmd_serve(args):
-    from scripts.serve_planizo import PlanizoHandler
+    from scripts.serve_planizo import run_server
     port = args.port
-    print(f"==================================================")
-    print(f"  Starting Clipyx Planizo Web App on port {port}")
-    print(f"  Directory: {APP_DIR}")
-    print(f"  URL: http://localhost:{port}/")
-    print(f"==================================================")
     if args.open:
         webbrowser.open(f"http://localhost:{port}/")
-    try:
-        with socketserver.TCPServer(("", port), PlanizoHandler) as httpd:
-            print("Server active. Press Ctrl+C to stop.")
-            httpd.serve_forever()
-    except KeyboardInterrupt:
-        print("\nStopping server.")
+    run_server(port)
 
 # -------------------------------------------------------------
 # Clipyx Library Search & Inspection

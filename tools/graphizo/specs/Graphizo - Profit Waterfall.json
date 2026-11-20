@@ -1,0 +1,23 @@
+{
+  "name": "Graphizo - Profit Waterfall",
+  "notes": "Changes step up and down; =Gross is a subtotal bar and the last bar is the total.",
+  "chart": "waterfall",
+  "look": "midnight",
+  "canvas": "youtube",
+  "data": "Step,Change\nRevenue,1200\nServices,450\nRefunds,-180\n=Gross\nTax,-120\nSalaries,-640",
+  "title": "WHERE THE MONEY WENT",
+  "subtitle": "Thousands of dollars | illustrative data",
+  "values": true,
+  "prefix": "$",
+  "suffix": "K",
+  "waterfall": {
+    "total": true,
+    "total_label": "Net"
+  },
+  "animation": {
+    "playback": "entrance",
+    "duration": 60,
+    "ease": "ease_out",
+    "stagger": 0.6
+  }
+}

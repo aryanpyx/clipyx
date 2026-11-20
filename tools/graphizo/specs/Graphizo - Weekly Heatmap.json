@@ -1,0 +1,20 @@
+{
+  "name": "Graphizo - Weekly Heatmap",
+  "notes": "Rows x columns; each cell shades from faint to the first colour.",
+  "chart": "heatmap",
+  "look": "midnight",
+  "canvas": "youtube",
+  "data": "Day,6am,9am,12pm,3pm,6pm,9pm\nMon,12,25,38,41,66,58\nTue,10,22,35,44,70,61\nWed,14,27,40,46,72,64\nThu,11,24,37,43,75,69\nFri,9,20,33,48,84,90\nSat,18,35,52,61,88,95\nSun,22,41,58,63,80,72",
+  "title": "WHEN VIEWERS WATCH",
+  "subtitle": "Average viewers by hour (thousands) | illustrative data",
+  "values": true,
+  "bars": {
+    "corner_radius": 8
+  },
+  "animation": {
+    "playback": "entrance",
+    "duration": 45,
+    "ease": "ease_out",
+    "stagger": 0.5
+  }
+}
