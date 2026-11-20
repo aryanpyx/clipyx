@@ -108,11 +108,11 @@ def get_library_data():
 
 # ---------- MIME types ----------
 MIME_MAP = {
-    '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript',
-    '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png',
+    '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'application/javascript; charset=utf-8',
+    '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png',
     '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif',
     '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.woff': 'font/woff',
-    '.ttf': 'font/ttf', '.webp': 'image/webp',
+    '.ttf': 'font/ttf', '.webp': 'image/webp', '.mp4': 'video/mp4',
 }
 
 def guess_mime(path):
@@ -125,17 +125,20 @@ class ClipyxHandler(http.server.BaseHTTPRequestHandler):
     def end_headers(self):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-        self.send_header('Cache-Control', 'no-cache')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Range')
+        self.send_header('Accept-Ranges', 'bytes')
         super().end_headers()
 
     def log_message(self, format, *args):
         # Cleaner log output
-        print(f"  {self.address_string()} {format % args}")
+        pass
 
     def do_OPTIONS(self):
         self.send_response(200)
         self.end_headers()
+
+    def do_HEAD(self):
+        return self.do_GET()
 
     def respond_json(self, data):
         body = json.dumps(data).encode("utf-8")
@@ -150,11 +153,38 @@ class ClipyxHandler(http.server.BaseHTTPRequestHandler):
             self.send_error(404)
             return
         mime = guess_mime(str(file_path))
+        file_size = file_path.stat().st_size
+        range_header = self.headers.get('Range')
+
+        # Support partial video streaming for instant MP4 playback in browser
+        if range_header and range_header.startswith('bytes='):
+            try:
+                ranges = range_header[6:].split('-')
+                start = int(ranges[0]) if ranges[0] else 0
+                end = int(ranges[1]) if ranges[1] else file_size - 1
+                end = min(end, file_size - 1)
+                length = end - start + 1
+
+                self.send_response(206)
+                self.send_header("Content-Type", mime)
+                self.send_header("Content-Range", f"bytes {start}-{end}/{file_size}")
+                self.send_header("Content-Length", str(length))
+                self.send_header("Cache-Control", "public, max-age=31536000")
+                self.end_headers()
+
+                with open(file_path, "rb") as f:
+                    f.seek(start)
+                    self.wfile.write(f.read(length))
+                return
+            except Exception:
+                pass
+
         with open(file_path, "rb") as f:
             body = f.read()
         self.send_response(200)
         self.send_header("Content-Type", mime)
         self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "public, max-age=3600")
         self.end_headers()
         self.wfile.write(body)
 

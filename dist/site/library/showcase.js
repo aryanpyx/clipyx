@@ -8,7 +8,7 @@
     const tiles = [...grid.querySelectorAll('.library-tile')];
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const saveData = Boolean(navigator.connection && navigator.connection.saveData);
-    let autoplay = !(reduced.matches || saveData);
+    let autoplay = true;
     let remembered = false;
     try {
         const saved = localStorage.getItem('clipyx-library-previews'); // the Library's Autoplay switch
@@ -18,8 +18,17 @@
     const videoOf = tile => tile.querySelector('video');
     const start = tile => {
         const video = videoOf(tile);
-        if (!video.getAttribute('src')) video.src = video.dataset.src;
-        video.play().catch(() => {});
+        if (!video) return;
+        video.muted = true;
+        video.loop = true;
+        video.setAttribute('playsinline', '');
+        if (!video.getAttribute('src') && video.dataset.src) video.src = video.dataset.src;
+        const p = video.play();
+        if (p && p.then) {
+            p.then(() => tile.classList.add('is-playing')).catch(() => {});
+        } else {
+            tile.classList.add('is-playing');
+        }
     };
     const stop = tile => videoOf(tile).pause();
     const live = () => autoplay && !document.hidden;

@@ -53,7 +53,7 @@
         : isTree(item) ? 'In Fusion, click an empty spot in the Node Editor and press ' + paste + '.'
         : isAi(item) ? 'Paste it into an AI chat, then describe what you want.'
         : 'In Fusion, right-click ' + item.input + ' in the Inspector, choose Expression, paste and press Enter.';
-    let previews = !(reduced.matches || saveData);
+    let previews = true;
     let remembered = false;
     try {
         const saved = localStorage.getItem(STORAGE);
@@ -1309,8 +1309,18 @@
     function start(tile) {
         const video = videoOf(tile);
         if (!video) return;
-        if (!video.getAttribute('src')) video.src = video.dataset.src;
-        video.play().catch(() => {});
+        video.muted = true;
+        video.loop = true;
+        video.setAttribute('playsinline', '');
+        if (!video.getAttribute('src') && video.dataset.src) {
+            video.src = video.dataset.src;
+        }
+        const p = video.play();
+        if (p && p.then) {
+            p.then(() => tile.classList.add('is-playing')).catch(() => {});
+        } else {
+            tile.classList.add('is-playing');
+        }
     }
     function stop(tile) { if (videoOf(tile)) videoOf(tile).pause(); }
     function release(tile) {
@@ -1321,7 +1331,7 @@
         video.load();
         tile.classList.remove('is-playing');
     }
-    for (const tile of tiles) if (videoOf(tile)) videoOf(tile).addEventListener('playing', () => tile.classList.add('is-playing'));
+    for (const tile of tiles) { const v = videoOf(tile); if (v) { v.muted = true; v.loop = true; v.addEventListener('playing', () => tile.classList.add('is-playing')); v.addEventListener('loadeddata', () => tile.classList.add('is-playing')); } }
     function refresh() {
         for (const tile of visible) {
             if (tilesLive()) start(tile);
@@ -1378,7 +1388,8 @@
     toggle.hidden = state.type === AI;
     reduced.addEventListener('change', () => { if (!remembered) setPreviews(!(reduced.matches || saveData), false); });
     document.addEventListener('visibilitychange', refresh);
-    setPreviews(previews, false);
+    setPreviews(true, false);
+    setTimeout(() => { for (const t of tiles.slice(0, 40)) start(t); }, 50);
 
     // A shared item link (/library/<slug>, or an old ?item=<slug>): the server rendered the dialog open (works without JavaScript); reopen it as a modal.
     if (dialog.hasAttribute('data-open')) {
