@@ -1,171 +1,150 @@
 ---
 name: clipyx
-description: Complete toolkit for Clipyx (https://clipyx.com/) and Planizo: manage video planning, content calendars, daily routines, whiteboards and script B-roll breakdowns in the local Planizo web app; query and inspect 319+ DaVinci Resolve Fusion expressions, motion graphics, node trees, and Lua scripts from the Clipyx Library with 425 continuous 60fps MP4 motion loops; build, validate, and install Graphizo animated chart Fuses (17 data-driven charts); build, validate, and install Textizo animated text presets (.setting); and run local Qwen3-ASR speech-to-text and subtitle generation with Transcribe.
+description: Complete creator operating system, offline DaVinci Resolve toolkit, video production planner (Planizo), procedural kinetic typography engine (Textizo), animated chart library (Graphizo with 17 chart Fuses), 319 curated Resolve expressions and node trees with 425 continuous 60fps MP4 motion loops, and local private Qwen3-ASR speech-to-text subtitling (Transcribe). Use whenever the user asks about video planning, content calendars, script breakdowns, DaVinci Resolve expressions/presets, animated charts, kinetic text, transcription, or running the Clipyx local web platform.
 ---
 
 # Clipyx Creator AI Operating System & Toolkit Guide
 
-This skill provides complete integration with the **Clipyx** ecosystem, allowing AI agents and creators to plan video productions, query DaVinci Resolve expressions and node trees with live 60fps video loop previews, compile procedural kinetic typography with **Textizo**, build animated data-driven motion graphics with **Graphizo**, and transcribe audio/video locally with **Transcribe**.
+Clipyx is an offline-first creator productivity ecosystem, automated motion graphics pipeline, and AI operating system engineered for video creators, editors, and autonomous AI agents.
 
-## Workspace & Installation Roots
-- **Primary Suite Root:** `c:\Users\aryan\Downloads\Clipyx`
-- **Clipyx Web Platform:** `c:\Users\aryan\Downloads\Clipyx\app\site`
-- **Planizo Web App (Offline SPA):** `c:\Users\aryan\Downloads\Clipyx\app\planizo`
-- **Library Database (319 items & 425 MP4 loops):** `c:\Users\aryan\Downloads\Clipyx\data\clipyx_library.json`
-- **Graphizo Chart Toolkit (17 Fuses & AST Guide):** `c:\Users\aryan\Downloads\Clipyx\tools\graphizo`
-- **Textizo AI Kit (Presets & Validator):** `c:\Users\aryan\Downloads\Clipyx\tools\textizo`
-- **Official Textizo AI Guide:** `c:\Users\aryan\Downloads\Clipyx\Textizo AI Guide.md`
-- **Transcribe Toolkit (Qwen3-ASR):** `c:\Users\aryan\Downloads\Clipyx\tools\transcribe`
-- **Production Dist Bundle:** `c:\Users\aryan\Downloads\Clipyx\dist`
-- **Unified CLI Launcher:** `c:\Users\aryan\Downloads\Clipyx\clipyx.bat` or `python clipyx.py`
+This skill is installed universally in Antigravity (`~/.gemini/config/skills/clipyx/`) and provides instant access to the entire Clipyx platform from any workspace.
+
+## Universal CLI Quick Reference
+Because Clipyx is registered globally on `PATH`, you or the user can run `clipyx` from any shell:
+
+```powershell
+# Web Platform & Streaming Engine
+clipyx serve --open                    # Launch local suite on http://localhost:8765/
+
+# DaVinci Resolve Library (319 items + 425 MP4 motion loops)
+clipyx library search "countdown"      # Search expressions, trees, and motion graphics
+clipyx library get "count-up"          # Output full code and paste instructions
+
+# Graphizo Animated Charts (17 Chart Fuses)
+clipyx chart list                      # List all 21 built-in data chart presets
+clipyx chart check <preset.setting>    # Validate timing and Fusion syntax
+clipyx chart build <spec.json>         # Compile chart from JSON dataset
+clipyx chart data <data.csv>           # Convert CSV/TSV table into chart input text
+
+# Textizo Kinetic Typography
+clipyx preset list                     # List all 22 kinetic text presets
+clipyx preset check <preset.setting>   # Validate 14 follower rows & easing formulas
+clipyx preset build <spec.json>        # Build .setting preset from JSON spec
+
+# Planizo Creator Planning & Script Breakdown
+clipyx plan script "script.md"         # Extract B-roll, on-screen text, and visual cues
+```
 
 ---
 
 ## 1. Clipyx Web Platform & 60fps Streaming Video Engine
 
-The Clipyx web platform is an electric blue (`#00a2ff`) cyber interface featuring an interactive node signal grid, animated news ticker, store, studio, and library.
+The Clipyx web platform features an electric blue (`#00a2ff`) cyber interface with an active node particle canvas, auto-cycling news ticker, asset store, interactive studio web tools, and full DaVinci Resolve library.
 
-### Serving the Platform Locally
+### Starting the Platform
+Run the built-in streaming server:
 ```powershell
-# Serves the full suite on port 8765 with HTTP 206 Partial Content byte-range streaming:
-python scripts/serve_planizo.py 8765
-# Or via CLI launcher:
-python clipyx.py serve --port 8765 --open
+python scripts/serve_platform.py 8765
+# Or globally:
+clipyx serve --port 8765 --open
 ```
 
 ### Key Endpoints:
-- `http://localhost:8765/` — Clipyx Homepage (Active particle grid, animated news ticker, springy typography)
-- `http://localhost:8765/library/` — Clipyx Library (319 items, 425 continuous 60fps MP4 motion video loops)
-- `http://localhost:8765/store/` — Creator Template & Asset Store
-- `http://localhost:8765/studio/` — Interactive Studio Web Tools (Graphizo, Flowizo, Textizo, Animizo, Dashizo)
-- `http://localhost:8765/planizo/` — Planizo Offline Creator Planning SPA
+- **`http://localhost:8765/`** — Clipyx Homepage (Active particle grid, animated news ticker, springy typography)
+- **`http://localhost:8765/library/`** — Clipyx Library (319 items, 425 continuous 60fps MP4 motion video loops)
+- **`http://localhost:8765/store/`** — Creator Template & Asset Store
+- **`http://localhost:8765/studio/`** — Interactive Studio Web Tools (Graphizo, Flowizo, Textizo, Animizo, Dashizo)
+- **`http://localhost:8765/planizo/`** — Planizo Offline Creator Planning SPA
+
+Detailed architecture notes are in [Clipyx Architecture](./references/Clipyx%20Architecture.md).
 
 ---
 
-## 2. Planizo: Video Creator Productivity & Planning App
+## 2. DaVinci Resolve Library (319 Curated Items & 425 Loops)
 
-Planizo is an offline-first productivity app for video creators and editors, storing all state in browser `localStorage`.
+The offline database contains 319 code snippets, expressions, node trees, and Lua scripts:
+- **76 Expressions:** Lua expressions for Text+ Styled Text, Transform, and modifiers.
+- **197 Motion Graphics:** Overlays, countdowns, glitch effects, and badges with 60fps video loops.
+- **34 Node Trees:** Complete multi-node Fusion compositions.
+- **9 Lua Automation Scripts:** For batch processing inside DaVinci Resolve.
 
-### Core Modules:
-1. **Daily Schedule (`/#/schedule`):** Hour-by-hour timeblocking, priority tasks, and creator routines.
-2. **Calendar (`/#/calendar`):** Multi-platform video release calendar (YouTube, Shorts, TikTok, Instagram).
-3. **Routine (`/#/routine`):** Daily creator habits, pre-production prep, and editing sessions.
-4. **Whiteboards (`/#/whiteboard`):**
-   - **Canvas / Freeform:** Drag-and-drop cards, frames, and visual brainstorming.
-   - **Script Mode:** Scriptwriting with visual cues and B-roll annotations.
-   - **Storyboard:** Sequential scene cards with descriptions, audio, and visual timing.
-   - **Teleprompter:** Built-in scrolling prompter with speed control.
-   - **Image Editor:** Crop, annotate, and prep thumbnails or assets.
-5. **Content Tracker (`/#/content`):** Video production pipeline tracking stages:
-   - *Idea* -> *Script* -> *Record* -> *Edit* -> *Thumbnail* -> *Publish*
-
-### Script & B-Roll Analysis CLI
-Extract B-roll tags, visual cues, and on-screen text graphics directly from a script:
+### Searching & Retrieving Assets:
 ```powershell
-python clipyx.py plan script "path\to\script.md"
-```
-Supports inline tags like `[B-roll: close-up of keyboard typing]`, `[Visual: zoom into chart]`, and `[Title: 5 Key Principles]`.
+# Using the helper script inside the skill:
+python scripts/search_library.py search "matrix"
+python scripts/search_library.py get "vhs-tape"
 
----
-
-## 3. Clipyx DaVinci Resolve Library (319 Items + 425 MP4 Loops)
-
-The Clipyx Library contains 319 curated code snippets, expressions, node trees, and Lua scripts for DaVinci Resolve and Fusion, each accompanied by an inline 60fps MP4 motion loop.
-
-### Searching the Library
-```powershell
-# Keyword search across titles, summaries, and inputs
-python clipyx.py library search "countdown"
-
-# Filter by item type (expression, motion, tree, script, ai)
-python clipyx.py library search "blur" --type expression
-
-# Filter by category (Text, Titles, Backgrounds, Looks, Effects, Loaders, Social, Interface, etc.)
-python clipyx.py library search --category "Titles"
+# Or via CLI:
+clipyx library search "title" --category "Titles"
+clipyx library get "grid-reveal"
 ```
 
-### Inspecting an Item & Paste Instructions
-```powershell
-python clipyx.py library get "count-up"
-python clipyx.py library get "grid-reveal"
-python clipyx.py library get "vhs-tape"
-```
+For the full catalog of categories and input targets, see [Library Catalog](./references/Library%20Catalog.md).
 
 ---
 
-## 4. Graphizo: Animated Data Charts Engine (17 Chart Fuses)
+## 3. Graphizo Animated Charts Engine (17 Chart Fuses)
 
-Located in `tools/graphizo/`, Graphizo provides 17 native DaVinci Resolve Fusion Fuses for automated, animated data visualization:
+Graphizo enables automated, data-driven animated motion graphics inside DaVinci Resolve Fusion.
 
-### Included Fuses:
-- `BarChartRace.fuse`, `AreaChart.fuse`, `LinePlot.fuse`, `DonutChart.fuse`
-- `WaterfallChart.fuse`, `RadialProgress.fuse`, `LiveCounter.fuse`, `MatrixGrid.fuse`
-- `CandlestickChart.fuse`, `PieChart.fuse`, `RadarChart.fuse`, `Histogram.fuse`, etc.
+### Chart Types Supported:
+- `BarChartRace` (Top N rank racing with smooth bar transitions)
+- `AreaChart` (Cumulative trend visualizer with gradient fills)
+- `LinePlot` (Multi-line trajectory comparisons with glow effects)
+- `DonutChart` & `PieChart` (Proportional share with center readout)
+- `WaterfallChart` (Financial bridge analysis: revenue, costs, EBITDA)
+- `RadialProgress` & `LiveCounter` (Subscriber targets, countdowns, speedometer dials)
+- `CandlestickChart`, `MatrixGrid`, `RadarChart`, `SalesFunnel`
 
-### Authoring Rules:
-- Refer to `tools/graphizo/Graphizo AI Guide.md` for complete input schemas and animation keyframes.
-- All chart Fuses support CSV/JSON data ingestion and customizable easing curves.
+### Authoring Rules & Specification:
+Always consult [Graphizo AI Guide](./references/Graphizo%20AI%20Guide.md) when generating or validating chart presets.
 
 ---
 
-## 5. Textizo: Kinetic Typography Preset Engine
+## 4. Textizo Kinetic Typography Preset Engine
 
-Located in `tools/textizo/`, Textizo generates procedural animated title presets (`.setting` files) for DaVinci Resolve Fusion adhering strictly to `Textizo AI Guide.md`.
+Textizo generates procedural animated text presets (`.setting` files) for DaVinci Resolve Fusion adhering strictly to [Textizo AI Guide](./references/Textizo%20AI%20Guide.md).
 
-### Strict Checklist for Generated Presets:
-- [ ] **One Node Only:** Single node `Textizo1 = Fuse.Textizo { Inputs = { ... } }` inside `{ Tools = ordered() { ... } }`.
-- [ ] **Required Format Flags:**
-  - `StateVersion = 11`, `InEnable = 1`
-  - `UseFrameFormatSettings = 1`, `Width = 1920`, `Height = 1080` (preventing 320x240 bug)
-  - `StyledText = Input { Value = "...", }`, `TextEdited = Input { Value = 1, }`
-  - All text properties set: `Font`, `Style`, `Size`, `Center`, `Tracking`, `LineSpacing`, `Alignment`, `Rotation`, `Red = 1`, `Green = 1`, `Blue = 1`, `Alpha = 1`.
-- [ ] **All 14 Animation Rows Written:**
-  - 7 In rows (`Inopacity`, `Inblur`, `Incenter`, `Insize`, `Intracking`, `Inrotation`, `Inexplosion`).
-  - 7 Out rows (`Outopacity`, `Outblur`, `Outcenter`, `Outsize`, `Outtracking`, `Outrotation`, `Outexplosion`).
-  - Every row has `...Enable` (0 or 1). Every active row has all required follower, frame, stagger, and curve IDs.
-  - `Out` rows **NEVER** have `...StartValue`.
-- [ ] **Timing Formulas:**
-  - $EndFrame = StartFrame + S + D \times (N - 1)$
-  - $Stagger\% = 100 \times D / S$
-  - Entrance finishes before exit starts. Exit ends before the clip ends (default: 5s at 24 fps = frame 119).
-- [ ] **Shading Proxy Rule:**
-  - `ShadingActiveElement = FuID { "element_1" }`
-  - Element 1 is written **TWICE**: once as `ShadingProxy...` and once as `ShadingElement1...` with **identical** values.
-  - Elements 2 to 8 each have `Enable` set to 0, or their full block.
-- [ ] **Safe Fonts:** Arial, Arial Black, Verdana, Tahoma, Trebuchet MS, Georgia, Times New Roman, Impact, Courier New.
+### Output Protocol:
+When asked to author a Textizo preset, provide:
+1. **Description:** 1-2 sentences stating the preset name (`Textizo-` + 2-digit number + capital letter, e.g. `Textizo-01A`).
+2. **Preset Block:** Exactly **one** Lua code block containing the complete `.setting` node text.
+3. **Usage Steps:** Short 3-step paste instructions for the Fusion Node Editor.
 
-### Preset CLI Commands:
+### Strict Checklist for Textizo Presets:
+- [ ] **One Node Only:** `Textizo1 = Fuse.Textizo { Inputs = { ... } }` inside `{ Tools = ordered() { ... } }`.
+- [ ] **Resolution Guard:** `Width = 1920`, `Height = 1080`, `UseFrameFormatSettings = 1`.
+- [ ] **14 Animation Rows:** All 7 In rows and 7 Out rows declared with required follower curves.
+- [ ] **Timing Math:** Entrance ends before exit starts:
+  $$EndFrame = StartFrame + S + D \times (N - 1)$$
+- [ ] **Shading Proxy Sync:** `ShadingProxy...` and `ShadingElement1...` must match identically.
+
+---
+
+## 5. Planizo Creator Planning Suite
+
+Planizo is an offline-first productivity dashboard storing all state locally in the browser:
+1. **Schedule (`/#/schedule`):** Hour-by-hour timeblocking.
+2. **Calendar (`/#/calendar`):** Release calendar across YouTube, Shorts, TikTok, Instagram.
+3. **Routine (`/#/routine`):** Daily creator checklist and prep habits.
+4. **Whiteboards (`/#/whiteboard`):** Freeform canvas, Script Breakdown, Storyboard, Teleprompter.
+5. **Content Pipeline (`/#/content`):** Video Kanban pipeline stages.
+
+### Script Breakdown CLI:
 ```powershell
-# List presets
-python clipyx.py preset list
-
-# Validate preset timing and syntax
-python clipyx.py preset check "tools\textizo\presets\Textizo - Apple Reveal.setting"
-
-# Get next name
-python clipyx.py preset next-name
-
-# Show installation paths
-python clipyx.py preset where
-
-# Install preset to Resolve's Fusion Settings directory
-python clipyx.py preset install resolve "tools\textizo\presets\Textizo-01A.setting"
+python scripts/analyze_script.py "my_script.md"
+# Or:
+clipyx plan script "my_script.md"
 ```
 
 ---
 
-## 6. Transcribe: Local Speech Recognition & Subtitle Kit
+## 6. Transcribe: Local Offline Speech-to-Text
 
-Transcribe runs the open-source **Qwen3-ASR** model locally to generate video transcripts and synchronized subtitle files (`.srt`, `.vtt`).
+Located in `tools/transcribe/`, Transcribe runs the open-source **Alibaba Qwen3-ASR** model offline to produce millisecond-accurate `.srt` and `.vtt` subtitle tracks for DaVinci Resolve.
 
-### Running Transcribe
-On Windows:
 ```powershell
 cd tools\transcribe
-.\transcribe.bat "path\to\recording.mp4" --output "output\"
+.\transcribe.bat "input_video.mp4" --output "output\"
 ```
-
-Results are placed in `tools/transcribe/output/`:
-- `*.srt`: SubRip subtitle file with millisecond timecodes, ready to import onto Resolve Subtitle Track 1.
-- `*.vtt`: WebVTT format for web players.
-- `*.txt`: Plain-text transcript.
+Import `output/*.srt` directly onto DaVinci Resolve **Subtitle Track 1**.

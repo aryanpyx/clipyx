@@ -13,11 +13,16 @@ import socketserver
 import subprocess
 from pathlib import Path
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+DEFAULT_ROOT = Path(r"c:\Users\aryan\Downloads\Clipyx")
+ROOT_DIR = Path(os.environ.get("CLIPYX_ROOT", Path(__file__).resolve().parent.parent))
+if not (ROOT_DIR / "data" / "clipyx_library.json").exists() and DEFAULT_ROOT.exists():
+    ROOT_DIR = DEFAULT_ROOT
+
 APP_DIR = ROOT_DIR / "app" / "planizo"
 DATA_DIR = ROOT_DIR / "data"
 TOOLS_DIR = ROOT_DIR / "tools"
 TEXTIZO_DIR = TOOLS_DIR / "textizo"
+GRAPHIZO_DIR = TOOLS_DIR / "graphizo"
 TRANSCRIBE_DIR = TOOLS_DIR / "transcribe"
 MY_PRESETS_DIR = ROOT_DIR / "my-presets"
 
@@ -167,6 +172,57 @@ def cmd_preset_install(args):
     subprocess.run(cmd)
 
 # -------------------------------------------------------------
+# Graphizo Chart Integration (17 Animated Chart Fuses)
+# -------------------------------------------------------------
+def get_chart_tool():
+    chart_tool = GRAPHIZO_DIR / "tools" / "graphizo_preset.py"
+    if not chart_tool.exists():
+        print(f"Error: graphizo_preset.py not found at {chart_tool}", file=sys.stderr)
+        sys.exit(1)
+    return str(chart_tool)
+
+def cmd_chart_list(args):
+    presets_dir = GRAPHIZO_DIR / "presets"
+    if not presets_dir.exists():
+        print("Graphizo presets folder not found.", file=sys.stderr)
+        return
+    presets = sorted(list(presets_dir.glob("*.setting")))
+    print(f"Built-in Graphizo Chart Presets ({len(presets)}):\n")
+    for p in presets:
+        print(f"  • {p.stem}")
+    print("\nTo validate: clipyx chart check <filename>")
+
+def cmd_chart_check(args):
+    chart_tool = get_chart_tool()
+    cmd = [sys.executable, chart_tool, "check", args.file]
+    subprocess.run(cmd)
+
+def cmd_chart_build(args):
+    chart_tool = get_chart_tool()
+    cmd = [sys.executable, chart_tool, "build", args.spec]
+    if args.out:
+        cmd.extend(["--out", args.out])
+    subprocess.run(cmd)
+
+def cmd_chart_data(args):
+    chart_tool = get_chart_tool()
+    cmd = [sys.executable, chart_tool, "data", args.file]
+    subprocess.run(cmd)
+
+def cmd_chart_next_name(args):
+    chart_tool = get_chart_tool()
+    subprocess.run([sys.executable, chart_tool, "next-name"])
+
+def cmd_chart_where(args):
+    chart_tool = get_chart_tool()
+    subprocess.run([sys.executable, chart_tool, "where"])
+
+def cmd_chart_install(args):
+    chart_tool = get_chart_tool()
+    cmd = [sys.executable, chart_tool, "install", args.folder, args.file]
+    subprocess.run(cmd)
+
+# -------------------------------------------------------------
 # Script & Content Planning (Planizo Script Mode Integration)
 # -------------------------------------------------------------
 def cmd_plan_script(args):
@@ -269,6 +325,37 @@ def main():
     p_pinst.add_argument("folder", choices=["resolve", "downloads"], help="Destination folder shortcut")
     p_pinst.add_argument("file", help="Path to .setting preset file")
     p_pinst.set_defaults(func=cmd_preset_install)
+
+    # chart (Graphizo)
+    p_chart = subparsers.add_parser("chart", help="Graphizo Animated Chart Generator & Validator (17 Chart Fuses)")
+    chart_sub = p_chart.add_subparsers(dest="chart_cmd", required=True)
+
+    p_clist = chart_sub.add_parser("list", help="List all built-in Graphizo chart presets")
+    p_clist.set_defaults(func=cmd_chart_list)
+
+    p_ccheck = chart_sub.add_parser("check", help="Check and validate a Graphizo .setting file")
+    p_ccheck.add_argument("file", help="Path to .setting chart preset file")
+    p_ccheck.set_defaults(func=cmd_chart_check)
+
+    p_cbuild = chart_sub.add_parser("build", help="Build a Graphizo .setting preset from a JSON spec")
+    p_cbuild.add_argument("spec", help="Path to chart spec file (JSON)")
+    p_cbuild.add_argument("--out", help="Output path for .setting file")
+    p_cbuild.set_defaults(func=cmd_chart_build)
+
+    p_cdata = chart_sub.add_parser("data", help="Convert CSV/TSV file to Graphizo data text")
+    p_cdata.add_argument("file", help="Path to CSV/TSV file")
+    p_cdata.set_defaults(func=cmd_chart_data)
+
+    p_cnext = chart_sub.add_parser("next-name", help="Find the next available chart name (e.g. Graphizo-07A)")
+    p_cnext.set_defaults(func=cmd_chart_next_name)
+
+    p_cwhere = chart_sub.add_parser("where", help="Show DaVinci Resolve settings directory and installation paths")
+    p_cwhere.set_defaults(func=cmd_chart_where)
+
+    p_cinst = chart_sub.add_parser("install", help="Copy preset to Resolve settings folder or target directory")
+    p_cinst.add_argument("folder", choices=["resolve", "downloads"], help="Destination folder shortcut")
+    p_cinst.add_argument("file", help="Path to .setting preset file")
+    p_cinst.set_defaults(func=cmd_chart_install)
 
     # plan
     p_plan = subparsers.add_parser("plan", help="Planizo video script & content planning tools")
